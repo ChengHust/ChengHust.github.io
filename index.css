@@ -175,11 +175,11 @@ span.highlight {
 }
 
 ol {
-  list-style-position: inside;
+  list-style-position: outside;
   padding-left: 0;
 }
 
 ul {
-  list-style-position: inside;
+  list-style-position: outside;
   padding-left: 0;
 }
