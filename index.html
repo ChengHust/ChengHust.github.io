@@ -187,34 +187,6 @@
             <tr onmouseout="fapn_stop()" onmouseover="fapn_start()">
               <td style="padding:20px;width:25%;vertical-align:middle">
                 <div>
-                  <img src='images/2021-iccv-fapn.png' width="160">
-                </div>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://arxiv.org/abs/2108.07058">
-                  <papertitle>FaPN: Feature-aligned Pyramid Network for Dense Image Prediction</papertitle>
-                </a>
-                <br>
-                <a href="http://www.shihuahuang.cn/">Shihua Huang</a>,
-                <a href="http://zhichaolu.com/">Zhichao Lu</a>,
-                <a href="https://chengran.tech/">Ran Cheng</a>,
-                <strong> Cheng He </strong>
-                <br>
-                <em>ICCV</em>, 2021 &nbsp
-                <br>
-                <a href="https://arxiv.org/abs/2108.07058">arXiv</a>
-                <a href="https://github.com/EMI-Group/FaPN">code</a>
-                <p></p>
-                <p>FaPN a simple yet effective top-down pyramidal architecture to generate multi-scale features for dense image prediction. It improves FPN's AP / mIoU by 1.5 - 2.6% on all tasks.</p>
-              </td>
-            </tr>
-          </tbody></table>
-
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
-          margin-right:auto;margin-left:auto;"><tbody>
-            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()">
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <div>
                   <img src='images/LSMOF.png' width="160">
                 </div>
               </td>
@@ -240,13 +212,119 @@
                 <p></p>
                 <p>LSMOF is an effective framework for large-scale multiobjective optimization. Generally, this framework can reduce the number of decision variables from 1000 to less than 20. The cost of FEs is less than 100,000 for conventional LSMOPs.</p>
               </td>
+            </tr></tbody>
+          </table>
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
+          margin-right:auto;margin-left:auto;"><tbody>
+            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div>
+                  <img src='images/GMOEA.png' width="160">
+                </div>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://ieeexplore.ieee.org/abstract/document/8628263">
+                  <papertitle>Evolutionary Multiobjective Optimization Driven by Generative Adversarial Networks (GANs)
+                  </papertitle>
+                </a>
+                <br>
+                <strong> Cheng He </strong>,
+                <a href="http://www.shihuahuang.cn/">Shuhua Huang</a>,
+                <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN">Ran Cheng</a>,
+                <a href="https://www.polyu.edu.hk/comp/people/academic-staff/prof-tan-kay-chen/">Tan Kay Chen</a>
+                <a href="https://scholar.google.com/citations?user=B5WAkz4AAAAJ&hl=zh-CN">Yaochu Jin</a>,
+
+                
+                <br>
+                <em>IEEE Transactions on Cybernetics</em>, 2021 &nbsp
+                <br>
+                <a href="https://ieeexplore.ieee.org/abstract/document/9082904">paper</a>
+                <a href="https://www.chenghehust.com/assets/code/GMOEA_py.zip">code</a>
+                <a href="https://www.chenghehust.com/assets/pdf/GMOEA_poster.pdf">poster</a>
+                <p></p>
+                <p>GMOEA focuses on efficient offspring generation via learning from the distribution of promising solutions. Specifically, a generative adversarial network (GAN) is used for learning the distribution of solutions on the Pareto optimal set. GMOEA is capable of handling MOPs with up to 200 decision variables effectively, which is a new research direction for model-based evolutionary computation. </p>
+              </td>
+            </tr></tbody>
+          </table>
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
+          margin-right:auto;margin-left:auto;"><tbody>
+            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div>
+                  <img src='images/TREE.png' width="160">
+                </div>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://ieeexplore.ieee.org/abstract/document/8628263">
+                  <papertitle>Evolutionary Large-Scale Multiobjective Optimization for Ratio Error Estimation of Voltage Transformers
+                  </papertitle>
+                </a>
+                <br>
+                <strong> Cheng He </strong>,
+                <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN">Ran Cheng</a>,
+                <a href="https://orcid.org/0000-0002-3821-5467">Chuanji Zhang</a>,
+                <a href="https://scholar.google.com/citations?user=e46B-tEAAAAJ&hl=zh-CN&oi=ao">Ye Tian</a>,
+                <a href="http://faculty.hust.edu.cn/chenqing1/zh_CN/index/1322393/list/index.htm">Qin Chen</a>
+                <a href="https://scholar.google.com/citations?user=UUtYPl4AAAAJ&hl=zh-CN&oi=ao">Xin Yao</a>,
+
+                
+                <br>
+                <em>IEEE Transactions on Evolutionary Computation</em>, 2020 &nbsp
+                <br>
+                <a href="https://ieeexplore.ieee.org/abstract/document/8962275/">paper</a>
+                <a href="https://www.chenghehust.com/assets/code/TREE_m.zip">code</a>
+                <p></p>
+                <p>TREE is a benchmark large-scale multiobjective optimization test suite extracted from the power dilivery system, aiming at handling real-time ratio error estimation of voltage transformers. To be best of our knowledge, it is the first real-world LSMOP test suite validated in real substations. Generally, the maximum number of decision variables is up to half a million, proposing great challege for existing multiobjective evolutionary algorithms. This test suite also includes constraints, which provides a guidance for the desgin of meaningful evolutionary algorithm. </p>
+              </td>
+            </tr></tbody>
+          </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
+          margin-right:auto;margin-left:auto;"><tbody>
+            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div>
+                  <img src='images/2021-iccv-fapn.png' width="160">
+                </div>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2108.07058">
+                  <papertitle>FaPN: Feature-aligned Pyramid Network for Dense Image Prediction</papertitle>
+                </a>
+                <br>
+                <a href="http://www.shihuahuang.cn/">Shihua Huang</a>,
+                <a href="http://zhichaolu.com/">Zhichao Lu</a>,
+                <a href="https://chengran.tech/">Ran Cheng</a>,
+                <strong> Cheng He </strong>
+                <br>
+                <em>ICCV</em>, 2021 &nbsp
+                <br>
+                <a href="https://arxiv.org/abs/2108.07058">arXiv</a>
+                <a href="https://github.com/EMI-Group/FaPN">code</a>
+                <p></p>
+                <p>FaPN a simple yet effective top-down pyramidal architecture to generate multi-scale features for dense image prediction. It improves FPN's AP / mIoU by 1.5 - 2.6% on all tasks.</p>
+              </td>
             </tr>
           </tbody></table>
-
-
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <footer class="footer mt-auto py-3 my-footer">
       <div class="container">
