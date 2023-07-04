@@ -1,29 +1,30 @@
+
 <!DOCTYPE HTML>
 <html lang="en">
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-160123878-1');
-  </script>
+        gtag('config', 'UA-160123878-1');
+    </script>
 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153593080-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-153593080-1');
-  </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153593080-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-153593080-1');
+    </script>
 
-  <title>Cheng He</title>
+    <title>Cheng He</title>
 
   <meta name="author" content="Cheng He">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,8 +47,37 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" type="text/css" href="index.css">
+    <!-- jQuery from Local File-->
+    <script src="jquery-2.1.4.min.js"></script>
 
+    <script>
+        var newsListShort = [];
+        var newsListFull = [];
+        var expandState = false;
 
+        $(document).ready(function () {
+            $('ul#news-list>li').each(function (i, li) {
+                newsListFull.push(li.outerHTML);
+                if (i < 5) {
+                    newsListShort.push(li.outerHTML);
+                }
+            });
+            $('ul#news-list').html(newsListShort.join(''));
+        });
+
+        $(document).ready(function () {
+            $('button#expand-button').click(function (e) {
+                if (expandState) {
+                    e.target.textContent = 'Expand';
+                    $('ul#news-list').html(newsListShort.join(''));
+                } else {
+                    e.target.textContent = 'Reduce';
+                    $('ul#news-list').html(newsListFull.join(''));
+                }
+                expandState = !expandState;
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -81,14 +111,12 @@
                   src="images/Cheng_He_Origin.jpg" class="mx-auto d-block">
               </a>
             </div>
-          </div>
 
           <div class="col-12 col-md-8 order-md-1">
             <p>
               Associate Professor</br>
               Huazhong University of Science and Technology (HUST) </br>
-              chenghehust [at] gmail.com
-              </br>
+              chenghehust [at] gmail.com  </br>
               </br>
               Dr. Cheng He is currently an Associate Professor with the School of Electrical and Electronic Engineering, Huazhong University of Science and Technology, China. 
               His main research interests are Artificial/Computational Intelligence (including evolutionary multi-objective optimization, model-based optimization, large-scale optimization, etc.).
