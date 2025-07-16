@@ -1,32 +1,31 @@
-
 <!DOCTYPE HTML>
 <html lang="en">
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-        gtag('config', 'UA-160123878-1');
-    </script>
+    gtag('config', 'UA-160123878-1');
+  </script>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153593080-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());  
-        gtag('config', 'UA-153593080-1');
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153593080-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-153593080-1');
+  </script>
 
-    <title>Cheng He</title>
+  <title>Cheng He</title>
 
   <meta name="author" content="Cheng He">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,280 +48,288 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" type="text/css" href="index.css">
-    <!-- jQuery from Local File-->
-    <script src="jquery-2.1.4.min.js"></script>
+  <!-- jQuery from Local File-->
+  <script src="jquery-2.1.4.min.js"></script>
 
-    <script>
-        var newsListShort = [];
-        var newsListFull = [];
-        var expandState = false;
+  <script>
+    var newsListShort = [];
+    var newsListFull = [];
+    var expandState = false;
 
-        $(document).ready(function () {
-            $('ul#news-list>li').each(function (i, li) {
-                newsListFull.push(li.outerHTML);
-                if (i < 5) {
-                    newsListShort.push(li.outerHTML);
-                }
-            });
-            $('ul#news-list').html(newsListShort.join(''));
-        });
+    $(document).ready(function () {
+      $('ul#news-list>li').each(function (i, li) {
+        newsListFull.push(li.outerHTML);
+        if (i < 5) {
+          newsListShort.push(li.outerHTML);
+        }
+      });
+      $('ul#news-list').html(newsListShort.join(''));
+    });
 
-        $(document).ready(function () {
-            $('button#expand-button').click(function (e) {
-                if (expandState) {
-                    e.target.textContent = 'Expand';
-                    $('ul#news-list').html(newsListShort.join(''));
-                } else {
-                    e.target.textContent = 'Reduce';
-                    $('ul#news-list').html(newsListFull.join(''));
-                }
-                expandState = !expandState;
-            });
-        });
-    </script>
+    $(document).ready(function () {
+      $('button#expand-button').click(function (e) {
+        if (expandState) {
+          e.target.textContent = 'Expand';
+          $('ul#news-list').html(newsListShort.join(''));
+        } else {
+          e.target.textContent = 'Reduce';
+          $('ul#news-list').html(newsListFull.join(''));
+        }
+        expandState = !expandState;
+      });
+    });
+  </script>
 </head>
 
 <body>
 
-        <div class="container content">
-          <div class="row">
-            <div class="col-12 col-md-10 offset-md-1">
-              <!-- Navbar -->
-              <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: #f9f9f9; border-bottom: 2px solid #e0e0e0;">
-                <a href="#" class="navbar-brand" style="font-size: 1.5rem; font-weight: bold; color: #007BFF;">
-                  🌟 Cheng He (何成)
-                </a>
-        
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-        
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                  <div class="navbar-nav navbar-custom">
-                    <a href="#" class="nav-item nav-link" style="color: #007BFF;">🏠 Home</a>
-                    <a href="index_publication.html" class="nav-item nav-link" style="color: #28A745;">📚 Publications</a>
-                    <a href="index_vitae.html" class="nav-item nav-link" style="color: #17A2B8;">📜 Vitae</a>
-                  </div>
-                </div>
-              </nav>
-        
-              <!-- Profile Section -->
-              <div class="container">
-                <div class="row" style="padding: 15px 0;">
-                  <!-- Profile Image -->
-                  <div class="col-12 col-md-4 order-md-12 align-self-center">
-                    <a href="images/Cheng_He_Origin.jpg">
-                      <img style="width: 140px; height: 180px; padding: 15px; margin: 10px 0; border: 2px solid #007BFF; border-radius: 10px;" 
-                        alt="profile photo" src="images/Cheng_He_Origin.jpg" class="mx-auto d-block">
-                    </a>
-                  </div>
-        
-                  <!-- Profile Description -->
-                  <div class="col-12 col-md-8 order-md-1">
-                    <p style="line-height: 1.6; font-size: 1.1rem;">
-                      <span style="color: #007BFF; font-weight: bold;">💼 Associate Professor, Associate Head of Department</span><br>
-                      🏫 <span style="color: #28A745;">Huazhong University of Science and Technology (HUST)</span><br>
-                      ⚡ <span style="color: #FFC107;">IEEE Senior Member</span> | 📧 chenghehust [at] gmail.com<br>
-                      Dr. Cheng He is currently an Associate Professor with the School of Electrical and Electronic Engineering, 
-                      Huazhong University of Science and Technology, China.<br>
-                      🔍 <strong>Research Interests:</strong> Artificial/Computational Intelligence (including evolutionary multi-objective optimization, 
-                      model-based optimization, large-scale optimization, etc.).
-                    </p>
-        
-                    <!-- Social Links -->
-                    <div>
-                      <p style="text-align: center; font-size: 1.2rem; font-weight: bold; color: #6C757D;">
-                        🌐 
-                        <a href="https://scholar.google.com/citations?user=I28xMFQAAAAJ&hl=zh-CN" 
-                           rel="noopener noreferrer" target="_blank" style="color: #007BFF;">Google Scholar</a> /
-                        <a href="https://github.com/ChengHust" rel="noopener noreferrer" target="_blank" style="color: #28A745;">Github</a> /
-                        <a href="https://www.linkedin.com/in/%E6%88%90-%E4%BD%95-74703b86/" 
-                           rel="noopener noreferrer" target="_blank" style="color: #17A2B8;">LinkedIn</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+  <div class="container content">
+    <div class="row">
+      <div class="col-12 col-md-10 offset-md-1">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md navbar-light sticky-top"
+          style="background-color: #f9f9f9; border-bottom: 2px solid #e0e0e0;">
+          <a href="#" class="navbar-brand" style="font-size: 1.5rem; font-weight: bold; color: #007BFF;">
+            🌟 Cheng He (何成)
+          </a>
+
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav navbar-custom">
+              <a href="#" class="nav-item nav-link" style="color: #007BFF;">🏠 Home</a>
+              <a href="index_publication.html" class="nav-item nav-link" style="color: #28A745;">📚 Publications</a>
+              <a href="index_vitae.html" class="nav-item nav-link" style="color: #17A2B8;">📜 Vitae</a>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Profile Section -->
+        <div class="container">
+          <div class="row" style="padding: 15px 0;">
+            <!-- Profile Image -->
+            <div class="col-12 col-md-4 order-md-12 align-self-center">
+              <a href="images/Cheng_He_Origin.jpg">
+                <img
+                  style="width: 140px; height: 180px; padding: 15px; margin: 10px 0; border: 2px solid #007BFF; border-radius: 10px;"
+                  alt="profile photo" src="images/Cheng_He_Origin.jpg" class="mx-auto d-block">
+              </a>
+            </div>
+
+            <!-- Profile Description -->
+            <div class="col-12 col-md-8 order-md-1">
+              <p style="line-height: 1.6; font-size: 1.1rem;">
+                <span style="color: #007BFF; font-weight: bold;">💼 Associate Professor, Associate Head of
+                  Department</span><br>
+                🏫 <span style="color: #28A745;">Huazhong University of Science and Technology (HUST)</span><br>
+                ⚡ <span style="color: #FFC107;">IEEE Senior Member</span> | 📧 chenghehust [at] gmail.com<br>
+                Dr. Cheng He is currently an Associate Professor with the School of Electrical and Electronic
+                Engineering,
+                Huazhong University of Science and Technology, China.<br>
+                🔍 <strong>Research Interests:</strong> Artificial/Computational Intelligence (including evolutionary
+                multi-objective optimization,
+                model-based optimization, large-scale optimization, etc.).
+              </p>
+
+              <!-- Social Links -->
+              <div>
+                <p style="text-align: center; font-size: 1.2rem; font-weight: bold; color: #6C757D;">
+                  🌐
+                  <a href="https://scholar.google.com/citations?user=I28xMFQAAAAJ&hl=zh-CN" rel="noopener noreferrer"
+                    target="_blank" style="color: #007BFF;">Google Scholar</a> /
+                  <a href="https://github.com/ChengHust" rel="noopener noreferrer" target="_blank"
+                    style="color: #28A745;">Github</a> /
+                  <a href="https://www.linkedin.com/in/%E6%88%90-%E4%BD%95-74703b86/" rel="noopener noreferrer"
+                    target="_blank" style="color: #17A2B8;">LinkedIn</a>
+                </p>
               </div>
             </div>
           </div>
         </div>
-    
-        </section>
-        <!-- Publications Section -->
-        <section id="publications" style="padding: 30px 15px; background-color: #F9F9F9; border-radius: 10px;">
-          <h2 style="color: #007BFF; font-weight: bold;">📚 Representative Articles</h2>
-          <hr style="border-top: 2px solid #007BFF;">
-          <p style="font-size: 1rem; line-height: 1.6;">
-            We have categorized our articles as <span style="color: #FF4500; font-weight: bold;">surrogate-assisted optimization</span>, 
-            <span style="color: #28A745; font-weight: bold;">large-scale optimization</span>, 
-            <span style="color: #17A2B8; font-weight: bold;">multi-/many-objective optimization</span>, and 
-            <span style="color: #FFC107; font-weight: bold;">deep learning and its applications</span>.
-            You are welcome to cite these papers via the 
-            <a href="assets/code/Publication-List-ChengHe.bib" rel="noopener noreferrer" target="_blank" style="color: #007BFF; text-decoration: underline;">
-              Bibtex
-            </a>.
-          </p>
-        </section>
-        
-        
-        <!-- Recent News Section -->
-        <section id="recent-news" style="padding: 30px 15px; margin-top: 20px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <div class="row heading">
-            <div class="col-12">
-              <h2 style="color: #007BFF; font-weight: bold;">📰 Recent News</h2>
-              <hr style="border-top: 2px solid #007BFF;">
-            </div>
-          </div>
+      </div>
+    </div>
+  </div>
+
+  </section>
+  <!-- Publications Section -->
+  <section id="publications" style="padding: 30px 15px; background-color: #F9F9F9; border-radius: 10px;">
+    <h2 style="color: #007BFF; font-weight: bold;">📚 Representative Articles</h2>
+    <hr style="border-top: 2px solid #007BFF;">
+    <p style="font-size: 1rem; line-height: 1.6;">
+      We have categorized our articles as <span style="color: #FF4500; font-weight: bold;">surrogate-assisted
+        optimization</span>,
+      <span style="color: #28A745; font-weight: bold;">large-scale optimization</span>,
+      <span style="color: #17A2B8; font-weight: bold;">multi-/many-objective optimization</span>, and
+      <span style="color: #FFC107; font-weight: bold;">deep learning and its applications</span>.
+      You are welcome to cite these papers via the
+      <a href="assets/code/Publication-List-ChengHe.bib" rel="noopener noreferrer" target="_blank"
+        style="color: #007BFF; text-decoration: underline;">
+        Bibtex
+      </a>.
+    </p>
+  </section>
 
 
-        <div class="col-12 col-md-0 order-md-12 align-self-center">
-          <ul style="list-style: none; padding-left: 0;">
-              
-            <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
-              <b style="color: #28A745;">📅 01/2025:</b> 
-              Our paper titled 
-              "<a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4235" 
-                  target="_blank" style="color: #007BFF; text-decoration: underline;">
-                  Surrogate-assisted Multiobjective Gene Selection for Cell Classification from Large-scale Single-cell RNA Sequencing Data
-              </a>" 
-              is accepted to 
-              <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4235" 
-                 target="_blank" style="color: #FF4500; font-weight: bold; text-decoration: underline;">
-                 IEEE Transactions on Evolutionary Computation
-              </a>! 🎉 Thanks to PhD Candidate 
-              <a href="https://jqlincn.github.io/" target="_blank" style="color: #17A2B8; font-weight: bold;">
-                Jianqing Lin
-              </a> for his hard work on the paper!<br>
-              
-              ✨ <b>Highlights:</b><br>
-              - This work proposes a <span style="color: #6C757D;">surrogate-assisted evolutionary algorithm</span> for multiobjective Gene Selection (GS).<br>
-              - Experiments are conducted on <span style="color: #FFC107;">eight large-scale scRNA-seq datasets</span> with more than <b>20,000 genes</b>.<br>
-              - Gene expression analysis results validate the significance of the selected genes in the classification of scRNA-seq data.
-            </li>
-      
-          <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
-              <b style="color: #28A745;">📅 01/2025:</b> 
-              Our paper titled 
-              "<a href="https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=28" 
-                  target="_blank" style="color: #007BFF; text-decoration: underline;">
-                  Knowledge-assisted Approach for Contactless Current Measurement in Multiconductor Systems
-              </a>" 
-              is accepted to 
-              <a href="https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=28" 
-                 target="_blank" style="color: #FF4500; font-weight: bold; text-decoration: underline;">
-                 IEEE Transactions on Industry Applications
-              </a>! 🎉 Thanks to PhD Candidate 
-              <span style="color: #17A2B8; font-weight: bold;">Chaojun Ma</span> for his hard work on the paper!<br>
-              
-              ✨ <b>Highlights:</b><br>
-              - This work proposed a novel approach combining a cost-effective <span style="color: #6C757D;">annular magnetic field (MF) sensor array</span> with an inverse calculation technique for precise, contactless current measurements in multiconductor systems.<br>
-              -  Experimental results demonstrate that the proposed approach achieves <span style="color: #FFC107;">high accuracy</span> in current measurement: Error rates maintained below <b>1%</b> and <b>2%</b> in balanced and unbalanced cases, respectively.<br>
-              -  An abnormal MF sensing data correction method was developed to ensure measurement accuracy further, showing resilience to sensor anomalies and maintaining a relative measurement error below <b>2%</b> after correction.
-            </li>
-              
-            <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
-                <b style="color: #28A745;">📅 08/2024:</b> 
-                Thanks for the interview invitation from <a href="https://direct.mit.edu/evco"  target='_blank'> Blue Tech Wave</a> during <a href="https://www.ic-docs.org/"  target='_blank'> the DOCS 2024</a>. <br>
-                ✨ This interview is about the challenges and opportunities of large-scale multiobjective optimization, and the <a href="https://btw.media/tw-video/interview-with-cheng-he-professor-of-computational-intelligence-the-billions-problem/"  target='_blank'> interview</a> is listed for your reference.
-            </li>
-          </ul>
-        </div>
-                
-<!--                 <li> <b>11/2024:</b> Thanks for Linqiang Pan's invitation from <a href="https://www.haust.edu.cn/info/1101/75069.htm"  target='_blank'> 2024 Operational Research Academic Symposium</a>. 
-                  I was invited to give a keynote speech on "Challenges and Opportunities of Evolutionary Large-Scale Multi-Objective Optimization for IntelliSense in Electric Power Measurement".
-                  <a href="https://www.chenghehust.com/assets/pdf/Luoyang_speech.pdf">poster</a>
-                </li> -->
-                
+  <!-- Recent News Section -->
+  <section id="recent-news"
+    style="padding: 30px 15px; margin-top: 20px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <div class="row heading">
+      <div class="col-12">
+        <h2 style="color: #007BFF; font-weight: bold;">📰 Recent News</h2>
+        <hr style="border-top: 2px solid #007BFF;">
+      </div>
+    </div>
 
 
-<!--                  <li> <b>08/2024:</b> Our paper titled "<a href="https://www.sciencedirect.com/science/article/pii/S0263224124014283" target='_blank'>Unsupervised Online Poor Contact Detection in the Secondary Circuit of Voltage Transformers</a>"
-                  is accepted to <a href="https://www.sciencedirect.com/science/article/pii/S0263224124014283"    
-                  target='_blank'>Measurement</a>! The concept of ``knee point'' is embedded in unsupervised anomaly detection of the secondary circuit of voltage transformers.
-                </li> -->
-                
-<!--                  <li> <b>07/2024:</b> Our paper titled "<a href="https://www.sciencedirect.com/science/article/pii/S1474034624003884" 
-                  target='_blank'> Knowledge-assisted Differential Evolution based Non-contact Voltage Measurement for Multiconductor Systems in Smart Grid</a>"
-                  is accepted to <a href="https://www.sciencedirect.com/science/article/pii/S1474034624003884"
-                  target='_blank'>Advanced Engineering Informatics</a>!
-                 Thanks to PhD Candidate Chaojun Ma for his hard work on the paper! 
-                This is my initial attempt at the embedding of physical knowledge in the design of evolutionary algorithms. More advanced embedding techniques are highly desirable!
-                Let's see how we can make it more versatile and applicable.
-                </li> -->
+    <div class="col-12 col-md-0 order-md-12 align-self-center">
+      <ul style="list-style: none; padding-left: 0;">
 
-<!--                  <li> <b>03/2024:</b> Our paper titled "<a href="https://ieeexplore.ieee.org/document/10477568" 
-                  target='_blank'> Computationally Expensive High-dimensional Multiobjective Optimization via Surrogate-assisted Reformulation and Decomposition</a>"
-                  is accepted to <a href="https://ieeexplore.ieee.org/document/10477568" 
-                  target='_blank'>IEEE Transactions on Evolutionary Computation</a>!
-                 Thanks to PhD Candidate <a  href="https://jqlincn.github.io/" target='_blank'> Jianqing Lin</a> for his hard work on the paper! 
-                 This work designed an SAEA  that considers the balance of convergence, diversity, and computational complexity via problem reformulation and decomposition to handle high-dimensional EMOPs.
-                The proposed TP-SAEA obtains well-converged and diverse solutions with only 509 real function evaluations, examined on six real-world instances with up to 12,000 decision variables.
-                </li> -->
-        </section>
-    
-        <div class="row heading">
-          <div class="col-12">
-            <h2 id="news" style="color: #007BFF; font-weight: bold;">🔬 Selected Research</h2>
-            <hr style="border-top: 2px solid #007BFF;">
-          </div>
-        </div>
+        <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
+          <b style="color: #28A745;">📅 01/2025:</b>
+          Our paper titled
+          "<a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4235" target="_blank"
+            style="color: #007BFF; text-decoration: underline;">
+            Surrogate-assisted Multiobjective Gene Selection for Cell Classification from Large-scale Single-cell RNA
+            Sequencing Data
+          </a>"
+          is accepted to
+          <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4235" target="_blank"
+            style="color: #FF4500; font-weight: bold; text-decoration: underline;">
+            IEEE Transactions on Evolutionary Computation
+          </a>! 🎉 Thanks to PhD Candidate
+          <a href="https://jqlincn.github.io/" target="_blank" style="color: #17A2B8; font-weight: bold;">
+            Jianqing Lin
+          </a> for his hard work on the paper!<br>
 
- 
-         <div class="row py-3">
-          <ul style="list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
-                 <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
-                          <tbody>
-                            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()" style="background-color: #F9F9F9; transition: background-color 0.3s;">
-                              <!-- Research Image -->
-                              <td style="padding: 20px; width: 25%; vertical-align: middle; text-align: center;">
-                                <div>
-                                  <img src="images/LSMOF.png" width="160" style="border: 2px solid #007BFF; border-radius: 5px;">
-                                </div>
-                              </td>
-                              
-                              <!-- Research Details -->
-                              <td style="padding: 20px; width: 75%; vertical-align: middle;">
-                                <a href="https://ieeexplore.ieee.org/abstract/document/8628263" style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
-                                  🚀 Accelerating Large-scale Multiobjective Optimization via Problem Reformulation
-                                </a>
-                                <br>
-                                <strong style="color: #FF4500;">Cheng He</strong>,
-                                <a href="https://scholar.google.com/citations?user=HqYgVloAAAAJ&hl=zh-CN&oi=ao" style="color: #17A2B8;">Lianghao Li</a>,
-                                <a href="https://scholar.google.com/citations?user=e46B-tEAAAAJ&hl=zh-CN&oi=ao" style="color: #17A2B8;">Ye Tian</a>,
-                                <a href="https://scholar.google.com/citations?user=7lmPe2kAAAAJ&hl=zh-CN&oi=ao" style="color: #17A2B8;">Xingyi Zhang</a>,
-                                <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ran Cheng</a>,
-                                <a href="https://scholar.google.com/citations?user=B5WAkz4AAAAJ&hl=zh-CN" style="color: #17A2B8;">Yaochu Jin</a>,
-                                <a href="https://scholar.google.com/citations?user=UUtYPl4AAAAJ&hl=zh-CN" style="color: #17A2B8;">Xing Yao</a>,
-                                  <em>IEEE Transactions on Evolutionary Computation</em>, 2019 &nbsp
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-            </li>
+          ✨ <b>Highlights:</b><br>
+          - This work proposes a <span style="color: #6C757D;">surrogate-assisted evolutionary algorithm</span> for
+          multiobjective Gene Selection (GS).<br>
+          - Experiments are conducted on <span style="color: #FFC107;">eight large-scale scRNA-seq datasets</span> with
+          more than <b>20,000 genes</b>.<br>
+          - Gene expression analysis results validate the significance of the selected genes in the classification of
+          scRNA-seq data.
+        </li>
 
-              
+        <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
+          <b style="color: #28A745;">📅 01/2025:</b>
+          Our paper titled
+          "<a href="https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=28" target="_blank"
+            style="color: #007BFF; text-decoration: underline;">
+            Knowledge-assisted Approach for Contactless Current Measurement in Multiconductor Systems
+          </a>"
+          is accepted to
+          <a href="https://ieeexplore.ieee.org/xpl/aboutJournal.jsp?punumber=28" target="_blank"
+            style="color: #FF4500; font-weight: bold; text-decoration: underline;">
+            IEEE Transactions on Industry Applications
+          </a>! 🎉 Thanks to PhD Candidate
+          <span style="color: #17A2B8; font-weight: bold;">Chaojun Ma</span> for his hard work on the paper!<br>
 
-            <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
+          ✨ <b>Highlights:</b><br>
+          - This work proposed a novel approach combining a cost-effective <span style="color: #6C757D;">annular
+            magnetic field (MF) sensor array</span> with an inverse calculation technique for precise, contactless
+          current measurements in multiconductor systems.<br>
+          - Experimental results demonstrate that the proposed approach achieves <span style="color: #FFC107;">high
+            accuracy</span> in current measurement: Error rates maintained below <b>1%</b> and <b>2%</b> in balanced and
+          unbalanced cases, respectively.<br>
+          - An abnormal MF sensing data correction method was developed to ensure measurement accuracy further, showing
+          resilience to sensor anomalies and maintaining a relative measurement error below <b>2%</b> after correction.
+        </li>
+
+        <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
+          <b style="color: #28A745;">📅 08/2024:</b>
+          Thanks for the interview invitation from <a href="https://direct.mit.edu/evco" target='_blank'> Blue Tech
+            Wave</a> during <a href="https://www.ic-docs.org/" target='_blank'> the DOCS 2024</a>. <br>
+          ✨ This interview is about the challenges and opportunities of large-scale multiobjective optimization, and the
+          <a href="https://btw.media/tw-video/interview-with-cheng-he-professor-of-computational-intelligence-the-billions-problem/"
+            target='_blank'> interview</a> is listed for your reference.
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- Selected Research -->
+  <section id="recent-news"
+    style="padding: 30px 15px; margin-top: 20px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <div class="row heading">
+      <div class="col-12">
+        <h2 style="color: #007BFF; font-weight: bold;">🔬 Selected Research</h2>
+        <hr style="border-top: 2px solid #007BFF;">
+      </div>
+    </div>
+
+
+    <div class="row py-3">
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
+          <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
+            <tbody>
+              <tr onmouseout="fapn_stop()" onmouseover="fapn_start()"
+                style="background-color: #F9F9F9; transition: background-color 0.3s;">
+                <!-- Research Image -->
+                <td style="padding: 20px; width: 25%; vertical-align: middle; text-align: center;">
+                  <div>
+                    <img src="images/LSMOF.png" width="160" style="border: 2px solid #007BFF; border-radius: 5px;">
+                  </div>
+                </td>
+
+                <!-- Research Details -->
+                <td style="padding: 20px; width: 75%; vertical-align: middle;">
+                  <a href="https://ieeexplore.ieee.org/abstract/document/8628263"
+                    style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
+                    🚀 Accelerating Large-scale Multiobjective Optimization via Problem Reformulation
+                  </a>
+                  <br>
+                  <strong style="color: #FF4500;">Cheng He</strong>,
+                  <a href="https://scholar.google.com/citations?user=HqYgVloAAAAJ&hl=zh-CN&oi=ao"
+                    style="color: #17A2B8;">Lianghao Li</a>,
+                  <a href="https://scholar.google.com/citations?user=e46B-tEAAAAJ&hl=zh-CN&oi=ao"
+                    style="color: #17A2B8;">Ye Tian</a>,
+                  <a href="https://scholar.google.com/citations?user=7lmPe2kAAAAJ&hl=zh-CN&oi=ao"
+                    style="color: #17A2B8;">Xingyi Zhang</a>,
+                  <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ran
+                    Cheng</a>,
+                  <a href="https://scholar.google.com/citations?user=B5WAkz4AAAAJ&hl=zh-CN"
+                    style="color: #17A2B8;">Yaochu
+                    Jin</a>,
+                  <a href="https://scholar.google.com/citations?user=UUtYPl4AAAAJ&hl=zh-CN" style="color: #17A2B8;">Xing
+                    Yao</a>,
+                  <em>IEEE Transactions on Evolutionary Computation</em>, 2019 &nbsp
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+
+        <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;"></li>
+        <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
           <tbody>
-            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()" style="background-color: #F9F9F9; transition: background-color 0.3s;">
+            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()"
+              style="background-color: #F9F9F9; transition: background-color 0.3s;">
               <!-- Research Image -->
               <td style="padding: 20px; width: 25%; vertical-align: middle; text-align: center;">
                 <div>
                   <img src="images/GMOEA.png" width="160" style="border: 2px solid #007BFF; border-radius: 5px;">
                 </div>
               </td>
-                              
-                <!-- Research Details -->
+
+              <!-- Research Details -->
               <td style="padding: 20px; width: 75%; vertical-align: middle;">
-                <a href="https://ieeexplore.ieee.org/abstract/document/9082904/" style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
+                <a href="https://ieeexplore.ieee.org/abstract/document/9082904/"
+                  style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
                   🚀 Evolutionary Multiobjective Optimization Driven by Generative Adversarial Networks (GANs)
                 </a>
                 <br>
                 <strong style="color: #FF4500;">Cheng He</strong>,
                 <a href="http://www.shihuahuang.cn/" style="color: #17A2B8;">Shuhua Huang</a>,
-                <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ran Cheng</a>,
-                <a href="https://www.polyu.edu.hk/comp/people/academic-staff/prof-tan-kay-chen/" style="color: #17A2B8;">Tan Kay Chen</a>
-                <a href="https://scholar.google.com/citations?user=B5WAkz4AAAAJ&hl=zh-CN" style="color: #17A2B8;">Yaochu Jin</a>,
+                <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ran
+                  Cheng</a>,
+                <a href="https://www.polyu.edu.hk/comp/people/academic-staff/prof-tan-kay-chen/"
+                  style="color: #17A2B8;">Tan Kay Chen</a>
+                <a href="https://scholar.google.com/citations?user=B5WAkz4AAAAJ&hl=zh-CN" style="color: #17A2B8;">Yaochu
+                  Jin</a>,
                 <br>
                 <em>IEEE Transactions on Cybernetics</em>, 2021 &nbsp
                 <br>
@@ -330,106 +337,139 @@
                 <a href="https://www.chenghehust.com/assets/code/GMOEA_py.zip">code</a>
                 <a href="https://www.chenghehust.com/assets/pdf/GMOEA_poster.pdf">poster</a>
                 <p></p>
-                    ✨ <b>Highlights:</b><br>
-                <p>GMOEA focuses on efficient offspring generation via learning from the distribution of promising solutions. GMOEA is capable of handling MOPs with up to 200 decision variables effectively, which is a new research direction for model-based evolutionary computation. </p>
+                ✨ <b>Highlights:</b><br>
+                <p>GMOEA focuses on efficient offspring generation via learning from the distribution of promising
+                  solutions. GMOEA is capable of handling MOPs with up to 200 decision variables effectively, which is a
+                  new research direction for model-based evolutionary computation. </p>
               </td>
-            </tr></tbody>
-          </table>
+            </tr>
+          </tbody>
+        </table>
+        </li>
 
-    <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
+        <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;"></li>
+        <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
           <tbody>
-            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()" style="background-color: #F9F9F9; transition: background-color 0.3s;">
+            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()"
+              style="background-color: #F9F9F9; transition: background-color 0.3s;">
               <!-- Research Image -->
               <td style="padding: 20px; width: 25%; vertical-align: middle; text-align: center;">
                 <div>
                   <img src="images/TREE.png" width="160" style="border: 2px solid #007BFF; border-radius: 5px;">
                 </div>
               </td>
-                              
-                <!-- Research Details -->
+
+              <!-- Research Details -->
               <td style="padding: 20px; width: 75%; vertical-align: middle;">
-                <a href="https://ieeexplore.ieee.org/abstract/document/8962275/" style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
-                  🚀 Evolutionary Large-Scale Multiobjective Optimization for Ratio Error Estimation of Voltage Transformers
+                <a href="https://ieeexplore.ieee.org/abstract/document/8962275/"
+                  style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
+                  🚀 Evolutionary Large-Scale Multiobjective Optimization for Ratio Error Estimation of Voltage
+                  Transformers
                 </a>
                 <br>
                 <strong style="color: #FF4500;">Cheng He</strong>,
-                <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ran Cheng</a>,
-                <a href="https://scholar.google.com/citations?user=sCoZWcEAAAAJ&hl=zh-CN&oi=sra" style="color: #17A2B8;">Chuanji Zhang</a>,
-                <a href="https://scholar.google.com/citations?user=e46B-tEAAAAJ&hl=zh-CN&oi=ao" style="color: #17A2B8;">Ye Tian</a>,
-                <a href="http://faculty.hust.edu.cn/chenqing1/zh_CN/index/1322393/list/index.htm" style="color: #17A2B8;">Qin Cheng</a>
-                <a href="https://scholar.google.com/citations?user=UUtYPl4AAAAJ&hl=zh-CN&oi=ao" style="color: #17A2B8;">Xin Yao</a>,
+                <a href="https://scholar.google.com/citations?user=bjeIdlcAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ran
+                  Cheng</a>,
+                <a href="https://scholar.google.com/citations?user=sCoZWcEAAAAJ&hl=zh-CN&oi=sra"
+                  style="color: #17A2B8;">Chuanji Zhang</a>,
+                <a href="https://scholar.google.com/citations?user=e46B-tEAAAAJ&hl=zh-CN&oi=ao"
+                  style="color: #17A2B8;">Ye
+                  Tian</a>,
+                <a href="http://faculty.hust.edu.cn/chenqing1/zh_CN/index/1322393/list/index.htm"
+                  style="color: #17A2B8;">Qin Cheng</a>
+                <a href="https://scholar.google.com/citations?user=UUtYPl4AAAAJ&hl=zh-CN&oi=ao"
+                  style="color: #17A2B8;">Xin Yao</a>,
                 <br>
                 <em>IEEE Transactions on Evolutionary Computation</em>, 2020 &nbsp
                 <br>
                 <a href="https://ieeexplore.ieee.org/abstract/document/8962275/">paper</a>
                 <a href="https://www.chenghehust.com/assets/code/TREE_m.zip">code</a>
                 <p></p>
-                    ✨ <b>Highlights:</b><br>
-                 <p>TREE is a large-scale multiobjective optimization test suite extracted from the power delivery system, aiming at handling real-time ratio error estimation of voltage transformers. 
-                     Generally, the maximum number of decision variables is up to half a million, and it includes constraints, which guide the design of a meaningful evolutionary algorithm. </p>
+                ✨ <b>Highlights:</b><br>
+                <p>TREE is a large-scale multiobjective optimization test suite extracted from the power delivery
+                  system,
+                  aiming at handling real-time ratio error estimation of voltage transformers.
+                  Generally, the maximum number of decision variables is up to half a million, and it includes
+                  constraints, which guide the design of a meaningful evolutionary algorithm. </p>
               </td>
-            </tr></tbody>
-          </table>
+            </tr>
+          </tbody>
+        </table>
+        </li>
 
-
-    <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
+        <li style="margin-bottom: 20px; font-size: 1rem; line-height: 1.6;"></li>
+        <table style="width: 100%; border: 0px; border-spacing: 0px; border-collapse: separate; margin: 20px auto;">
           <tbody>
-            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()" style="background-color: #F9F9F9; transition: background-color 0.3s;">
+            <tr onmouseout="fapn_stop()" onmouseover="fapn_start()"
+              style="background-color: #F9F9F9; transition: background-color 0.3s;">
               <!-- Research Image -->
               <td style="padding: 20px; width: 25%; vertical-align: middle; text-align: center;">
                 <div>
                   <img src="images/CSEA_Diagram.jpg" width="160" style="border: 2px solid #007BFF; border-radius: 5px;">
                 </div>
               </td>
-                              
-                <!-- Research Details -->
+
+              <!-- Research Details -->
               <td style="padding: 20px; width: 75%; vertical-align: middle;">
-                <a href="https://ieeexplore.ieee.org/abstract/document/8281523" style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
-                  🚀 A Classification-Based Surrogate-Assisted Evolutionary Algorithm for Expensive Many-Objective Optimization
+                <a href="https://ieeexplore.ieee.org/abstract/document/8281523"
+                  style="color: #007BFF; font-size: 1.2rem; font-weight: bold; text-decoration: none;">
+                  🚀 A Classification-Based Surrogate-Assisted Evolutionary Algorithm for Expensive Many-Objective
+                  Optimization
                 </a>
                 <br>
-                <a href="https://scholar.google.com/citations?user=jZRwWG8AAAAJ&hl=zh-CN&oi=ao" style="color: #17A2B8;">Linqiang Pan</a>,
+                <a href="https://scholar.google.com/citations?user=jZRwWG8AAAAJ&hl=zh-CN&oi=ao"
+                  style="color: #17A2B8;">Linqiang Pan</a>,
                 <strong style="color: #FF4500;">Cheng He</strong>,
-                <a href="https://scholar.google.com/citations?user=e46B-tEAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ye Tian</a>,
-                  <a href="https://scholar.google.com/citations?user=JtYr_7cAAAAJ&hl=zh-CN" style="color: #17A2B8;">Handing Wang</a>,
-                  <a href="https://scholar.google.com/citations?user=7lmPe2kAAAAJ&hl=zh-CN" style="color: #17A2B8;">Xingyi Zhang</a>,
-                  <a href="https://scholar.google.com/citations?user=B5WAkz4AAAAJ&hl=zh-CN" style="color: #17A2B8;">Yaochu Jin</a>.
+                <a href="https://scholar.google.com/citations?user=e46B-tEAAAAJ&hl=zh-CN" style="color: #17A2B8;">Ye
+                  Tian</a>,
+                <a href="https://scholar.google.com/citations?user=JtYr_7cAAAAJ&hl=zh-CN"
+                  style="color: #17A2B8;">Handing
+                  Wang</a>,
+                <a href="https://scholar.google.com/citations?user=7lmPe2kAAAAJ&hl=zh-CN" style="color: #17A2B8;">Xingyi
+                  Zhang</a>,
+                <a href="https://scholar.google.com/citations?user=B5WAkz4AAAAJ&hl=zh-CN" style="color: #17A2B8;">Yaochu
+                  Jin</a>.
                 <br>
                 <em>IEEE Transactions on Evolutionary Computation</em>, 2018 &nbsp
                 <br>
-                <a href="https://github.com/BIMK/PlatEMO/tree/master/PlatEMO/Algorithms/Multi-objective%20optimization/CSEA">code</a>
+                <a
+                  href="https://github.com/BIMK/PlatEMO/tree/master/PlatEMO/Algorithms/Multi-objective%20optimization/CSEA">code</a>
                 <p></p>
-                    ✨ <b>Highlights:</b><br>
-                 <p>CSEA is a classification-based surrogate-assisted evolutionary algorithm, which uses an uncertainty configuration to balance between convergence and uncertainty. 
-                     As an early attempt to use the classification model for capturing the dominance relationship in a reduced fitness landscape, which lies the foundation for future research on expensive high-dimensional optimization. </p>
+                ✨ <b>Highlights:</b><br>
+                <p>CSEA is a classification-based surrogate-assisted evolutionary algorithm, which uses an uncertainty
+                  configuration to balance between convergence and uncertainty.
+                  As an early attempt to use the classification model for capturing the dominance relationship in a
+                  reduced fitness landscape, which lies the foundation for future research on expensive high-dimensional
+                  optimization. </p>
               </td>
-            </tr></tbody>
-          </table>
+            </tr>
+          </tbody>
+        </table>
+        </li>
 
-    <footer class="footer mt-auto py-3 my-footer">
-      <div class="container">
-        <span class="text-muted">
-<!--           © Copyright 2024, Cheng He, Huazhong University of Science and Technology. -->
-<!--             <a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2024076487号-1</a> -->
-        </span>
-      </div>
-    </footer>
+        <footer class="footer mt-auto py-3 my-footer">
+          <div class="container">
+            <span class="text-muted">
+              <!--           © Copyright 2024, Cheng He, Huazhong University of Science and Technology. -->
+              <!--             <a href="https://beian.miit.gov.cn/" target="_blank">鄂ICP备2024076487号-1</a> -->
+            </span>
+          </div>
+        </footer>
+    </div>
+  </section>
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
-
-    <script src="index.js"></script>
-
-  </div>
+  <script src="index.js"></script>
 
 </body>
 
