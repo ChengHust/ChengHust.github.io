@@ -1,319 +1,311 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-160123878-1');
-  </script>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153593080-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-153593080-1');
-  </script>
-
-  <title>Cheng He</title>
-
-  <meta name="author" content="Cheng He">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
+  <title>Cheng He | Vitae</title>
+  <meta name="author" content="Cheng He">
+  <meta name="description" content="Academic vitae of Cheng He — including research grants, honors, awards, professional experience, and education.">
+  <meta property="og:title" content="Cheng He | Vitae">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.chenghehust.com/index_vitae.html">
+  <meta property="og:image" content="https://www.chenghehust.com/images/Cheng_He_Origin.jpg">
+  <meta property="og:description" content="Academic vitae including grants, awards, professional experience, and education.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cheng He | Vitae">
+  <meta name="twitter:description" content="Academic vitae including grants, awards, professional experience, and education.">
+  <meta name="twitter:image" content="https://www.chenghehust.com/images/Cheng_He_Origin.jpg">
 
-  <!-- Icon -->
   <link rel="apple-touch-icon" sizes="180x180" href="icons/id_clipart.png">
   <link rel="icon" type="image/png" sizes="32x32" href="icons/id_clipart.png">
   <link rel="icon" type="image/png" sizes="16x16" href="icons/id_clipart.png">
   <link rel="manifest" href="icons/site.webmanifest">
-
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <!-- Custom Styles -->
   <link rel="stylesheet" type="text/css" href="index.css">
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-160123878-1');
+  </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Cheng He",
+    "alternateName": "何成",
+    "url": "https://www.chenghehust.com/",
+    "image": "https://www.chenghehust.com/images/Cheng_He_Origin.jpg",
+    "jobTitle": "Associate Professor",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Huazhong University of Science and Technology"
+    },
+    "sameAs": [
+      "https://scholar.google.com/citations?user=I28xMFQAAAAJ&hl=zh-CN",
+      "https://github.com/ChengHust",
+      "https://orcid.org/0000-0003-4218-8454",
+      "https://www.linkedin.com/in/%E6%88%90-%E4%BD%95-74703b86/"
+    ]
+  }
+  </script>
+
+  <style>
+    .vitae-profile {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+      padding: 24px 0 32px;
+    }
+    .vitae-profile img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .vitae-profile h1 {
+      margin: 0 0 6px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+    .vitae-profile .role {
+      margin: 0 0 4px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .vitae-profile .affiliation {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    .vitae-profile .email {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .vitae-profile .v-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .vitae-profile .v-links a {
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--navy);
+      background: var(--surface-soft);
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+    .vitae-profile .v-links a:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: #ffffff;
+    }
+    .vitae-section { padding: 36px 0; border-top: 1px solid var(--line); }
+    .vitae-section:first-of-type { border-top: none; }
+    .vitae-section h2 {
+      margin: 0 0 20px;
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 1.5rem;
+    }
+    .vitae-list { margin: 0; padding: 0; list-style: none; }
+    .vitae-list li {
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    .vitae-list li:first-child { border-top: 0; }
+    .vitae-list strong { color: var(--navy); }
+    .vitae-list .role-tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 4px;
+      background: var(--surface-soft);
+      color: var(--teal);
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+    .exp-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 100px;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+    .exp-card:first-of-type { border-top: 0; }
+    .exp-card img {
+      width: 100%;
+      max-width: 100px;
+      max-height: 80px;
+      object-fit: contain;
+      margin: 0 auto;
+      display: block;
+    }
+    .exp-card h3 {
+      margin: 0 0 4px;
+      color: var(--navy);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+    .exp-card .exp-meta { color: var(--muted); font-size: 0.92rem; margin: 2px 0; }
+    .exp-card .exp-desc { color: var(--muted); font-size: 0.95rem; margin: 6px 0 0; }
+    @media (max-width: 700px) {
+      .vitae-profile { grid-template-columns: 1fr; }
+      .vitae-profile img { max-width: 160px; }
+      .exp-card { grid-template-columns: 1fr; }
+      .exp-card img { max-width: 80px; }
+    }
+  </style>
 </head>
 
 <body>
-
-  <div class="container content">
-    <div class="row">
-      <div class="col-12 col-md-10 offset-md-1">
-
-        <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: white;">
-
-          <a href="#" class="navbar-brand">
-            <name id="top">Cheng He (何成)</name>
-          </a>
-
-          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav navbar-custom">
-              <a href="index.html" class="nav-item nav-link">Home</a>
-              <a href="#grants" class="nav-item nav-link">Grants</a>
-              <a href="#award" class="nav-item nav-link">Awards</a>
-              <a href="#prof" class="nav-item nav-link">Work</a>
-              <a href="#education" class="nav-item nav-link">Education</a>
-              <a href="index_publication.html" class="nav-item nav-link">Publications</a>
-            </div>
-          </div>
-
-        </nav>
-
-
-
-        <div class="container">
-
-          <div class="row" style="padding: 15px 0px;">
-
-            <div class="col-12 col-md-4 order-md-12 align-self-center">
-              <a href="images/Cheng_He_Origin.jpg">
-                <img style="width: 200px; height: 200px; padding: 15px; margin: 10px 0px;" alt="profile photo"
-                  src="images/Cheng_He_Origin.jpg" class="mx-auto d-block">
-              </a>
-            </div>
-
-            <div class="col-12 col-md-8 order-md-1">
-
-              <p>
-                Associate Professor</br>
-                Huazhong University of Science and Technology (HUST) </br>
-                chenghehust [at] gmail.com
-                </br>
-                </br>
-                Dr. Cheng He is currently an Associate Professor with the School of Electrical and Electronic Engineering, Huazhong University of Science and Technology, China. 
-                His main research interests are Artificial/Computational Intelligence (includes evolutionary multi-objective optimization, model-based optimization, large-scale optimization, etc.) and its applications.
-                </br>
-              </p>
-
-
-              <div>
-                <p style="text-align:center">
-<!--                   <a href="assets/pdf/CV_ChengHe.pdf" rel="noopener noreferrer" target="_blank">CV</a> / -->
-<!--                   <a href="assets/pdf/CV_ChengHe_cn.pdf" rel="noopener noreferrer" target="_blank">简历</a> / -->
-                  <a href="https://scholar.google.com/citations?user=I28xMFQAAAAJ&hl=zh-CN" rel="noopener noreferrer"
-                    target="_blank">Google Scholar</a> /
-                  <a href="https://github.com/ChengHust" rel="noopener noreferrer" target="_blank">Github </a> /
-                  <a id="cy-effective-orcid-url" class="underline" href="https://orcid.org/0000-0003-4218-8454"
-                     target="orcid.widget" rel="me noopener noreferrer" style="vertical-align: top">
-                    <img
-                    src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
-                    style="width: 1em; margin-inline-start: 0.5em"
-                    alt="ORCID iD icon"/>
-                    https://orcid.org/0000-0003-4218-8454
-                  </a>
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="row heading">
-            <div class="col-12">
-              <heading id="grants">Research Grants</heading>
-              <hr>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-0 order-md-12 align-self-center">
-            <ul>
-            <li> <b>2022 - 2026:</b> Error Mechanism, Mathematical Model, and Ratio Error Prediction of Measurement Devices based on Mass Data, <strong>Co-PI</strong>, National Key Research and Development Program of China. </li>
-              <li> <b>2020 - 2022:</b> Computationally Expensive Large-Scale Multi-Objective Optimization Driven by Generative Learning, <strong>PI</strong>, National Science Foundation of China. </li>
-              <li> <b>2020 – 2024:</b> Deep Learning Applied to Aerofoil Design, <strong>Co-PI</strong>, China. </li>
-              <li> <b>2020-2022:</b> Evolutionary Computation Based Deep Neural Architecture Search for Microchips, <strong>Co-PI</strong>, China. </li>
-              <li> <b>2020-2022:</b> Computational Intelligence based Error State Evaluating for Grouped Instrument Transformers: Key Technologies and Applications, <strong>PI</strong>, National Science Foundation of China. </li>
-              <li> <b>2021-2022:</b> Voltage Transformer Ratio Error Estimation Driven by Computational Intelligence, <strong>PI</strong>，Shenzhen. </li>
-            </ul>
-          </div>
-
-          <div class="row heading">
-            <div class="col-12">
-              <heading id="award">Honors and Awards</heading>
-              <hr>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-0 order-md-12 align-self-center">
-            <ul>
-             <li> 2022: <a href="https://www.cgcc.org.cn/tzgg/2/52194.html" target='_blank' rel="noopener noreferrer">
-                2022中国商业联合会科学技术奖特等奖 </a>  </li>
-              <li> 2021: <a href="https://china.acm.org/awards-2021-SIGBIO.html" target='_blank' rel="noopener noreferrer">
-                2021 ACM SIGBio Rising Star Award </a>  </li>
-              <li> 2020: SUSTech the 6th Presidential Outstanding Postdoctoral Award </li>
-              <li> 2019: <a href="https://www.springer.com/gp/book/9789811534249"
-                            target='_blank' rel="noopener noreferrer">The 14th International Conference on Bio-inspired Computing: Theories and Applications (BIC-TA 2019) Best Paper Award</a></li>
-            </ul>
-          </div>
-
-           <div class="row heading">
-            <div class="col-12">
-              <heading id="prof">Professional Experience</heading>
-              <hr>
-            </div>
-          </div>
-
-          <div class="row entry">
-
-            <div class="col-12 col-md-8 order-md-12 align-self-center">
-              <papertitle>Huazhong University of Science and Technology</papertitle>
-              <br>
-              Associate Professor
-              <br>
-              03/2022 - present
-              <br>
-              Artificial/Computational Intelligence for Electrical and Electronic Engineering.
-            </div>
-
-              <div class="col-4 col-offset-4 thumbnail text-center mx-auto"><img style="height: 100px;" class="img-fluid"  src='images/hust.png'>
-            </div>
-          </div>
-
-          <div class="row entry">
-
-            <div class="col-12 col-md-8 order-md-12 align-self-center">
-              <papertitle>University of Science and Technology of China</papertitle>
-              <br>
-              <papertitle>Southern University of Science and Technology</papertitle>
-              <br>
-              Post-doc Research Fellow
-              <br>
-              08/2018 - 07/2020
-              <br>
-              Large-scale optimization, neural architecture search, airfoil design.
-            </div>
-
-              <div class="col-4 col-offset-4 thumbnail text-center mx-auto"><img style="height: 100px;" class="img-fluid"  src='images/USTC.jfif'>
-            </div>
-          </div>
-
-          <div class="row entry">
-
-            <div class="col-12 col-md-8 order-md-12 align-self-center">
-              <papertitle>Southern University of Science and Technology</papertitle>
-              <br>
-              Visting Scholar
-              <br>
-              03/2018 - 07/2018
-              <br>
-              Visiting scholar engaged in large-scale multiobjective optimization supervised by <br>
-              <a href="https://www.cs.bham.ac.uk/~xin/"
-              target='_blank' rel="noopener noreferrer">Professor Xin Yao</a>.
-            </div>
-            <div class="col-4 col-offset-4 thumbnail text-center mx-auto"><img style="height: 100px;" class="img-fluid"  src='images/sustech.jpg'>
-            </div>
-          </div>
-
-
-          <div class="row entry">
-
-            <div class="col-12 col-md-8 order-md-12 align-self-center">
-              <papertitle>University of Surrey</papertitle>
-              <br>
-              Visting PhD Student
-              <br>
-              2016 - 2017
-              <br>
-              Visiting student engaged in surrogate-assisted many-objective optimization supervised by <br>
-              <a href="https://www.surrey.ac.uk/people/yaochu-jin"
-              target='_blank' rel="noopener noreferrer">Professor Yaochu Jin</a>.
-            </div>
-            <div class="col-4 col-offset-4 thumbnail text-center mx-auto"><img style="height: 100px;" class="img-fluid"  src='images/surrey.jpg'>
-            </div>
-          </div>
-
-
-
-          <div class="row heading">
-            <div class="col-12">
-              <heading id="education">Education</heading>
-              <hr>
-            </div>
-          </div>
-
-          <div class="row entry">
-
-            <div class="col-12 col-md-8 order-md-12 align-self-center">
-              <papertitle>Doctor of Philosophy</papertitle>
-              <br>
-              <em>Huazhong University of Science and Technology</em>
-              <br>
-              09/2012 - 03/2018
-              <br>
-               Control Science and Engineering <br>
-               Focus on many-objective optimization and its applications supervised by <br>
-              <a href="http://aia.hust.edu.cn/info/1126/5958.htm"
-              target='_blank' rel="noopener noreferrer">Professor Linqiang Pan</a>.
-            </div>
-            <div class="col-4 col-offset-4 thumbnail text-center mx-auto"><img style="height: 100px;" class="img-fluid"  src='images/hust.png'>
-            </div>
-          </div>
-
-
-          <div class="row entry">
-
-            <div class="col-12 col-md-8 order-md-12 align-self-center">
-              <papertitle>Bachelor of Science</papertitle>
-              <br>
-              <em>Wuhan University of Science and Technology</em>
-              <br>
-              09/2008 - 6/2012
-              <br>
-              Automation
-            </div>
-            <div class="col-4 col-offset-4 thumbnail text-center mx-auto"><img style="height: 100px;" class="img-fluid"  src='images/wust.png'>
-            </div>
-          </div>
-
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-light site-nav">
+      <a href="index.html" class="navbar-brand site-brand">Cheng He <span>何成</span></a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto">
+          <a href="index.html" class="nav-item nav-link">Home</a>
+          <a href="index_publication.html" class="nav-item nav-link">Publications</a>
+          <a href="index_vitae.html" class="nav-item nav-link active">Vitae</a>
         </div>
       </div>
-    </div>
+    </nav>
+  </header>
 
-
-    <footer class="footer mt-auto py-3 my-footer">
-      <div class="container">
-        <span class="text-muted">
-          © Copyright 2026, Cheng He, Huazhong University of Science and Technology.
-        </span>
+  <main>
+    <section class="content-section" style="border-top:0; padding-top:40px;">
+      <div class="section-heading" style="margin-bottom: 4px;">
+        <p class="eyebrow">Curriculum vitae</p>
+        <h2>Academic profile</h2>
       </div>
-    </footer>
 
+      <div class="vitae-profile">
+        <a href="images/Cheng_He_Origin.jpg">
+          <img src="images/Cheng_He_Origin.jpg" alt="Profile photo of Cheng He">
+        </a>
+        <div>
+          <h1>Cheng He <span style="color: var(--teal); font-weight: 800;">何成</span></h1>
+          <p class="role">Associate Professor, Associate Head of Department</p>
+          <p class="affiliation">School of Electrical and Electronic Engineering, Huazhong University of Science and Technology</p>
+          <p class="email">chenghehust [at] gmail.com</p>
+          <div class="v-links">
+            <a href="assets/pdf/CV_ChengHe.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+            <a href="assets/pdf/CV_ChengHe_cn.pdf" target="_blank" rel="noopener noreferrer">中文简历</a>
+            <a href="https://scholar.google.com/citations?user=I28xMFQAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://github.com/ChengHust" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://orcid.org/0000-0003-4218-8454" target="_blank" rel="me noopener noreferrer">ORCID</a>
+            <a href="https://www.linkedin.com/in/%E6%88%90-%E4%BD%95-74703b86/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
 
+      <!-- Research Grants -->
+      <div class="vitae-section">
+        <h2>Research Grants</h2>
+        <ul class="vitae-list">
+          <li><strong>2022–2026:</strong> Error Mechanism, Mathematical Model, and Ratio Error Prediction of Measurement Devices based on Mass Data, <span class="role-tag">Co-PI</span>, National Key Research and Development Program of China.</li>
+          <li><strong>2020–2022:</strong> Computationally Expensive Large-Scale Multi-Objective Optimization Driven by Generative Learning, <span class="role-tag">PI</span>, National Science Foundation of China.</li>
+          <li><strong>2020–2024:</strong> Deep Learning Applied to Aerofoil Design, <span class="role-tag">Co-PI</span>, China.</li>
+          <li><strong>2020–2022:</strong> Evolutionary Computation Based Deep Neural Architecture Search for Microchips, <span class="role-tag">Co-PI</span>, China.</li>
+          <li><strong>2020–2022:</strong> Computational Intelligence based Error State Evaluating for Grouped Instrument Transformers: Key Technologies and Applications, <span class="role-tag">PI</span>, National Science Foundation of China.</li>
+          <li><strong>2021–2022:</strong> Voltage Transformer Ratio Error Estimation Driven by Computational Intelligence, <span class="role-tag">PI</span>, Shenzhen.</li>
+        </ul>
+      </div>
 
+      <!-- Honors and Awards -->
+      <div class="vitae-section">
+        <h2>Honors and Awards</h2>
+        <ul class="vitae-list">
+          <li><strong>2022:</strong> <a href="https://www.cgcc.org.cn/tzgg/2/52194.html" target="_blank" rel="noopener noreferrer">2022中国商业联合会科学技术奖特等奖</a></li>
+          <li><strong>2021:</strong> <a href="https://china.acm.org/awards-2021-SIGBIO.html" target="_blank" rel="noopener noreferrer">2021 ACM SIGBio Rising Star Award</a></li>
+          <li><strong>2020:</strong> SUSTech the 6th Presidential Outstanding Postdoctoral Award</li>
+          <li><strong>2019:</strong> <a href="https://www.springer.com/gp/book/9789811534249" target="_blank" rel="noopener noreferrer">The 14th International Conference on Bio-inspired Computing: Theories and Applications (BIC-TA 2019) Best Paper Award</a></li>
+        </ul>
+      </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
+      <!-- Professional Experience -->
+      <div class="vitae-section">
+        <h2>Professional Experience</h2>
+        <div class="exp-card">
+          <div>
+            <h3>Huazhong University of Science and Technology</h3>
+            <p class="exp-meta"><strong>Associate Professor</strong> &mdash; 03/2022 &ndash; present</p>
+            <p class="exp-desc">Artificial/Computational Intelligence for Electrical and Electronic Engineering.</p>
+          </div>
+          <img src="images/hust.png" alt="HUST logo">
+        </div>
+        <div class="exp-card">
+          <div>
+            <h3>University of Science and Technology of China / Southern University of Science and Technology</h3>
+            <p class="exp-meta"><strong>Post-doc Research Fellow</strong> &mdash; 08/2018 &ndash; 07/2020</p>
+            <p class="exp-desc">Large-scale optimization, neural architecture search, airfoil design.</p>
+          </div>
+          <img src="images/USTC.jfif" alt="USTC logo">
+        </div>
+        <div class="exp-card">
+          <div>
+            <h3>Southern University of Science and Technology</h3>
+            <p class="exp-meta"><strong>Visiting Scholar</strong> &mdash; 03/2018 &ndash; 07/2018</p>
+            <p class="exp-desc">Visiting scholar engaged in large-scale multiobjective optimization supervised by <a href="https://www.cs.bham.ac.uk/~xin/" target="_blank" rel="noopener noreferrer">Professor Xin Yao</a>.</p>
+          </div>
+          <img src="images/sustech.jpg" alt="SUSTech logo">
+        </div>
+        <div class="exp-card">
+          <div>
+            <h3>University of Surrey</h3>
+            <p class="exp-meta"><strong>Visiting PhD Student</strong> &mdash; 2016 &ndash; 2017</p>
+            <p class="exp-desc">Visiting student engaged in surrogate-assisted many-objective optimization supervised by <a href="https://www.surrey.ac.uk/people/yaochu-jin" target="_blank" rel="noopener noreferrer">Professor Yaochu Jin</a>.</p>
+          </div>
+          <img src="images/surrey.jpg" alt="University of Surrey logo">
+        </div>
+      </div>
 
-    <script src="index.js"></script>
+      <!-- Education -->
+      <div class="vitae-section">
+        <h2>Education</h2>
+        <div class="exp-card">
+          <div>
+            <h3>Doctor of Philosophy</h3>
+            <p class="exp-meta"><em>Huazhong University of Science and Technology</em> &mdash; 09/2012 &ndash; 03/2018</p>
+            <p class="exp-desc">Control Science and Engineering. Focus on many-objective optimization and its applications supervised by <a href="http://aia.hust.edu.cn/info/1126/5958.htm" target="_blank" rel="noopener noreferrer">Professor Linqiang Pan</a>.</p>
+          </div>
+          <img src="images/hust.png" alt="HUST logo">
+        </div>
+        <div class="exp-card">
+          <div>
+            <h3>Bachelor of Science</h3>
+            <p class="exp-meta"><em>Wuhan University of Science and Technology</em> &mdash; 09/2008 &ndash; 06/2012</p>
+            <p class="exp-desc">Automation.</p>
+          </div>
+          <img src="images/wust.png" alt="WUST logo">
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <p>&copy; 2026 Cheng He, Huazhong University of Science and Technology.</p>
+  </footer>
 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
