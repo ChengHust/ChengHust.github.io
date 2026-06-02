@@ -57,12 +57,22 @@
   </script>
 
   <style>
-    .pub-list { margin: 0; padding: 0; list-style: none; }
+    .pub-list {
+      margin: 0;
+      padding-left: 2.35rem;
+      list-style: decimal;
+      font-variant-numeric: tabular-nums;
+    }
     .pub-list li {
-      padding: 18px 0;
+      padding: 18px 0 18px 6px;
       border-top: 1px solid var(--line);
       font-size: 1rem;
       line-height: 1.6;
+    }
+    .pub-list li::marker {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 0.98rem;
     }
     .pub-list li:first-child { border-top: 0; }
     .pub-list .pub-title { font-weight: 800; color: var(--navy); }
@@ -89,6 +99,7 @@
     .pub-highlight { color: #c0392b; font-weight: 700; font-size: 0.85rem; }
     .pub-section { margin-top: 40px; }
     .pub-section h2 { margin: 0 0 4px; color: var(--navy); font-weight: 900; font-size: 1.6rem; }
+    .pub-count { color: var(--muted); font-size: 1rem; font-weight: 800; margin-left: 6px; }
     .pub-section > p { color: var(--muted); margin-bottom: 20px; }
     .bib-link { margin-top: 30px; padding: 20px 0; border-top: 1px solid var(--line); }
     .bib-link a { font-weight: 800; }
@@ -122,7 +133,7 @@
       <p style="color:var(--muted); margin-bottom: 28px;">Journal articles, conference proceedings, and preprints in computational intelligence, evolutionary optimization, and smart grid engineering. See also <a href="https://scholar.google.com/citations?user=I28xMFQAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
 
       <div class="pub-section">
-        <h2>Journals</h2>
+        <h2>Journals <span class="pub-count">(57)</span></h2>
         <ol class="pub-list">
           <li>
             <span class="pub-title">A Universal Framework for Automatically Generating Single- and Multi-Objective Evolutionary Algorithms</span><br>
@@ -424,7 +435,7 @@
       </div>
 
       <div class="pub-section">
-        <h2>Conferences</h2>
+        <h2>Conferences <span class="pub-count">(32)</span></h2>
         <ol class="pub-list">
           <li>
             <span class="pub-title">A Lightweight Prediction Method for Biases in Capacitor Voltage Transformers Calibration</span><br>
