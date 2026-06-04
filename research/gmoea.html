@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title>GMOEA — GAN-driven Evolutionary Multiobjective Optimization — Cheng He</title>
+  <meta name="author" content="Cheng He">
+  <meta name="description" content="Poster overview of GMOEA: Evolutionary Multiobjective Optimization Driven by Generative Adversarial Networks — IEEE TCYB 2021.">
+  <meta property="og:title" content="GMOEA: GAN-driven Evolutionary Multiobjective Optimization">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.chenghehust.com/research/gmoea.html">
+  <meta property="og:image" content="https://www.chenghehust.com/images/GMOEA.png">
+  <meta property="og:description" content="Using GANs for distribution-learning offspring generation in evolutionary multiobjective optimization.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GMOEA: GAN-driven Evolutionary Multiobjective Optimization">
+  <meta name="twitter:image" content="https://www.chenghehust.com/images/GMOEA.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/id_clipart.png">
+  <link rel="manifest" href="../icons/site.webmanifest">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../index.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-160123878-1');
+  </script>
+
+  <style>
+    .poster-hero { padding: 40px 0 32px; text-align: center; }
+    .poster-hero h1 { font-size: 2rem; font-weight: 900; color: var(--ink); max-width: 780px; margin: 0 auto 12px; line-height: 1.25; }
+    .poster-hero .venue-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; background: var(--surface-soft); color: var(--teal); font-weight: 800; font-size: 0.88rem; }
+    .poster-hero .authors { margin-top: 12px; color: var(--muted); font-size: 1rem; }
+    .poster-hero .authors strong { color: var(--ink); }
+    .poster-section { padding: 32px 0; border-top: 1px solid var(--line); }
+    .poster-section h2 { margin: 0 0 14px; color: var(--navy); font-weight: 900; font-size: 1.35rem; }
+    .poster-section .kicker { text-transform: uppercase; letter-spacing: .04em; font-size: .72rem; font-weight: 800; color: var(--gold); margin: 0 0 4px; }
+    .poster-section p, .poster-section li { color: var(--muted); line-height: 1.75; max-width: 720px; }
+    .contrib-list { list-style: none; padding: 0; }
+    .contrib-list li { padding: 10px 0 10px 28px; border-top: 1px solid var(--line); position: relative; }
+    .contrib-list li::before { content: "▸"; position: absolute; left: 0; top: 10px; color: var(--teal); font-weight: 800; }
+    .resource-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .resource-grid a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 6px; color: var(--navy); font-weight: 800; font-size: 0.9rem; }
+    .resource-grid a:hover { border-color: var(--teal); color: var(--teal); background: #fff; }
+    .figure-box { background: #f7f9fc; border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; margin: 12px 0 20px; overflow-x: auto; text-align: center; }
+    .figure-box img { max-width: 100%; height: auto; border-radius: 6px; }
+    .figure-box .cap { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 12px; text-align: left; }
+    .diagram-box { background: #f7f9fc; border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; margin: 12px 0 20px; overflow-x: auto; }
+    .diagram-box .cap { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 12px; }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-light site-nav">
+      <a href="../index.html" class="navbar-brand site-brand">Cheng He <span>何成</span></a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto">
+          <a href="../index.html" class="nav-item nav-link">Home</a>
+          <a href="../index_publication.html" class="nav-item nav-link">Publications</a>
+          <a href="../index_vitae.html" class="nav-item nav-link">Vitae</a>
+          <a href="../smartgrid.html" class="nav-item nav-link">Smart Grid TF</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content-section" style="border-top:0; padding-top:0;">
+      <div class="poster-hero">
+        <span class="venue-badge">IEEE Transactions on Cybernetics, 2021</span>
+        <h1>Evolutionary Multiobjective Optimization Driven by Generative Adversarial Networks</h1>
+        <p class="authors">
+          <strong>Cheng He</strong>, Shihua Huang, Ran Cheng*, Kay Chen Tan, Yaochu Jin
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Abstract</p>
+        <p>
+          Traditional evolutionary algorithms generate offspring through genetic operators such as crossover and mutation, which rely on local perturbations of existing solutions. This work presents <strong>GMOEA</strong>, a novel paradigm where <strong>Generative Adversarial Networks (GANs)</strong> are employed to learn the distribution of promising solutions and generate high-quality offspring. The GAN's generator learns to model the manifold of the Pareto-optimal set, enabling it to produce diverse, well-distributed candidate solutions in a single forward pass. A discriminator provides selection pressure by distinguishing between high- and low-quality solutions. This distribution-learning approach significantly improves search efficiency, particularly on problems with complex Pareto set geometries where traditional operators struggle. Experiments on benchmark suites and real-world problems demonstrate GMOEA's superior performance over state-of-the-art model-based and decomposition-based MOEAs.
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Conceptual overview</p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+            <defs>
+              <marker id="a2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#008c95"/></marker>
+              <linearGradient id="d1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102a43"/><stop offset="1" stop-color="#1a4368"/></linearGradient>
+              <linearGradient id="d2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#008c95"/><stop offset="1" stop-color="#00a6b0"/></linearGradient>
+            </defs>
+            <!-- Noise -->
+            <ellipse cx="85" cy="100" rx="55" ry="18" fill="url(#d1)"/><text x="85" y="96" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Latent Noise z</text><text x="85" y="110" text-anchor="middle" fill="#bbb" font-size="9">Random vector</text>
+            <line x1="140" y1="100" x2="180" y2="100" stroke="#008c95" stroke-width="2" marker-end="url(#a2)"/>
+            <!-- Generator -->
+            <rect x="182" y="70" width="120" height="60" rx="8" fill="url(#d2)"/><text x="242" y="96" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Generator G</text><text x="242" y="114" text-anchor="middle" fill="#ddd" font-size="10">Learns manifold</text>
+            <line x1="302" y1="100" x2="342" y2="100" stroke="#008c95" stroke-width="2" marker-end="url(#a2)"/>
+            <!-- Offspring -->
+            <rect x="344" y="70" width="110" height="60" rx="8" fill="#f0f4f8" stroke="#008c95" stroke-width="1.5"/><text x="399" y="94" text-anchor="middle" fill="#102a43" font-size="11" font-weight="700">Generated</text><text x="399" y="112" text-anchor="middle" fill="#102a43" font-size="11" font-weight="700">Offspring</text>
+            <!-- Branch to Discriminator -->
+            <line x1="399" y1="130" x2="399" y2="158" stroke="#b88700" stroke-width="1.5" marker-end="url(#a2)"/>
+            <rect x="314" y="160" width="170" height="50" rx="8" fill="#f0f4f8" stroke="#b88700" stroke-width="1.5"/><text x="399" y="182" text-anchor="middle" fill="#102a43" font-size="11" font-weight="700">Discriminator D</text><text x="399" y="198" text-anchor="middle" fill="#b88700" font-size="10">Quality feedback</text>
+            <!-- Feedback loop -->
+            <path d="M484,185 L540,185 L540,100 L302,100" fill="none" stroke="#b88700" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a2)"/>
+            <text x="560" y="130" fill="#b88700" font-size="10" font-weight="700">Training</text><text x="560" y="143" fill="#b88700" font-size="10" font-weight="700">signal</text>
+            <!-- Parent pop -->
+            <rect x="344" y="10" width="110" height="36" rx="6" fill="#e8f0fe" stroke="#102a43" stroke-width="1"/><text x="399" y="33" text-anchor="middle" fill="#102a43" font-size="10" font-weight="700">Parent Population</text>
+            <line x1="399" y1="46" x2="242" y2="70" stroke="#102a43" stroke-width="1" stroke-dasharray="4,2"/>
+            <line x1="399" y1="46" x2="399" y2="160" stroke="#102a43" stroke-width="1" stroke-dasharray="4,2"/>
+          </svg>
+          <p class="cap">Figure: GMOEA architecture — a GAN is trained on the current population, with the generator learning to model the Pareto set manifold and the discriminator providing selection pressure. Generated offspring are injected into the evolutionary loop.</p>
+        </div>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Key contributions</p>
+        <ul class="contrib-list">
+          <li><strong>First use of GANs for offspring generation</strong> in evolutionary multiobjective optimization — replacing traditional crossover/mutation with learned distribution sampling.</li>
+          <li>The generator learns the <strong>manifold of the Pareto-optimal set</strong>, producing diverse candidate solutions in a single forward pass.</li>
+          <li>A <strong>discriminator-guided selection</strong> mechanism distinguishes promising solutions, providing implicit fitness without expensive function evaluations.</li>
+        </ul>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Existing figures</p>
+        <div class="figure-box">
+          <img src="../images/GMOEA.png" alt="GMOEA optimization visualization">
+          <p class="cap">Pareto front approximation on multiobjective benchmark, illustrating GAN-generated offspring distribution.</p>
+        </div>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Resources</p>
+        <div class="resource-grid">
+          <a href="https://ieeexplore.ieee.org/abstract/document/9082904/" target="_blank" rel="noopener noreferrer">📄 IEEE Xplore</a>
+          <a href="../assets/code/GMOEA_py.zip" target="_blank" rel="noopener noreferrer">🐍 Python Code</a>
+          <a href="../assets/pdf/GMOEA_poster.pdf" target="_blank" rel="noopener noreferrer">📊 Poster</a>
+          <a href="../assets/pdf/GMOEA.pdf" target="_blank" rel="noopener noreferrer">📑 PPT Slides</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Cheng He, Huazhong University of Science and Technology.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

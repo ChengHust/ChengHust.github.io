@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title>LSMOF — Accelerating Large-scale Multiobjective Optimization — Cheng He</title>
+  <meta name="author" content="Cheng He">
+  <meta name="description" content="Poster overview of LSMOF: Accelerating Large-scale Multiobjective Optimization via Problem Reformulation — IEEE TEVC 2019, ESI Highly Cited.">
+  <meta property="og:title" content="LSMOF: Large-scale Multiobjective Optimization via Problem Reformulation">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.chenghehust.com/research/lsmof.html">
+  <meta property="og:image" content="https://www.chenghehust.com/images/LSMOF.png">
+  <meta property="og:description" content="A reformulation-based framework for large-scale multi-objective optimization, connecting decision-variable analysis with efficient evolutionary search.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LSMOF: Large-scale Multiobjective Optimization via Problem Reformulation">
+  <meta name="twitter:image" content="https://www.chenghehust.com/images/LSMOF.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/id_clipart.png">
+  <link rel="manifest" href="../icons/site.webmanifest">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../index.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-160123878-1');
+  </script>
+
+  <style>
+    .poster-hero { padding: 40px 0 32px; text-align: center; }
+    .poster-hero h1 { font-size: 2rem; font-weight: 900; color: var(--ink); max-width: 780px; margin: 0 auto 12px; line-height: 1.25; }
+    .poster-hero .venue-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; background: var(--surface-soft); color: var(--teal); font-weight: 800; font-size: 0.88rem; margin-right: 8px; }
+    .poster-hero .esi-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; background: #fff3e0; color: #c0392b; font-weight: 800; font-size: 0.88rem; }
+    .poster-hero .authors { margin-top: 12px; color: var(--muted); font-size: 1rem; }
+    .poster-hero .authors strong { color: var(--ink); }
+    .poster-section { padding: 32px 0; border-top: 1px solid var(--line); }
+    .poster-section h2 { margin: 0 0 14px; color: var(--navy); font-weight: 900; font-size: 1.35rem; }
+    .poster-section .kicker { text-transform: uppercase; letter-spacing: .04em; font-size: .72rem; font-weight: 800; color: var(--gold); margin: 0 0 4px; }
+    .poster-section p, .poster-section li { color: var(--muted); line-height: 1.75; max-width: 720px; }
+    .contrib-list { list-style: none; padding: 0; }
+    .contrib-list li { padding: 10px 0 10px 28px; border-top: 1px solid var(--line); position: relative; }
+    .contrib-list li::before { content: "▸"; position: absolute; left: 0; top: 10px; color: var(--teal); font-weight: 800; }
+    .resource-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .resource-grid a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 6px; color: var(--navy); font-weight: 800; font-size: 0.9rem; }
+    .resource-grid a:hover { border-color: var(--teal); color: var(--teal); background: #fff; }
+    .figure-box { background: #f7f9fc; border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; margin: 12px 0 20px; overflow-x: auto; text-align: center; }
+    .figure-box img { max-width: 100%; height: auto; border-radius: 6px; }
+    .figure-box .cap { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 12px; text-align: left; }
+    .diagram-box { background: #f7f9fc; border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; margin: 12px 0 20px; overflow-x: auto; }
+    .diagram-box .cap { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 12px; }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-light site-nav">
+      <a href="../index.html" class="navbar-brand site-brand">Cheng He <span>何成</span></a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto">
+          <a href="../index.html" class="nav-item nav-link">Home</a>
+          <a href="../index_publication.html" class="nav-item nav-link">Publications</a>
+          <a href="../index_vitae.html" class="nav-item nav-link">Vitae</a>
+          <a href="../smartgrid.html" class="nav-item nav-link">Smart Grid TF</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content-section" style="border-top:0; padding-top:0;">
+      <div class="poster-hero">
+        <span class="venue-badge">IEEE Transactions on Evolutionary Computation, 2019</span>
+        <span class="esi-badge">ESI Highly Cited Paper</span>
+        <h1>Accelerating Large-scale Multiobjective Optimization via Problem Reformulation</h1>
+        <p class="authors">
+          <strong>Cheng He</strong>, Lianghao Li, Ye Tian, Xingyi Zhang, Ran Cheng, Yaochu Jin, Xin Yao
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Abstract</p>
+        <p>
+          Large-scale multiobjective optimization problems with hundreds of decision variables pose significant challenges to existing evolutionary algorithms due to the curse of dimensionality. This work presents <strong>LSMOF</strong>, a reformulation-based framework that accelerates large-scale multiobjective optimization. The key insight is <strong>decision variable analysis</strong>: variables are categorized based on their convergence and diversity contributions, then the original high-dimensional problem is reformulated into a low-dimensional weight-vector optimization task. This reformulation dramatically reduces the search space while preserving the problem structure, enabling efficient evolutionary search. Extensive experiments on benchmark problems with up to <strong>1,000 decision variables</strong> demonstrate the superiority of LSMOF over state-of-the-art large-scale MOEAs.
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Conceptual overview</p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+            <defs>
+              <marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#008c95"/></marker>
+              <linearGradient id="b1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102a43"/><stop offset="1" stop-color="#1a4368"/></linearGradient>
+              <linearGradient id="b2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#008c95"/><stop offset="1" stop-color="#00a6b0"/></linearGradient>
+            </defs>
+            <!-- Problem -->
+            <rect x="10" y="20" width="130" height="50" rx="8" fill="url(#b1)"/><text x="75" y="42" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Original Problem</text><text x="75" y="58" text-anchor="middle" fill="#bbb" font-size="10">D-dim variables</text>
+            <line x1="140" y1="45" x2="178" y2="45" stroke="#008c95" stroke-width="2" marker-end="url(#a1)"/>
+            <!-- DVA -->
+            <rect x="180" y="20" width="140" height="50" rx="8" fill="url(#b2)"/><text x="250" y="38" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Decision Variable</text><text x="250" y="54" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Analysis</text>
+            <line x1="320" y1="45" x2="358" y2="45" stroke="#008c95" stroke-width="2" marker-end="url(#a1)"/>
+            <!-- Categories -->
+            <rect x="360" y="10" width="110" height="34" rx="6" fill="#f0f4f8" stroke="#008c95" stroke-width="1"/><text x="415" y="32" text-anchor="middle" fill="#102a43" font-size="10" font-weight="700">Convergence vars</text>
+            <rect x="360" y="48" width="110" height="34" rx="6" fill="#f0f4f8" stroke="#b88700" stroke-width="1"/><text x="415" y="70" text-anchor="middle" fill="#102a43" font-size="10" font-weight="700">Diversity vars</text>
+            <line x1="470" y1="27" x2="508" y2="27" stroke="#008c95" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="470" y1="65" x2="508" y2="65" stroke="#b88700" stroke-width="1.5" marker-end="url(#a1)"/>
+            <!-- Reformulation -->
+            <rect x="510" y="20" width="120" height="50" rx="8" fill="url(#b2)"/><text x="570" y="38" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Problem</text><text x="570" y="54" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Reformulation</text>
+            <line x1="630" y1="45" x2="668" y2="45" stroke="#008c95" stroke-width="2" marker-end="url(#a1)"/>
+            <!-- Optimized -->
+            <rect x="670" y="20" width="40" height="50" rx="8" fill="url(#b1)"/><text x="690" y="42" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">PF</text><text x="690" y="56" text-anchor="middle" fill="#bbb" font-size="9">opt.</text>
+            <!-- Bottom label -->
+            <text x="360" y="150" text-anchor="middle" fill="#b88700" font-size="12" font-weight="700">Convergence-guided → Diversity-guided → Alternating optimization</text>
+            <rect x="110" y="168" width="500" height="34" rx="6" fill="#fff3e0" stroke="#b88700" stroke-width="1" stroke-dasharray="4,3"/><text x="360" y="190" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="700">Key insight: Fewer weight vectors needed in reformulated low-dimensional space</text>
+          </svg>
+          <p class="cap">Figure: LSMOF framework — variables are analyzed into convergence-related and diversity-related groups, then the problem is reformulated into a low-dimensional weight-vector optimization that dramatically accelerates convergence.</p>
+        </div>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Key contributions</p>
+        <ul class="contrib-list">
+          <li><strong>Decision variable analysis</strong> categorizes variables by their contribution to convergence versus diversity, enabling targeted treatment of each group.</li>
+          <li>A <strong>problem reformulation</strong> strategy transforms the original high-dimensional search into low-dimensional weight-vector optimization, reducing the search space while preserving Pareto-front structure.</li>
+          <li>Demonstrated on benchmarks with up to <strong>1,000 dimensions</strong>, LSMOF significantly outperforms state-of-the-art large-scale MOEAs in both convergence speed and solution quality.</li>
+        </ul>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Existing figures</p>
+        <div class="figure-box">
+          <img src="../images/LSMOF.png" alt="LSMOF visualization">
+          <p class="cap">Optimization result on large-scale multiobjective benchmark, showing Pareto front approximation.</p>
+        </div>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Resources</p>
+        <div class="resource-grid">
+          <a href="https://ieeexplore.ieee.org/abstract/document/8628263" target="_blank" rel="noopener noreferrer">📄 IEEE Xplore</a>
+          <a href="../assets/code/LSMOF_m.zip" target="_blank" rel="noopener noreferrer">💻 MATLAB Code</a>
+          <a href="../assets/code/LSMOF_py.zip" target="_blank" rel="noopener noreferrer">🐍 Python Code</a>
+          <a href="../assets/pdf/LSMOF_poster.pdf" target="_blank" rel="noopener noreferrer">📊 Poster</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Cheng He, Huazhong University of Science and Technology.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

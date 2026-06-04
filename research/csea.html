@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title>CSEA — Classification-Based Surrogate-Assisted Evolutionary Algorithm — Cheng He</title>
+  <meta name="author" content="Cheng He">
+  <meta name="description" content="Poster overview of CSEA: A Classification-Based Surrogate-Assisted Evolutionary Algorithm for Expensive Many-Objective Optimization — IEEE TEVC 2018, ESI Highly Cited.">
+  <meta property="og:title" content="CSEA: Classification-Based Surrogate-Assisted EMO">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.chenghehust.com/research/csea.html">
+  <meta property="og:image" content="https://www.chenghehust.com/images/CSEA_Diagram.jpg">
+  <meta property="og:description" content="A classification-based surrogate model for expensive many-objective optimization — ESI Highly Cited Paper, IEEE TEVC 2018.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSEA: Classification-Based Surrogate-Assisted EMO">
+  <meta name="twitter:image" content="https://www.chenghehust.com/images/CSEA_Diagram.jpg">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/id_clipart.png">
+  <link rel="manifest" href="../icons/site.webmanifest">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../index.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-160123878-1');
+  </script>
+
+  <style>
+    .poster-hero { padding: 40px 0 32px; text-align: center; }
+    .poster-hero h1 { font-size: 2rem; font-weight: 900; color: var(--ink); max-width: 780px; margin: 0 auto 12px; line-height: 1.25; }
+    .poster-hero .venue-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; background: var(--surface-soft); color: var(--teal); font-weight: 800; font-size: 0.88rem; margin-right: 8px; }
+    .poster-hero .esi-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; background: #fff3e0; color: #c0392b; font-weight: 800; font-size: 0.88rem; }
+    .poster-hero .authors { margin-top: 12px; color: var(--muted); font-size: 1rem; }
+    .poster-hero .authors strong { color: var(--ink); }
+    .poster-section { padding: 32px 0; border-top: 1px solid var(--line); }
+    .poster-section h2 { margin: 0 0 14px; color: var(--navy); font-weight: 900; font-size: 1.35rem; }
+    .poster-section .kicker { text-transform: uppercase; letter-spacing: .04em; font-size: .72rem; font-weight: 800; color: var(--gold); margin: 0 0 4px; }
+    .poster-section p, .poster-section li { color: var(--muted); line-height: 1.75; max-width: 720px; }
+    .contrib-list { list-style: none; padding: 0; }
+    .contrib-list li { padding: 10px 0 10px 28px; border-top: 1px solid var(--line); position: relative; }
+    .contrib-list li::before { content: "▸"; position: absolute; left: 0; top: 10px; color: var(--teal); font-weight: 800; }
+    .resource-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .resource-grid a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 6px; color: var(--navy); font-weight: 800; font-size: 0.9rem; }
+    .resource-grid a:hover { border-color: var(--teal); color: var(--teal); background: #fff; }
+    .figure-box { background: #f7f9fc; border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; margin: 12px 0 20px; overflow-x: auto; text-align: center; }
+    .figure-box img { max-width: 100%; height: auto; border-radius: 6px; }
+    .figure-box .cap { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 12px; text-align: left; }
+    .diagram-box { background: #f7f9fc; border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; margin: 12px 0 20px; overflow-x: auto; }
+    .diagram-box .cap { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 12px; }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-light site-nav">
+      <a href="../index.html" class="navbar-brand site-brand">Cheng He <span>何成</span></a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto">
+          <a href="../index.html" class="nav-item nav-link">Home</a>
+          <a href="../index_publication.html" class="nav-item nav-link">Publications</a>
+          <a href="../index_vitae.html" class="nav-item nav-link">Vitae</a>
+          <a href="../smartgrid.html" class="nav-item nav-link">Smart Grid TF</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content-section" style="border-top:0; padding-top:0;">
+      <div class="poster-hero">
+        <span class="venue-badge">IEEE Transactions on Evolutionary Computation, 2018</span>
+        <span class="esi-badge">ESI Highly Cited Paper</span>
+        <h1>A Classification-Based Surrogate-Assisted Evolutionary Algorithm for Expensive Many-Objective Optimization</h1>
+        <p class="authors">
+          Linqiang Pan, <strong>Cheng He</strong>, Ye Tian, Handing Wang, Xingyi Zhang, Yaochu Jin*
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Abstract</p>
+        <p>
+          Surrogate-assisted evolutionary algorithms have been widely developed for expensive optimization problems where each function evaluation incurs substantial computational cost. However, extending surrogates to <strong>many-objective optimization</strong> (4+ objectives) presents unique challenges: the surrogate must accurately predict not only objective values but also dominance relationships in high-dimensional objective space. This work introduces <strong>CSEA</strong>, which reframes surrogate modeling as a <strong>classification problem</strong>. Rather than regressing individual objective values, a classifier is trained to predict whether a candidate solution dominates a reference set of solutions — a binary decision that is substantially easier to learn and more robust. A feedforward neural network serves as the classifier, with training data generated from archived non-dominated solutions. CSEA demonstrated state-of-the-art performance on expensive many-objective benchmarks (up to 10 objectives), establishing classification-based surrogates as an effective paradigm for expensive evolutionary optimization.
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Conceptual overview</p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+            <defs>
+              <marker id="a4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#008c95"/></marker>
+              <linearGradient id="f1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102a43"/><stop offset="1" stop-color="#1a4368"/></linearGradient>
+              <linearGradient id="f2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#008c95"/><stop offset="1" stop-color="#00a6b0"/></linearGradient>
+            </defs>
+            <!-- Real eval -->
+            <rect x="20" y="60" width="120" height="44" rx="8" fill="url(#f1)"/><text x="80" y="88" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Real Evaluation</text>
+            <line x1="140" y1="82" x2="175" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
+            <!-- Archive -->
+            <rect x="177" y="60" width="100" height="44" rx="8" fill="#e8f0fe" stroke="#102a43" stroke-width="1.5"/><text x="227" y="88" text-anchor="middle" fill="#102a43" font-size="11" font-weight="700">Archive</text>
+            <line x1="277" y1="82" x2="312" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
+            <!-- Classifier training -->
+            <rect x="314" y="55" width="130" height="54" rx="8" fill="url(#f2)"/><text x="379" y="78" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">NN Classifier</text><text x="379" y="96" text-anchor="middle" fill="#ddd" font-size="10">Training</text>
+            <line x1="444" y1="82" x2="479" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
+            <!-- Prediction -->
+            <rect x="481" y="55" width="130" height="54" rx="8" fill="url(#f2)"/><text x="546" y="78" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Dominance</text><text x="546" y="96" text-anchor="middle" fill="#ddd" font-size="10">Prediction</text>
+            <line x1="611" y1="82" x2="646" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
+            <!-- Selection -->
+            <rect x="648" y="60" width="60" height="44" rx="8" fill="url(#f1)"/><text x="678" y="88" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Select</text>
+            <!-- Bottom labels -->
+            <text x="80" y="135" text-anchor="middle" fill="#b88700" font-size="10">Expensive</text>
+            <text x="546" y="135" text-anchor="middle" fill="#b88700" font-size="10">Cheap</text>
+            <!-- Key insight box -->
+            <rect x="120" y="160" width="480" height="50" rx="8" fill="#fff3e0" stroke="#b88700" stroke-width="1.5"/><text x="360" y="182" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="700">Classification is easier than regression: predict "better/worse" instead of exact objective values</text><text x="360" y="200" text-anchor="middle" fill="#b88700" font-size="10">The classifier learns dominance relationships from archived solutions, making predictions robust in high-dimensional objective space</text>
+          </svg>
+          <p class="cap">Figure: CSEA framework — a feedforward neural network classifier is trained on archived solutions to predict dominance relationships, replacing expensive regression-based surrogates with a simpler and more robust classification task.</p>
+        </div>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Key contributions</p>
+        <ul class="contrib-list">
+          <li><strong>Classification-based surrogate modeling</strong> reframes the surrogate task from regression (predicting objective values) to classification (predicting dominance), which is more robust in high-dimensional objective space.</li>
+          <li>A <strong>neural network classifier</strong> trained on archived non-dominated solutions predicts whether candidate solutions are promising, dramatically reducing expensive function evaluations.</li>
+          <li>Validated on benchmarks with up to <strong>10 objectives</strong> and real-world engineering problems, establishing CSEA as one of the most-cited surrogate-assisted many-objective EAs.</li>
+        </ul>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Existing figures</p>
+        <div class="figure-box">
+          <img src="../images/CSEA_Diagram.jpg" alt="CSEA algorithm diagram">
+          <p class="cap">Algorithm framework diagram showing the classification-based surrogate training and offspring selection process.</p>
+        </div>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Resources</p>
+        <div class="resource-grid">
+          <a href="https://ieeexplore.ieee.org/abstract/document/8281523" target="_blank" rel="noopener noreferrer">📄 IEEE Xplore</a>
+          <a href="../assets/code/CSEA_m.zip" target="_blank" rel="noopener noreferrer">💻 MATLAB Code</a>
+          <a href="../assets/code/CSEA_py.zip" target="_blank" rel="noopener noreferrer">🐍 Python Code</a>
+          <a href="../assets/pdf/CSEA.pdf" target="_blank" rel="noopener noreferrer">📑 PPT Slides</a>
+          <a href="https://github.com/BIMK/PlatEMO/tree/master/PlatEMO/Algorithms/Multi-objective%20optimization/CSEA" target="_blank" rel="noopener noreferrer">📦 PlatEMO</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Cheng He, Huazhong University of Science and Technology.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
