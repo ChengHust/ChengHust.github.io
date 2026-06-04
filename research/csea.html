@@ -96,10 +96,10 @@
       </div>
 
       <div class="poster-section">
-        <p class="kicker">Conceptual overview</p>
-        <div class="diagram-box" style="text-align:center;">
-          <img src="fig_csea.png" alt="CSEA: Classification-based surrogate-assisted evolutionary algorithm" style="max-width:100%; height:auto; border-radius:6px;">
-          <p class="cap">Figure: Multi-panel overview. (a) Classification vs regression surrogate concept: predicting dominance (binary) is easier than predicting exact objective values (regression) in high-dimensional objective space. (b) CSEA algorithm workflow: parent selection → NN classifier training on archived solutions → dominance prediction → real evaluation and archive update → iterate. (c) IGD performance comparison across 3-10 objectives, showing CSEA significantly outperforming K-RVEA, ParEGO, and NSGA-III.</p>
+        <p class="kicker">Paper figures</p>
+        <div class="figure-box">
+          <img src="../images/CSEA_Diagram.jpg" alt="CSEA: Classification-based surrogate-assisted evolutionary algorithm framework" style="max-width:100%; height:auto; border-radius:6px;">
+          <p class="cap">Paper figure: Algorithm framework diagram of CSEA. The figure illustrates how the neural network classifier is trained on archived non-dominated solutions to predict dominance relationships, replacing expensive regression-based surrogates with a more robust classification task. This design enables efficient many-objective optimization with limited function evaluations.</p>
         </div>
       </div>
 
@@ -110,14 +110,6 @@
           <li>A <strong>neural network classifier</strong> trained on archived non-dominated solutions predicts whether candidate solutions are promising, dramatically reducing expensive function evaluations.</li>
           <li>Validated on benchmarks with up to <strong>10 objectives</strong> and real-world engineering problems, establishing CSEA as one of the most-cited surrogate-assisted many-objective EAs.</li>
         </ul>
-      </div>
-
-      <div class="poster-section">
-        <p class="kicker">Existing figures</p>
-        <div class="figure-box">
-          <img src="../images/CSEA_Diagram.jpg" alt="CSEA algorithm diagram">
-          <p class="cap">Algorithm framework diagram showing the classification-based surrogate training and offspring selection process.</p>
-        </div>
       </div>
 
       <div class="poster-section">

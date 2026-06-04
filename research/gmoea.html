@@ -94,10 +94,10 @@
       </div>
 
       <div class="poster-section">
-        <p class="kicker">Conceptual overview</p>
-        <div class="diagram-box" style="text-align:center;">
-          <img src="fig_gmoea.png" alt="GMOEA: GAN-driven evolutionary multiobjective optimization" style="max-width:100%; height:auto; border-radius:6px;">
-          <p class="cap">Figure: Multi-panel overview. (a) GAN-based offspring generation architecture: latent noise → generator G → offspring, with discriminator D providing quality feedback and training signal. (b) Distribution learning process over iterations, from random initialization to converged Pareto set manifold. (c) IGD convergence comparison showing GMOEA significantly outperforming NSGA-II, MOEA/D-DE, and RM-MEDA.</p>
+        <p class="kicker">Paper figures</p>
+        <div class="figure-box">
+          <img src="../images/GMOEA.png" alt="GMOEA: GAN-generated offspring distribution on multiobjective benchmark" style="max-width:100%; height:auto; border-radius:6px;">
+          <p class="cap">Paper figure: Pareto front approximation on multiobjective benchmark, illustrating the distribution of GAN-generated offspring. The GAN learns the underlying manifold of the Pareto set, enabling efficient sampling of diverse, high-quality candidate solutions.</p>
         </div>
       </div>
 
@@ -108,14 +108,6 @@
           <li>The generator learns the <strong>manifold of the Pareto-optimal set</strong>, producing diverse candidate solutions in a single forward pass.</li>
           <li>A <strong>discriminator-guided selection</strong> mechanism distinguishes promising solutions, providing implicit fitness without expensive function evaluations.</li>
         </ul>
-      </div>
-
-      <div class="poster-section">
-        <p class="kicker">Existing figures</p>
-        <div class="figure-box">
-          <img src="../images/GMOEA.png" alt="GMOEA optimization visualization">
-          <p class="cap">Pareto front approximation on multiobjective benchmark, illustrating GAN-generated offspring distribution.</p>
-        </div>
       </div>
 
       <div class="poster-section">
