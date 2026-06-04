@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title>Online Evaluation of Measurement Uncertainty in Sensor Networks — Cheng He</title>
+  <meta name="author" content="Cheng He">
+  <meta name="description" content="Poster overview of 'Online Evaluation of Measurement Uncertainty in Sensor Networks: A Case Study on Voltage Transformers' — IEEE TII 2026.">
+  <meta property="og:title" content="Online Evaluation of Measurement Uncertainty in Sensor Networks">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.chenghehust.com/research/tii2026.html">
+  <meta property="og:image" content="https://www.chenghehust.com/images/Cheng_He_Origin.jpg">
+  <meta property="og:description" content="A recursive framework for online evaluation of measurement uncertainties in sensor networks, demonstrated on voltage transformers in the smart grid.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Online Evaluation of Measurement Uncertainty in Sensor Networks">
+  <meta name="twitter:description" content="A recursive framework for online evaluation of measurement uncertainties in sensor networks.">
+  <meta name="twitter:image" content="https://www.chenghehust.com/images/Cheng_He_Origin.jpg">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/id_clipart.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/id_clipart.png">
+  <link rel="manifest" href="../icons/site.webmanifest">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../index.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160123878-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-160123878-1');
+  </script>
+
+  <style>
+    .poster-hero {
+      padding: 40px 0 32px;
+      text-align: center;
+    }
+    .poster-hero h1 {
+      font-size: 2rem; font-weight: 900; color: var(--ink);
+      max-width: 780px; margin: 0 auto 12px; line-height: 1.25;
+    }
+    .poster-hero .venue-badge {
+      display: inline-block; padding: 4px 14px;
+      border-radius: 6px; background: var(--surface-soft);
+      color: var(--teal); font-weight: 800; font-size: 0.88rem;
+    }
+    .poster-hero .authors {
+      margin-top: 12px; color: var(--muted); font-size: 1rem;
+    }
+    .poster-hero .authors strong { color: var(--ink); }
+    .poster-section { padding: 32px 0; border-top: 1px solid var(--line); }
+    .poster-section h2 {
+      margin: 0 0 14px; color: var(--navy); font-weight: 900; font-size: 1.35rem;
+    }
+    .poster-section .kicker {
+      text-transform: uppercase; letter-spacing: 0.04em;
+      font-size: 0.72rem; font-weight: 800; color: var(--gold); margin: 0 0 4px;
+    }
+    .poster-section p, .poster-section li {
+      color: var(--muted); line-height: 1.75; max-width: 720px;
+    }
+    .contrib-list { list-style: none; padding: 0; }
+    .contrib-list li {
+      padding: 10px 0 10px 28px; border-top: 1px solid var(--line);
+      position: relative;
+    }
+    .contrib-list li::before {
+      content: "▸"; position: absolute; left: 0; top: 10px;
+      color: var(--teal); font-weight: 800;
+    }
+    .resource-grid {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;
+    }
+    .resource-grid a {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border: 1px solid var(--line); border-radius: 6px;
+      color: var(--navy); font-weight: 800; font-size: 0.9rem;
+    }
+    .resource-grid a:hover { border-color: var(--teal); color: var(--teal); background: #fff; }
+    .diagram-box {
+      background: #f7f9fc; border: 1px solid var(--line); border-radius: 12px;
+      padding: 28px 24px; margin: 12px 0 20px; overflow-x: auto;
+    }
+    .diagram-box .cap {
+      font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-light site-nav">
+      <a href="../index.html" class="navbar-brand site-brand">Cheng He <span>何成</span></a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto">
+          <a href="../index.html" class="nav-item nav-link">Home</a>
+          <a href="../index_publication.html" class="nav-item nav-link">Publications</a>
+          <a href="../index_vitae.html" class="nav-item nav-link">Vitae</a>
+          <a href="../smartgrid.html" class="nav-item nav-link">Smart Grid TF</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content-section" style="border-top:0; padding-top:0;">
+      <div class="poster-hero">
+        <span class="venue-badge">IEEE Transactions on Industrial Informatics, 2026</span>
+        <h1>Online Evaluation of Measurement Uncertainty in Sensor Networks: A Case Study on Voltage Transformers</h1>
+        <p class="authors">
+          Zihan Gao, <strong>Cheng He*</strong>, Chuanji Zhang, Cheng Cheng, Yuxuan Zhang, Hongbin Li
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Abstract</p>
+        <p>
+          Sensor networks serve as the perceptual core of industrial systems such as the Internet of Things and smart grid, where individual measurement accuracy is pivotal to reliable state estimation. However, environmental interference and device aging introduce measurement uncertainties that propagate and accumulate across the network. This work proposes a <strong>recursive framework for online evaluation of measurement uncertainties</strong> within sensor networks, demonstrated through voltage transformers in the smart grid. The method incorporates a measurement model to capture interdevice dependencies and utilizes the Monte Carlo method to propagate parameter distributions. Calibrated nodes are selected based on uncertainty propagation theory, and Bayesian fusion estimates the parameter distributions of extended nodes. Validation on the IEEE 30-node system and real-world power grid data confirms high evaluation accuracy and stable uncertainty propagation.
+        </p>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Conceptual overview</p>
+        <div class="diagram-box">
+          <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#008c95"/></marker>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102a43"/><stop offset="1" stop-color="#1a4368"/></linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#008c95"/><stop offset="1" stop-color="#00a6b0"/></linearGradient>
+            </defs>
+            <!-- Sensor network nodes -->
+            <rect x="10" y="30" width="100" height="44" rx="8" fill="url(#g1)"/><text x="60" y="57" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Sensor Nodes</text>
+            <line x1="110" y1="52" x2="148" y2="52" stroke="#008c95" stroke-width="2" marker-end="url(#arr)"/>
+            <!-- Measurement Model -->
+            <rect x="150" y="30" width="110" height="44" rx="8" fill="url(#g2)"/><text x="205" y="57" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Measurement Model</text>
+            <line x1="260" y1="52" x2="298" y2="52" stroke="#008c95" stroke-width="2" marker-end="url(#arr)"/>
+            <!-- Monte Carlo -->
+            <rect x="300" y="92" width="120" height="44" rx="8" fill="#f0f4f8" stroke="#008c95" stroke-width="1.5"/><text x="360" y="119" text-anchor="middle" fill="#102a43" font-size="11" font-weight="700">Monte Carlo Propagation</text>
+            <line x1="205" y1="74" x2="300" y2="108" stroke="#b88700" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+            <!-- Bayesian Fusion -->
+            <rect x="480" y="92" width="110" height="44" rx="8" fill="#f0f4f8" stroke="#008c95" stroke-width="1.5"/><text x="535" y="119" text-anchor="middle" fill="#102a43" font-size="11" font-weight="700">Bayesian Fusion</text>
+            <line x1="420" y1="114" x2="478" y2="114" stroke="#008c95" stroke-width="2" marker-end="url(#arr)"/>
+            <!-- Recursive loop -->
+            <path d="M535,136 L535,210 L60,210 L60,78" fill="none" stroke="#b88700" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arr)"/>
+            <text x="280" y="230" text-anchor="middle" fill="#b88700" font-size="11" font-weight="700">Recursive Workflow (iterate until convergence)</text>
+            <!-- Extended nodes -->
+            <rect x="630" y="30" width="80" height="44" rx="8" fill="url(#g1)"/><text x="670" y="57" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Extended Nodes</text>
+            <line x1="590" y1="114" x2="630" y2="52" stroke="#008c95" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+          </svg>
+          <p class="cap">Figure: Recursive framework for network-level evaluation — calibrated nodes propagate uncertainty through the measurement model and Monte Carlo method, with Bayesian fusion extending evaluation to uncalibrated nodes.</p>
+        </div>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Key contributions</p>
+        <ul class="contrib-list">
+          <li>A <strong>measurement model</strong> (MM) characterizes interdevice dependencies between adjacent sensors by linking transduction model parameters, enabling parameter distribution propagation across the network.</li>
+          <li>A <strong>recursive evaluation workflow</strong> selects calibrated nodes with minimum uncertainty increment via uncertainty propagation theory, then applies Bayesian fusion to estimate parameter distributions of extended nodes.</li>
+          <li>Validated on the <strong>IEEE 30-node system</strong> and <strong>real-world power system data</strong>, demonstrating high evaluation accuracy with stable uncertainty propagation over extended distances.</li>
+        </ul>
+      </div>
+
+      <div class="poster-section">
+        <p class="kicker">Resources</p>
+        <div class="resource-grid">
+          <a href="https://ieeexplore.ieee.org/document/11436073" target="_blank" rel="noopener noreferrer">📄 IEEE Xplore</a>
+          <a href="https://doi.org/10.1109/TII.2026.3665190" target="_blank" rel="noopener noreferrer">🔗 DOI: 10.1109/TII.2026.3665190</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Cheng He, Huazhong University of Science and Technology.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
