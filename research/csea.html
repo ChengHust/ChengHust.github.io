@@ -97,34 +97,9 @@
 
       <div class="poster-section">
         <p class="kicker">Conceptual overview</p>
-        <div class="diagram-box">
-          <svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
-            <defs>
-              <marker id="a4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#008c95"/></marker>
-              <linearGradient id="f1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102a43"/><stop offset="1" stop-color="#1a4368"/></linearGradient>
-              <linearGradient id="f2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#008c95"/><stop offset="1" stop-color="#00a6b0"/></linearGradient>
-            </defs>
-            <!-- Real eval -->
-            <rect x="20" y="60" width="120" height="44" rx="8" fill="url(#f1)"/><text x="80" y="88" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Real Evaluation</text>
-            <line x1="140" y1="82" x2="175" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
-            <!-- Archive -->
-            <rect x="177" y="60" width="100" height="44" rx="8" fill="#e8f0fe" stroke="#102a43" stroke-width="1.5"/><text x="227" y="88" text-anchor="middle" fill="#102a43" font-size="11" font-weight="700">Archive</text>
-            <line x1="277" y1="82" x2="312" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
-            <!-- Classifier training -->
-            <rect x="314" y="55" width="130" height="54" rx="8" fill="url(#f2)"/><text x="379" y="78" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">NN Classifier</text><text x="379" y="96" text-anchor="middle" fill="#ddd" font-size="10">Training</text>
-            <line x1="444" y1="82" x2="479" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
-            <!-- Prediction -->
-            <rect x="481" y="55" width="130" height="54" rx="8" fill="url(#f2)"/><text x="546" y="78" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Dominance</text><text x="546" y="96" text-anchor="middle" fill="#ddd" font-size="10">Prediction</text>
-            <line x1="611" y1="82" x2="646" y2="82" stroke="#008c95" stroke-width="2" marker-end="url(#a4)"/>
-            <!-- Selection -->
-            <rect x="648" y="60" width="60" height="44" rx="8" fill="url(#f1)"/><text x="678" y="88" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">Select</text>
-            <!-- Bottom labels -->
-            <text x="80" y="135" text-anchor="middle" fill="#b88700" font-size="10">Expensive</text>
-            <text x="546" y="135" text-anchor="middle" fill="#b88700" font-size="10">Cheap</text>
-            <!-- Key insight box -->
-            <rect x="120" y="160" width="480" height="50" rx="8" fill="#fff3e0" stroke="#b88700" stroke-width="1.5"/><text x="360" y="182" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="700">Classification is easier than regression: predict "better/worse" instead of exact objective values</text><text x="360" y="200" text-anchor="middle" fill="#b88700" font-size="10">The classifier learns dominance relationships from archived solutions, making predictions robust in high-dimensional objective space</text>
-          </svg>
-          <p class="cap">Figure: CSEA framework — a feedforward neural network classifier is trained on archived solutions to predict dominance relationships, replacing expensive regression-based surrogates with a simpler and more robust classification task.</p>
+        <div class="diagram-box" style="text-align:center;">
+          <img src="fig_csea.png" alt="CSEA: Classification-based surrogate-assisted evolutionary algorithm" style="max-width:100%; height:auto; border-radius:6px;">
+          <p class="cap">Figure: Multi-panel overview. (a) Classification vs regression surrogate concept: predicting dominance (binary) is easier than predicting exact objective values (regression) in high-dimensional objective space. (b) CSEA algorithm workflow: parent selection → NN classifier training on archived solutions → dominance prediction → real evaluation and archive update → iterate. (c) IGD performance comparison across 3-10 objectives, showing CSEA significantly outperforming K-RVEA, ParEGO, and NSGA-III.</p>
         </div>
       </div>
 
