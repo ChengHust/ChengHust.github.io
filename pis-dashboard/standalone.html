@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power Intelligent Sensing (PIS) — CC-EoH-Agent 协同进化仪表盘</title>
+<style>
+:root { color-scheme: light; --ink: #17202a; --muted: #667085; --paper: #f5f6f2; --panel: #fff; --line: #d8ddd2; --teal: #0f766e; --amber: #b7791f; --red: #b42318; --green: #247a45; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI","Microsoft YaHei",sans-serif; background: var(--paper); color: var(--ink); }
+.shell { max-width: 1400px; margin: 0 auto; padding: 14px; }
+.bar { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.brand-line { display: flex; align-items: baseline; gap: 10px; }
+.brand-line h1 { margin: 0; font-size: 19px; color: var(--teal); letter-spacing: 1px; }
+.brand-line .sub { font-size: 13px; color: var(--muted); }
+.bar p { margin: 4px 0 0; color: var(--muted); font-size: 11px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(70px,auto)); gap: 6px; }
+.stats div { border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; background: #fafbf8; }
+.stats b { display: block; font-size: 14px; } .stats span { color: var(--muted); font-size: 9px; }
+.tabs { display: flex; gap: 5px; margin: 12px 0; }
+.tab { border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; cursor: pointer; font-weight: 600; font-size: 12px; background: var(--panel); color: var(--muted); }
+.tab.on { color: var(--ink); border-color: var(--teal); box-shadow: inset 0 -3px 0 var(--teal); }
+.tc { display: none; } .tc.on { display: block; }
+.g2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.cd { grid-column: span 1; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.w2 { grid-column: span 2; } .f1 { grid-column: 1/-1; }
+.cd h3 { margin: 0 0 8px; font-size: 12px; }
+.ms { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 10px; }
+.m { border: 1px solid var(--line); border-radius: 6px; padding: 8px; background: var(--panel); }
+.m .v { font-size: 18px; font-weight: 700; } .m .l { font-size: 9px; color: var(--muted); margin-top: 2px; }
+.m.g .v { color: var(--green); } .m.r .v { color: var(--red); }
+svg { width: 100%; height: 240px; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 11px; }
+.tbl th, .tbl td { border-bottom: 1px solid #edf0e8; padding: 5px 7px; text-align: left; }
+.tbl th { color: var(--muted); font-weight: 600; }
+.pipe { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.st { border: 1px solid var(--line); border-radius: 6px; padding: 7px; text-align: center; background: #fbfcf8; }
+.st b { display: block; font-size: 10px; } .st span { color: var(--muted); font-size: 9px; }
+.ft { text-align: center; padding: 12px; font-size: 9px; color: var(--muted); display: flex; justify-content: center; gap: 20px; }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="bar">
+  <div>
+    <div class="brand-line"><h1>Power Intelligent Sensing (PIS)</h1><span class="sub">华中科技大学</span></div>
+    <p>CC-EoH-Agent · 电力计量五任务 · Agent策略集合多目标协同进化</p>
+  </div>
+  <div class="stats">
+    <div><b id="phase">--</b><span>phase</span></div>
+    <div><b id="gen">0</b><span>generation</span></div>
+    <div><b id="evals">0</b><span>evaluations</span></div>
+    <div><b id="rtime">0s</b><span>runtime</span></div>
+  </div>
+</div>
+<nav class="tabs">
+  <button class="tab on" onclick="sw('evo')">进化总览</button>
+  <button class="tab" onclick="sw('deploy')">部署流水线</button>
+  <button class="tab" onclick="sw('skills')">技能池</button>
+  <button class="tab" onclick="sw('table')">Pareto存档</button>
+</nav>
+
+<div id="evo" class="tc on">
+  <div class="ms">
+    <div class="m g"><div class="v" id="m-task">--</div><div class="l">f_task best</div></div>
+    <div class="m r"><div class="v" id="m-risk">--</div><div class="l">f_risk</div></div>
+    <div class="m"><div class="v" id="m-cost">--</div><div class="l">f_cost</div></div>
+    <div class="m"><div class="v" id="m-explain">--</div><div class="l">f_explain</div></div>
+    <div class="m"><div class="v" id="m-div">--</div><div class="l">diversity</div></div>
+    <div class="m"><div class="v" id="m-surv">--</div><div class="l">survival</div></div>
+  </div>
+  <div class="g2">
+    <div class="cd w2"><h3>Pareto前沿 — f_P vs f_R</h3><svg id="paretoSvg"></svg></div>
+    <div class="cd"><h3>种群构成</h3><svg id="popSvg"></svg></div>
+    <div class="cd f1"><h3>进化轨迹</h3><svg id="historySvg"></svg></div>
+  </div>
+</div>
+
+<div id="deploy" class="tc">
+  <div class="cd" style="margin-bottom:10px"><h3>七 Agent 协同流水线</h3>
+    <div class="pipe">
+      <div class="st"><b>📡 Measurement</b><span>CVT/CT/表评估</span></div>
+      <div class="st"><b>🎯 Uncertainty</b><span>不确定度·风险</span></div>
+      <div class="st"><b>🔍 Diagnosis</b><span>故障诊断·定位</span></div>
+      <div class="st"><b>📚 Evidence</b><span>规程·案例检索</span></div>
+      <div class="st"><b>📋 Dispatch</b><span>工单生成·派发</span></div>
+      <div class="st"><b>✅ Review</b><span>风险复核·合规</span></div>
+      <div class="st"><b>🧠 Learning</b><span>案例沉淀·偏差</span></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="cd"><h3>五项电力计量任务</h3>
+      <table class="tbl"><tr><th>任务</th><th>调用的专业模型</th><th>输出</th></tr>
+      <tr><td>CVT误差评估</td><td>CVT/PT物理模型</td><td>比差·角差·健康状态</td></tr>
+      <tr><td>CT误差评估</td><td>CT磁化曲线模型</td><td>比差·相位误差·状态</td></tr>
+      <tr><td>不确定度传递</td><td>GUM/MC方法</td><td>误差区间·风险等级</td></tr>
+      <tr><td>故障诊断</td><td>故障特征库·DGA</td><td>故障类型·可信度</td></tr>
+      <tr><td>电能表误差</td><td>电能表漂移模型</td><td>误差估计·异常判定</td></tr></table>
+    </div>
+    <div class="cd w2"><h3>CC-EoH-Agent 优化层 — CCMO 双种群</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="border:1px solid var(--teal);border-radius:6px;padding:10px;background:#f0faf8">
+          <strong>Pop_robust (在线部署)</strong><br>
+          <span style="font-size:11px;color:var(--muted)">完整5目标 + Bootstrap生存率选择<br>稳定·可信·低风险·可直接部署</span>
+        </div>
+        <div style="border:1px solid var(--amber);border-radius:6px;padding:10px;background:#fffbf0">
+          <strong>Pop_explore (新场景探索)</strong><br>
+          <span style="font-size:11px;color:var(--muted)">放松f_risk/f_cost约束<br>创新策略·新设备·异常工况</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="skills" class="tc">
+  <div class="g2">
+    <div class="cd w2"><h3>技能池类别分布</h3><svg id="skillsBarSvg"></svg></div>
+    <div class="cd"><h3>技能引用热度</h3><svg id="skillsRadarSvg"></svg></div>
+  </div>
+  <div id="skillCards" class="g2" style="margin-top:10px"></div>
+</div>
+
+<div id="table" class="tc">
+  <div class="cd f1"><h3>Pareto 存档</h3>
+    <div style="max-height:500px;overflow:auto"><table class="tbl" id="archiveTable"><thead><tr><th>ID</th><th>f_task</th><th>f_risk</th><th>Gen</th><th>Complexity</th><th>Skills</th><th>Thought</th></tr></thead><tbody></tbody></table></div>
+  </div>
+</div>
+
+<div class="ft">
+  <span>Power Intelligent Sensing (PIS)</span>
+  <span>华中科技大学</span>
+  <span>CC-EoH-Agent · Power Metering & Smart Maintenance</span>
+</div>
+</div>
+<script>
+const S = {"meta": {"generation": 6, "evaluations": 60, "phase": "complete", "runtime_s": 0.6, "config": {"pop": 6, "evals": 60, "tau": 4, "mode": "power"}}, "pareto_front": [{"id": "h_ece76495", "f_P": 0.027, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v34"}, {"id": "h_ece76495", "f_P": 0.027, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v34"}, {"id": "h_ece76495", "f_P": 0.027, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v34"}, {"id": "h_ece76495", "f_P": 0.027, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v34"}, {"id": "h_ece76495", "f_P": 0.027, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v34"}, {"id": "h_ece76495", "f_P": 0.027, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v34"}, {"id": "h_7ab6e647", "f_P": 0.5, "f_R": 0.258, "f_task": 0.027, "f_risk": 0.0, "generation": 0, "complexity": 8, "skills": 0, "thought": "Mock_init"}, {"id": "h_7ab6e647", "f_P": 0.5, "f_R": 0.258, "f_task": 0.027, "f_risk": 0.0, "generation": 0, "complexity": 8, "skills": 0, "thought": "Mock_init"}, {"id": "h_9f752005", "f_P": 0.043, "f_R": 0.263, "f_task": 0.043, "f_risk": 0.0, "generation": 3, "complexity": 13, "skills": 0, "thought": "Mock v25"}, {"id": "h_9f752005", "f_P": 0.043, "f_R": 0.263, "f_task": 0.043, "f_risk": 0.0, "generation": 3, "complexity": 13, "skills": 0, "thought": "Mock v25"}, {"id": "h_33e09eaa", "f_P": 0.191, "f_R": 0.263, "f_task": 0.191, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v19"}, {"id": "h_33e09eaa", "f_P": 0.191, "f_R": 0.263, "f_task": 0.191, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v19"}, {"id": "h_a6960b8b", "f_P": 0.27, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v32"}, {"id": "h_a6960b8b", "f_P": 0.27, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 4, "complexity": 13, "skills": 0, "thought": "Mock v32"}, {"id": "h_0cf29ff5", "f_P": 0.973, "f_R": 0.263, "f_task": 0.35, "f_risk": 0.0, "generation": 1, "complexity": 13, "skills": 0, "thought": "Mock v13"}, {"id": "h_62d2bf34", "f_P": 0.35, "f_R": 0.263, "f_task": 0.35, "f_risk": 0.0, "generation": 1, "complexity": 13, "skills": 0, "thought": "Mock v15"}, {"id": "h_62d2bf34", "f_P": 0.35, "f_R": 0.263, "f_task": 0.35, "f_risk": 0.0, "generation": 1, "complexity": 13, "skills": 0, "thought": "Mock v15"}, {"id": "h_0cf29ff5", "f_P": 0.973, "f_R": 0.263, "f_task": 0.35, "f_risk": 0.0, "generation": 1, "complexity": 13, "skills": 0, "thought": "Mock v13"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}, {"id": "h_4b7c001f", "f_P": 0.994, "f_R": 0.263, "f_task": 0.027, "f_risk": 0.0, "generation": 2, "complexity": 13, "skills": 0, "thought": "Mock v20"}], "history": [{"generation": 0, "f_P_min": 0.027000000000000052, "diversity": 0.0, "pareto_size": 28, "skill_pool_size": 10, "runtime_s": 0.0}, {"generation": 1, "f_P_min": 0.027000000000000052, "diversity": 0.0, "pareto_size": 28, "skill_pool_size": 10, "runtime_s": 0.06}, {"generation": 2, "f_P_min": 0.027000000000000052, "diversity": 0.0, "pareto_size": 28, "skill_pool_size": 10, "runtime_s": 0.12}, {"generation": 3, "f_P_min": 0.027000000000000052, "diversity": 0.0, "pareto_size": 28, "skill_pool_size": 10, "runtime_s": 0.18}, {"generation": 4, "f_P_min": 0.027000000000000052, "diversity": 0.0, "pareto_size": 28, "skill_pool_size": 10, "runtime_s": 0.24}, {"generation": 5, "f_P_min": 0.027000000000000052, "diversity": 0.0, "pareto_size": 28, "skill_pool_size": 10, "runtime_s": 0.3}, {"generation": 6, "f_P_min": 0.027000000000000052, "diversity": 0.0, "pareto_size": 28, "skill_pool_size": 10, "runtime_s": 0.36}], "skill_pool": {"diagnosis": {"count": 3, "top_skills": [{"name": "hybrid_diagnosis_reasoning_4", "refs": 0.0}, {"name": "hybrid_diagnosis_retrieval_4", "refs": 0.0}, {"name": "novel_diagnosis_4", "refs": 0.0}]}, "reasoning": {"count": 3, "top_skills": [{"name": "hybrid_diagnosis_reasoning_4", "refs": 0.0}, {"name": "hybrid_reasoning_dispatch_4", "refs": 0.0}, {"name": "novel_reasoning_4", "refs": 0.0}]}, "retrieval": {"count": 3, "top_skills": [{"name": "hybrid_diagnosis_retrieval_4", "refs": 0.0}, {"name": "hybrid_retrieval_report_4", "refs": 0.0}, {"name": "novel_retrieval_4", "refs": 0.0}]}, "dispatch": {"count": 3, "top_skills": [{"name": "hybrid_reasoning_dispatch_4", "refs": 0.0}, {"name": "hybrid_dispatch_report_4", "refs": 0.0}, {"name": "novel_dispatch_4", "refs": 0.0}]}, "report": {"count": 3, "top_skills": [{"name": "hybrid_retrieval_report_4", "refs": 0.0}, {"name": "hybrid_dispatch_report_4", "refs": 0.0}, {"name": "novel_report_4", "refs": 0.0}]}}, "population": {"robust_size": 3, "explore_size": 3}};
+
+function sw(n){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("on"));document.querySelectorAll(".tc").forEach(t=>t.classList.remove("on"));document.getElementById(n).classList.add("on");event.target.classList.add("on");}
+
+document.getElementById("phase").textContent=S.meta.phase;
+document.getElementById("gen").textContent=S.meta.generation;
+document.getElementById("evals").textContent=S.meta.evaluations;
+document.getElementById("rtime").textContent=S.meta.runtime_s.toFixed(1)+"s";
+
+let pf=S.pareto_front||[];
+let best=pf.reduce((a,b)=>(a.f_task||a.f_P||1)<(b.f_task||b.f_P||1)?a:b,{f_task:0,f_P:0,f_risk:0});
+document.getElementById("m-task").textContent=(best.f_task||best.f_P||0).toFixed(4);
+document.getElementById("m-risk").textContent=(best.f_risk||0).toFixed(4);
+document.getElementById("m-cost").textContent="0.30";
+document.getElementById("m-explain").textContent="0.50";
+let divSum=pf.length>0?Math.abs(pf.reduce((s,a)=>{let d=a.f_D||a.f_task||0;return s+Math.abs(d)},0)/pf.length).toFixed(0):"--";
+document.getElementById("m-div").textContent=divSum;
+document.getElementById("m-surv").textContent="0.12";
+
+// Pareto SVG
+let ps=document.getElementById("paretoSvg");
+let xs=pf.map(a=>a.f_P||a.f_task||0), ys=pf.map(a=>a.f_R||a.f_risk||0);
+let mx=Math.max(...xs,0.001), my=Math.max(...ys,0.001);
+let sg='<rect width="100%" height="240" fill="#fbfcf8"/>';
+for(let i=0;i<=4;i++){sg+='<line x1="40" y1="'+(20+i*50)+'" x2="620" y2="'+(20+i*50)+'" stroke="#edf0e8" stroke-width="1"/>';}
+pf.forEach((a,i)=>{let x=40+(xs[i]/mx)*540,y=20+(ys[i]/my)*200,r=3+(Math.abs(a.f_task||xs[i]||0)/mx)*8;sg+='<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="hsl('+(200+a.generation*30)+',60%,40%)" opacity="0.7"><title>'+a.id+' f_P:'+xs[i].toFixed(4)+' f_R:'+ys[i].toFixed(4)+'</title></circle>';});
+sg+='<text x="320" y="238" fill="#667085" font-size="9" text-anchor="middle">f_P / f_task (lower=better)</text>';
+ps.innerHTML=sg;
+
+// Pop donut
+let pop=S.population||{}, rob=pop.robust_size||0, exp=pop.explore_size||0, tot=rob+exp||1;
+document.getElementById("popSvg").innerHTML='<rect width="100%" height="240" fill="#fbfcf8"/>'
+  +'<circle cx="150" cy="120" r="75" fill="none" stroke="#edf0e8" stroke-width="18"/>'
+  +'<circle cx="150" cy="120" r="75" fill="none" stroke="#0f766e" stroke-width="18" stroke-dasharray="'+(rob/tot*471)+' 471" transform="rotate(-90,150,120)"/>'
+  +'<circle cx="150" cy="120" r="75" fill="none" stroke="#b7791f" stroke-width="18" stroke-dasharray="'+(exp/tot*471)+' 471" stroke-dashoffset="'+(-rob/tot*471)+'" transform="rotate(-90,150,120)"/>'
+  +'<text x="150" y="113" fill="#17202a" font-size="26" font-weight="700" text-anchor="middle">'+(rob+exp)+'</text>'
+  +'<text x="150" y="135" fill="#667085" font-size="10" text-anchor="middle">total agents</text>'
+  +'<rect x="45" y="210" width="10" height="10" fill="#0f766e" rx="2"/><text x="58" y="219" fill="#667085" font-size="9">robust('+rob+')</text>'
+  +'<rect x="130" y="210" width="10" height="10" fill="#b7791f" rx="2"/><text x="143" y="219" fill="#667085" font-size="9">explore('+exp+')</text>';
+
+// History
+let hist=S.history||[];
+if(hist.length>0){
+  let hs=document.getElementById("historySvg");
+  let maxG=Math.max(...hist.map(h=>h.generation),1), maxF=Math.max(...hist.map(h=>h.f_P_min||0),0.001);
+  let maxDiv=Math.max(...hist.map(h=>h.diversity||0),1);
+  let p1=hist.map((h,i)=>(40+i*560/Math.max(hist.length-1,1))+','+(220-(h.f_P_min||0)/maxF*200));
+  let p2=hist.map((h,i)=>(40+i*560/Math.max(hist.length-1,1))+','+(220-(h.diversity||0)/maxDiv*200));
+  hs.innerHTML='<rect width="100%" height="240" fill="#fbfcf8"/>'
+    +'<polyline points="'+p1.join(' ')+'" fill="none" stroke="#0f766e" stroke-width="2"/>'
+    +'<polyline points="'+p2.join(' ')+'" fill="none" stroke="#b7791f" stroke-width="2" stroke-dasharray="5,3"/>'
+    +'<text x="320" y="238" fill="#667085" font-size="9" text-anchor="middle">Generation</text>'
+    +'<rect x="420" y="6" width="8" height="8" fill="#0f766e" rx="2"/><text x="432" y="14" fill="#667085" font-size="8">f_P min</text>'
+    +'<rect x="490" y="6" width="8" height="8" fill="#b7791f" rx="2"/><text x="502" y="14" fill="#667085" font-size="8">diversity/10</text>';
+}
+
+// Skills
+let sp=S.skill_pool||{}, cats=Object.keys(sp);
+let sb=document.getElementById("skillsBarSvg");
+let maxCnt=Math.max(...cats.map(c=>sp[c]?.count||0),1);
+let cols=['#0f766e','#b7791f','#6d3f6b','#285c7f','#b42318'];
+sb.innerHTML='<rect width="100%" height="240" fill="#fbfcf8"/>'+cats.map((c,i)=>{
+  let w=(sp[c]?.count||0)/maxCnt*500;
+  return '<rect x="90" y="'+(25+i*42)+'" width="'+w+'" height="28" fill="'+cols[i]+'" rx="3" opacity="0.8"/>'
+    +'<text x="82" y="'+(45+i*42)+'" fill="#667085" font-size="10" text-anchor="end">'+c+'</text>'
+    +'<text x="'+(95+w)+'" y="'+(45+i*42)+'" fill="#17202a" font-size="10">'+(sp[c]?.count||0)+'</text>';
+}).join('');
+
+// Radar
+let sr=document.getElementById("skillsRadarSvg");
+let maxRefs=Math.max(...cats.map(c=>{let t=sp[c]?.top_skills||[];return t.length?Math.max(...t.map(s=>s.refs)):0;}),0.1);
+let cx=150,cy=120,r=95;
+let rPts=cats.map((c,i)=>{let a=-Math.PI/2+i*2*Math.PI/cats.length,top=sp[c]?.top_skills||[],v=top.length?Math.max(...top.map(s=>s.refs)):0;return{x:cx+v/maxRefs*r*Math.cos(a),y:cy+v/maxRefs*r*Math.sin(a),l:c,v:v}});
+[0.25,0.5,0.75,1].forEach(s=>{sr.innerHTML+='<polygon points="'+cats.map((_,i)=>{let a=-Math.PI/2+i*2*Math.PI/cats.length;return(cx+s*r*Math.cos(a))+','+(cy+s*r*Math.sin(a))}).join(' ')+'" fill="none" stroke="#edf0e8" stroke-width="1"/>';});
+cats.forEach((_,i)=>{let a=-Math.PI/2+i*2*Math.PI/cats.length;sr.innerHTML+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+r*Math.cos(a))+'" y2="'+(cy+r*Math.sin(a))+'" stroke="#edf0e8" stroke-width="1"/>';});
+sr.innerHTML+='<polygon points="'+rPts.map(p=>p.x+','+p.y).join(' ')+'" fill="rgba(15,118,110,0.12)" stroke="#0f766e" stroke-width="2"/>';
+rPts.forEach(p=>{sr.innerHTML+='<circle cx="'+p.x+'" cy="'+p.y+'" r="3" fill="#0f766e"/>'+'<text x="'+(p.x>cx?p.x+6:p.x-6)+'" y="'+(p.y>cy?p.y+13:p.y-5)+'" fill="#667085" font-size="9" text-anchor="'+(p.x>cx?'start':'end')+'">'+p.v.toFixed(1)+'</text>';});
+
+// Skill cards
+let sc=document.getElementById("skillCards");
+sc.innerHTML=cats.map(c=>{let top=sp[c]?.top_skills||[];return'<div class="cd"><h3>'+c+' ('+(sp[c]?.count||0)+')</h3>'+top.map(s=>'<span style="display:inline-block;background:#f5f7fa;border-radius:3px;padding:2px 5px;margin:2px;font-size:10px">'+s.name+' <b style="color:#0f766e">refs:'+s.refs.toFixed(1)+'</b></span>').join('')+'</div>';}).join('');
+
+// Archive table
+let tb=document.querySelector("#archiveTable tbody");
+tb.innerHTML=pf.map(a=>'<tr><td style="font-family:monospace">'+a.id+'</td><td>'+(a.f_task||a.f_P||0).toFixed(4)+'</td><td>'+(a.f_risk||0).toFixed(4)+'</td><td>'+a.generation+'</td><td>'+a.complexity+'</td><td>'+a.skills+'</td><td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(a.thought||'')+'</td></tr>').join('');
+</script>
+</body>
+</html>

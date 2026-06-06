@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power Intelligent Sensing (PIS) — CC-EoH-Agent 协同进化仪表盘</title>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #17202a;
+  --muted: #667085;
+  --paper: #f5f6f2;
+  --panel: #ffffff;
+  --line: #d8ddd2;
+  --teal: #0f766e;
+  --amber: #b7791f;
+  --plum: #6d3f6b;
+  --red: #b42318;
+  --green: #247a45;
+  --blue: #285c7f;
+  --shadow: 0 8px 24px rgba(23, 32, 42, 0.08);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+  background:
+    linear-gradient(90deg, rgba(15,118,110,0.06) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(15,118,110,0.04) 1px, transparent 1px),
+    var(--paper);
+  background-size: 32px 32px;
+  color: var(--ink);
+}
+.shell { max-width: 1480px; margin: 0 auto; padding: 18px; }
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.92);
+  box-shadow: var(--shadow);
+}
+.brand h1 { margin: 0; font-size: 22px; letter-spacing: 0; }
+.brand p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+.runtime {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(86px, auto));
+  gap: 10px;
+}
+.runtime div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fafbf8;
+}
+.runtime b { display: block; font-size: 16px; }
+.runtime span { color: var(--muted); font-size: 11px; }
+.tabs { display: flex; gap: 8px; margin: 16px 0; flex-wrap: wrap; }
+.tab {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--muted);
+  padding: 9px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tab.active { color: var(--ink); border-color: var(--teal); box-shadow: inset 0 -3px 0 var(--teal); }
+.section { display: none; }
+.section.active { display: block; }
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.card {
+  grid-column: span 4;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+.wide { grid-column: span 8; }
+.full { grid-column: 1 / -1; }
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.subtle { color: var(--muted); font-size: 12px; font-weight: 500; }
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.metric {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 12px;
+  min-height: 78px;
+}
+.metric label { display: block; color: var(--muted); font-size: 11px; margin-bottom: 8px; }
+.metric strong { font-size: 22px; line-height: 1; }
+.metric small { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; }
+.metric[data-tone="good"] strong { color: var(--green); }
+.metric[data-tone="warn"] strong { color: var(--amber); }
+.metric[data-tone="risk"] strong { color: var(--red); }
+.chart {
+  width: 100%;
+  min-height: 250px;
+  border: 1px solid #eef1ea;
+  border-radius: 8px;
+  background: #fbfcf8;
+}
+svg { width: 100%; height: 260px; display: block; }
+.table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.table th, .table td { border-bottom: 1px solid #edf0e8; padding: 8px; text-align: left; }
+.table th { color: var(--muted); font-weight: 600; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  padding: 3px 8px;
+  font-size: 11px;
+  color: var(--muted);
+  background: #fbfcf8;
+}
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(110px, 1fr));
+  gap: 10px;
+}
+.stage {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fbfcf8;
+  min-height: 74px;
+}
+.stage.active { border-color: var(--teal); box-shadow: inset 0 0 0 2px rgba(15,118,110,0.12); }
+.stage b { display: block; font-size: 12px; }
+.stage span { color: var(--muted); font-size: 11px; }
+.list { display: grid; gap: 8px; max-height: 360px; overflow: auto; }
+.row {
+  border: 1px solid #edf0e8;
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: #fbfcf8;
+  font-size: 12px;
+}
+.row b { display: block; margin-bottom: 4px; }
+.muted { color: var(--muted); }
+.footer { color: var(--muted); font-size: 11px; text-align: center; padding: 18px 0 6px; }
+@media (max-width: 1040px) {
+  .topbar { grid-template-columns: 1fr; }
+  .runtime { grid-template-columns: repeat(2, minmax(86px, 1fr)); }
+  .metrics { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+  .card, .wide { grid-column: 1 / -1; }
+  .pipeline { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <div style="display:flex;align-items:baseline;gap:10px"><h1>Power Intelligent Sensing (PIS)</h1><span style="font-size:14px;color:var(--muted)">华中科技大学</span></div>
+      <p>CC-EoH-Agent · 电力计量五任务 · Agent策略集合多目标协同进化</p>
+    </div>
+    <div class="runtime">
+      <div><b id="phase">--</b><span>phase</span></div>
+      <div><b id="generation">0</b><span>generation</span></div>
+      <div><b id="evaluations">0</b><span>evaluations</span></div>
+      <div><b id="runtime">0s</b><span>runtime</span></div>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Dashboard tabs">
+    <button class="tab active" data-tab="evolution">进化总览</button>
+    <button class="tab" data-tab="objectives">五目标诊断</button>
+    <button class="tab" data-tab="deploy">运行流水线</button>
+    <button class="tab" data-tab="skills">技能池</button>
+    <button class="tab" data-tab="logs">日志</button>
+  </nav>
+
+  <section id="evolution" class="section active">
+    <div class="metrics">
+      <div class="metric" data-tone="good"><label>f_task / f_P best</label><strong id="m-task">--</strong><small>越小越好</small></div>
+      <div class="metric" data-tone="risk"><label>f_risk</label><strong id="m-risk">--</strong><small>漏报/误报/错派</small></div>
+      <div class="metric"><label>f_cost</label><strong id="m-cost">--</strong><small>token/tool/latency</small></div>
+      <div class="metric"><label>f_explain</label><strong id="m-explain">--</strong><small>证据与推理透明度</small></div>
+      <div class="metric" data-tone="warn"><label>diversity</label><strong id="m-div">--</strong><small>互补性</small></div>
+      <div class="metric"><label>survival</label><strong id="m-survival">--</strong><small>场景稳定性</small></div>
+    </div>
+    <div class="grid">
+      <article class="card wide">
+        <h2>Pareto / Scenario Front <span class="subtle" id="mode-label">objective_mode</span></h2>
+        <div class="chart"><svg id="paretoSvg" role="img" aria-label="Pareto front"></svg></div>
+      </article>
+      <article class="card">
+        <h2>种群构成 <span class="subtle">robust vs explore</span></h2>
+        <div class="chart"><svg id="popSvg" role="img" aria-label="Population composition"></svg></div>
+      </article>
+      <article class="card full">
+        <h2>进化轨迹 <span class="subtle">f_task/f_P, survival, diversity</span></h2>
+        <div class="chart"><svg id="historySvg" role="img" aria-label="Evolution history"></svg></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="objectives" class="section">
+    <div class="grid">
+      <article class="card full">
+        <h2>五目标运行态指标 <span class="subtle">scenario-survival ready</span></h2>
+        <table class="table">
+          <thead><tr><th>目标</th><th>当前值</th><th>含义</th><th>优化方向</th></tr></thead>
+          <tbody id="objectiveRows"></tbody>
+        </table>
+      </article>
+      <article class="card wide">
+        <h2>Top Pareto Agents <span class="subtle">最近 archive</span></h2>
+        <div class="list" id="agentList"></div>
+      </article>
+      <article class="card">
+        <h2>运行配置</h2>
+        <div class="list" id="configList"></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="deploy" class="section">
+    <div class="grid">
+      <article class="card full">
+        <h2>七 Agent 运行流水线</h2>
+        <div class="pipeline" id="pipeline"></div>
+      </article>
+      <article class="card wide"><h2>任务流</h2><div class="list" id="tasks"></div></article>
+      <article class="card"><h2>告警</h2><div class="list" id="alerts"></div></article>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="grid">
+      <article class="card wide"><h2>技能类别</h2><div class="chart"><svg id="skillSvg"></svg></div></article>
+      <article class="card"><h2>高引用技能</h2><div class="list" id="skillList"></div></article>
+    </div>
+  </section>
+
+  <section id="logs" class="section">
+    <div class="grid">
+      <article class="card full"><h2>LLM 与模型调用</h2><div class="list" id="logList"></div></article>
+    </div>
+  </section>
+
+  <div class="footer">Offline-first SVG dashboard · API /api/state · Last update <span id="lastUpdate">--</span></div>
+</main>
+
+<script>
+const API = "/api/state";
+const fmt = (v, d=3) => Number.isFinite(Number(v)) ? Number(v).toFixed(d) : "--";
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const colors = ["#0f766e", "#b7791f", "#6d3f6b", "#285c7f", "#b42318"];
+let latest = null;
+
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+    render(latest);
+  });
+});
+
+async function fetchState() {
+  try {
+    const res = await fetch(API, {cache: "no-store"});
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (_) {
+    return null;
+  }
+}
+
+function clearSvg(svg) {
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  const box = svg.getBoundingClientRect();
+  svg.setAttribute("viewBox", `0 0 ${Math.max(box.width, 640)} 260`);
+}
+
+function node(name, attrs={}) {
+  const n = document.createElementNS("http://www.w3.org/2000/svg", name);
+  Object.entries(attrs).forEach(([k,v]) => n.setAttribute(k, v));
+  return n;
+}
+
+function drawEmpty(svg, text) {
+  clearSvg(svg);
+  svg.appendChild(node("text", {x: 24, y: 42, fill: "#667085", "font-size": 13}));
+  svg.lastChild.textContent = text;
+}
+
+function drawScatter(id, points, xKey, yKey) {
+  const svg = document.getElementById(id);
+  if (!points || points.length === 0) return drawEmpty(svg, "等待 Pareto/front 数据");
+  clearSvg(svg);
+  const vb = svg.viewBox.baseVal, w = vb.width, h = vb.height;
+  const pad = 38;
+  const xs = points.map(p => Number(p[xKey])).filter(Number.isFinite);
+  const ys = points.map(p => Number(p[yKey])).filter(Number.isFinite);
+  if (!xs.length || !ys.length) return drawEmpty(svg, "当前目标字段为空");
+  const xmin = Math.min(...xs), xmax = Math.max(...xs), ymin = Math.min(...ys), ymax = Math.max(...ys);
+  const sx = v => pad + (w - pad * 2) * (Number(v) - xmin) / Math.max(xmax - xmin, 1e-9);
+  const sy = v => h - pad - (h - pad * 2) * (Number(v) - ymin) / Math.max(ymax - ymin, 1e-9);
+  svg.appendChild(node("line", {x1: pad, y1: h-pad, x2: w-pad, y2: h-pad, stroke: "#cfd6ca"}));
+  svg.appendChild(node("line", {x1: pad, y1: pad, x2: pad, y2: h-pad, stroke: "#cfd6ca"}));
+  points.forEach((p, i) => {
+    const c = node("circle", {
+      cx: sx(p[xKey]), cy: sy(p[yKey]), r: 4 + 5 * Number(p.survival_rate || 0),
+      fill: colors[i % colors.length], opacity: 0.78
+    });
+    c.appendChild(node("title"));
+    c.firstChild.textContent = `${p.id} ${xKey}=${fmt(p[xKey])} ${yKey}=${fmt(p[yKey])}`;
+    svg.appendChild(c);
+  });
+  const lx = node("text", {x: w - pad, y: h - 10, fill: "#667085", "font-size": 11, "text-anchor": "end"});
+  lx.textContent = xKey;
+  const ly = node("text", {x: 10, y: pad - 12, fill: "#667085", "font-size": 11});
+  ly.textContent = yKey;
+  svg.append(lx, ly);
+}
+
+function drawLine(id, history) {
+  const svg = document.getElementById(id);
+  if (!history || history.length < 2) return drawEmpty(svg, "等待至少 2 代历史数据");
+  clearSvg(svg);
+  const vb = svg.viewBox.baseVal, w = vb.width, h = vb.height, pad = 36;
+  const keys = ["f_P_min", "mean_survival", "diversity"];
+  const all = history.flatMap(row => keys.map(k => Number(row[k] || 0)));
+  const maxv = Math.max(...all, 1e-9);
+  const x = i => pad + (w - pad * 2) * i / Math.max(history.length - 1, 1);
+  const y = v => h - pad - (h - pad * 2) * Number(v || 0) / maxv;
+  svg.appendChild(node("line", {x1: pad, y1: h-pad, x2: w-pad, y2: h-pad, stroke: "#cfd6ca"}));
+  keys.forEach((k, ki) => {
+    const path = history.map((row, i) => `${i ? "L" : "M"}${x(i)},${y(row[k])}`).join(" ");
+    svg.appendChild(node("path", {d: path, fill: "none", stroke: colors[ki], "stroke-width": 2}));
+    const label = node("text", {x: pad + ki * 120, y: 18, fill: colors[ki], "font-size": 11});
+    label.textContent = k;
+    svg.appendChild(label);
+  });
+}
+
+function drawBars(id, labels, values) {
+  const svg = document.getElementById(id);
+  if (!labels.length) return drawEmpty(svg, "暂无数据");
+  clearSvg(svg);
+  const vb = svg.viewBox.baseVal, w = vb.width, h = vb.height, pad = 28;
+  const maxv = Math.max(...values, 1);
+  const bw = (w - pad * 2) / labels.length * 0.72;
+  labels.forEach((label, i) => {
+    const x = pad + i * ((w - pad * 2) / labels.length) + bw * 0.14;
+    const bh = (h - pad * 2) * values[i] / maxv;
+    svg.appendChild(node("rect", {x, y: h - pad - bh, width: bw, height: bh, rx: 3, fill: colors[i % colors.length]}));
+    const t = node("text", {x: x + bw / 2, y: h - 8, fill: "#667085", "font-size": 10, "text-anchor": "middle"});
+    t.textContent = label.slice(0, 10);
+    svg.appendChild(t);
+  });
+}
+
+function render(state) {
+  if (!state) return;
+  const meta = state.meta || {}, pm = state.population_metrics || {};
+  document.getElementById("phase").textContent = meta.phase || "--";
+  document.getElementById("generation").textContent = meta.generation || 0;
+  document.getElementById("evaluations").textContent = meta.evaluations || 0;
+  document.getElementById("runtime").textContent = Math.round(meta.runtime_s || 0) + "s";
+  document.getElementById("lastUpdate").textContent = new Date().toLocaleTimeString("zh-CN");
+  document.getElementById("mode-label").textContent = pm.objective_mode || meta.config?.objective_mode || "legacy";
+
+  const isPower = pm.objective_mode === "power";
+  document.getElementById("m-task").textContent = fmt(isPower ? pm.f_task_min : pm.f_P_min, 4);
+  document.getElementById("m-risk").textContent = fmt(isPower ? pm.f_risk_mean : pm.f_R_mean, 4);
+  document.getElementById("m-cost").textContent = fmt(pm.f_cost_mean, 4);
+  document.getElementById("m-explain").textContent = fmt(pm.f_explain_mean, 4);
+  document.getElementById("m-div").textContent = fmt(pm.diversity, 0);
+  document.getElementById("m-survival").textContent = fmt(pm.mean_survival, 2);
+
+  const pf = state.pareto_front || [];
+  drawScatter("paretoSvg", pf, isPower ? "f_task" : "f_P", isPower ? "f_risk" : "f_R");
+  drawLine("historySvg", state.history || []);
+  drawBars("popSvg", ["robust", "explore"], [pm.robust_size || 0, pm.explore_size || 0]);
+
+  const rows = [
+    ["f_task", isPower ? pm.f_task_min : pm.f_P_min, "五任务加权 CPI / legacy f_P", "min"],
+    ["f_risk", isPower ? pm.f_risk_mean : pm.f_R_mean, "漏报、误报、错派风险", "min"],
+    ["f_cost", pm.f_cost_mean, "Token、工具调用、响应时间", "min"],
+    ["f_explain", pm.f_explain_mean, "证据完整性与推理透明度惩罚", "min"],
+    ["f_div", pm.diversity, "策略互补性", "max"],
+  ];
+  document.getElementById("objectiveRows").innerHTML = rows.map(r =>
+    `<tr><td><span class="pill">${r[0]}</span></td><td>${fmt(r[1], 4)}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`
+  ).join("");
+
+  document.getElementById("agentList").innerHTML = pf.slice(0, 20).map(a =>
+    `<div class="row"><b>${a.id}</b><span class="muted">gen ${a.generation} · survival ${fmt(a.survival_rate,2)} · task ${fmt(a.f_task,4)} · risk ${fmt(a.f_risk,4)}</span></div>`
+  ).join("") || `<div class="row muted">暂无 archive agent</div>`;
+
+  const config = meta.config || {};
+  document.getElementById("configList").innerHTML = Object.keys(config).map(k =>
+    `<div class="row"><b>${k}</b><span class="muted">${config[k]}</span></div>`
+  ).join("") || `<div class="row muted">暂无配置</div>`;
+
+  renderDeploy(state);
+  renderSkills(state);
+  renderLogs(state);
+}
+
+function renderDeploy(state) {
+  const stages = ["measurement", "uncertainty", "diagnosis", "evidence", "dispatch", "review", "learning"];
+  const tasks = state.task_pipeline || [];
+  const activeSteps = new Set(tasks.flatMap(t => (t.agents_called || []).filter(a => a.status === "running").map(a => a.agent)));
+  document.getElementById("pipeline").innerHTML = stages.map(s =>
+    `<div class="stage ${activeSteps.has(s) ? "active" : ""}"><b>${s}</b><span>${activeSteps.has(s) ? "running" : "waiting"}</span></div>`
+  ).join("");
+  document.getElementById("tasks").innerHTML = tasks.slice(-12).reverse().map(t =>
+    `<div class="row"><b>${t.type || "task"} <span class="pill">${t.status}</span></b><span class="muted">${t.id} · ${t.instance}</span></div>`
+  ).join("") || `<div class="row muted">暂无任务</div>`;
+  document.getElementById("alerts").innerHTML = (state.alerts || []).slice(-12).reverse().map(a =>
+    `<div class="row"><b>${a.level || "info"}</b><span class="muted">${a.message}</span></div>`
+  ).join("") || `<div class="row muted">无告警</div>`;
+}
+
+function renderSkills(state) {
+  const sp = state.skill_pool || {};
+  const labels = Object.keys(sp);
+  drawBars("skillSvg", labels, labels.map(k => sp[k].count || 0));
+  document.getElementById("skillList").innerHTML = labels.flatMap(k =>
+    (sp[k].top_skills || []).map(s => `<div class="row"><b>${s.name}</b><span class="muted">${k} · refs ${fmt(s.refs,1)}</span></div>`)
+  ).join("") || `<div class="row muted">暂无技能引用</div>`;
+}
+
+function renderLogs(state) {
+  const llm = (state.llm_calls || []).map(c => ({type: c.type || "LLM", text: c.prompt || "", meta: `${c.tokens || 0} tok · ${c.latency_ms || 0}ms`}));
+  const model = (state.model_calls || []).map(c => ({type: c.model || "model", text: `${c.input} -> ${c.output}`, meta: `${c.latency_ms || 0}ms`}));
+  document.getElementById("logList").innerHTML = llm.concat(model).slice(-80).reverse().map(c =>
+    `<div class="row"><b>${c.type}</b><span class="muted">${c.text}</span><br><span class="muted">${c.meta}</span></div>`
+  ).join("") || `<div class="row muted">暂无调用日志</div>`;
+}
+
+async function tick() {
+  const state = await fetchState();
+  if (state) {
+    latest = state;
+    render(state);
+  }
+}
+tick();
+setInterval(tick, 2000);
+</script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
