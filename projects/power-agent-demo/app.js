@@ -1,20 +1,20 @@
 let alerts = [
-  { level: "high", icon: "!", title: "计量偏差疑似超限", site: "城南变电站 · #2 主变高压侧", time: "8 分钟前", score: "98%", suggestion: "建议核查 CT 变比配置并进行现场校验" },
-  { level: "high", icon: "ϟ", title: "三相电流不平衡", site: "高新园区开闭所 · 10kV Ⅱ段", time: "23 分钟前", score: "94%", suggestion: "A 相电流持续偏高，建议检查接线与负载分配" },
-  { level: "medium", icon: "⌁", title: "采集数据连续缺失", site: "滨江商业中心 · 集中器 #03", time: "45 分钟前", score: "91%", suggestion: "通信信号强度低于阈值，建议远程重启后观察" },
-  { level: "low", icon: "◇", title: "时钟偏差超过阈值", site: "东郊充电站 · 表计 EM-2048", time: "1 小时前", score: "87%", suggestion: "建议下发广播校时任务" },
+  { level: "high", icon: "!", title: "比差超限", site: "城南变电站 · #2 主变高压侧", time: "8 分钟前", score: "98%", suggestion: "建议核查 CT 变比配置并进行现场校验" },
+  { level: "high", icon: "ϟ", title: "角差漂移", site: "高新园区开闭所 · 10kV Ⅱ段", time: "23 分钟前", score: "94%", suggestion: "A 相角差持续偏高，建议检查接线与负载分配" },
+  { level: "medium", icon: "⌁", title: "比差不确定度扩大", site: "滨江商业中心 · 集中器 #03", time: "45 分钟前", score: "91%", suggestion: "通信信号强度低于阈值，建议远程重启后观察" },
+  { level: "low", icon: "◇", title: "角差U95超过复核阈值", site: "东郊充电站 · 表计 EM-2048", time: "1 小时前", score: "87%", suggestion: "建议下发校时任务后复核角差不确定度" },
 ];
 let devices = [
-  ["EM-1024 · 三相智能电表", "城南变电站", "关口表", "72", "异常", "1 分钟前"],
-  ["EM-2048 · 三相智能电表", "东郊充电站", "结算表", "89", "关注", "刚刚"],
-  ["DC-003 · 数据集中器", "滨江商业中心", "集中器", "81", "关注", "12 分钟前"],
-  ["EM-3107 · 三相智能电表", "高新园区开闭所", "关口表", "96", "正常", "刚刚"],
-  ["EM-4201 · 单相智能电表", "西湖居民区", "用户表", "98", "正常", "刚刚"],
-  ["TC-0902 · 组合互感器", "北城工业园", "互感器", "94", "正常", "3 分钟前"],
+  ["EM-1024 · 三相智能电表", "城南变电站", "关口表", "+2.8%", "+2.1′", "0.18%", "0.4′", "异常", "1 分钟前"],
+  ["EM-2048 · 三相智能电表", "东郊充电站", "结算表", "+0.9%", "+1.3′", "0.11%", "0.6′", "关注", "刚刚"],
+  ["DC-003 · 数据集中器", "滨江商业中心", "集中器", "+1.4%", "+0.8′", "0.16%", "0.3′", "关注", "12 分钟前"],
+  ["EM-3107 · 三相智能电表", "高新园区开闭所", "关口表", "+0.3%", "+0.4′", "0.07%", "0.2′", "正常", "刚刚"],
+  ["EM-4201 · 单相智能电表", "西湖居民区", "用户表", "-0.2%", "+0.2′", "0.06%", "0.2′", "正常", "刚刚"],
+  ["TC-0902 · 组合互感器", "北城工业园", "互感器", "+0.5%", "-0.3′", "0.08%", "0.2′", "正常", "3 分钟前"],
 ];
 let orders = {
   "待处理": [
-    ["WO-20260703-018", "城南站 #2 主变计量偏差核查", "高优先级", "今天 09:30"],
+    ["WO-20260703-018", "城南站 #2 主变比差/角差核查", "高优先级", "今天 09:30"],
     ["WO-20260703-016", "集中器 DC-003 通信恢复", "中优先级", "今天 10:00"],
   ],
   "处理中": [
@@ -28,7 +28,7 @@ let orders = {
 };
 let knowledge = [
   ["▤", "电能计量装置技术管理规程", "涵盖装置配置、验收、运行维护与故障处理标准。", "DL/T 448-2016 · 已同步"],
-  ["⌁", "计量偏差诊断案例集", "沉淀 132 个典型案例，包括变比错误、接线异常与谐波影响。", "132 个案例 · 更新于 2 天前"],
+  ["⌁", "比差/角差诊断案例集", "沉淀 132 个典型案例，包括变比错误、接线异常与谐波影响。", "132 个案例 · 更新于 2 天前"],
   ["◇", "采集通信故障处置手册", "覆盖 HPLC、4G 与专网通信链路的排查步骤。", "V3.2 · 已审核"],
   ["△", "异常用电识别规则库", "包括电流不平衡、反向电量、失压失流等 36 类规则。", "36 条规则 · 持续优化"],
   ["▣", "现场作业安全规程", "计量现场作业风险辨识、工作票与安全措施要求。", "2026 版 · 强制引用"],
@@ -39,7 +39,7 @@ let regions = {
   "苏州": { health: "95.7", devices: "214", online: "99.1%", alerts: "1", orders: "1", rank: "2 / 8", status: "1 项低风险告警待确认", coords: [31.2989, 120.5853], level: "normal" },
   "南京": { health: "91.2", devices: "178", online: "98.4%", alerts: "2", orders: "3", rank: "6 / 8", status: "存在采集通信异常", coords: [32.0603, 118.7969], level: "warning" },
   "杭州": { health: "94.9", devices: "196", online: "99.3%", alerts: "0", orders: "1", rank: "3 / 8", status: "整体运行稳定", coords: [30.2741, 120.1551], level: "normal" },
-  "宁波": { health: "86.3", devices: "143", online: "97.8%", alerts: "2", orders: "4", rank: "8 / 8", status: "存在高优先级计量偏差", coords: [29.8683, 121.5440], level: "danger" },
+  "宁波": { health: "86.3", devices: "143", online: "97.8%", alerts: "2", orders: "4", rank: "8 / 8", status: "存在高优先级比差/角差异常", coords: [29.8683, 121.5440], level: "danger" },
   "合肥": { health: "93.8", devices: "112", online: "98.9%", alerts: "0", orders: "1", rank: "4 / 8", status: "整体运行稳定", coords: [31.8206, 117.2272], level: "normal" },
   "徐州": { health: "90.6", devices: "79", online: "98.1%", alerts: "1", orders: "2", rank: "7 / 8", status: "三相不平衡需持续观察", coords: [34.2044, 117.2858], level: "warning" },
   "温州": { health: "93.1", devices: "61", online: "99.0%", alerts: "0", orders: "0", rank: "5 / 8", status: "整体运行稳定", coords: [27.9939, 120.6994], level: "normal" },
@@ -54,8 +54,8 @@ function render() {
   $("#alertList").innerHTML = alerts.slice(0, 3).map(alertRow).join("");
   $("#alertBoard").innerHTML = alerts.map(a => `${alertRow(a, true)}`).join("");
   $("#deviceTable").innerHTML = devices.map((d) => {
-    const cls = d[4] === "正常" ? "ok" : d[4] === "关注" ? "warn" : "bad";
-    return `<tr><td><strong>${d[0]}</strong><small>编号 ${d[0].split(" · ")[0]}</small></td><td>${d[1]}</td><td>${d[2]}</td><td><span class="score">${d[3]}%</span></td><td><span class="badge ${cls}">${d[4]}</span></td><td>${d[5]}</td></tr>`;
+    const cls = d[7] === "正常" ? "ok" : d[7] === "关注" ? "warn" : "bad";
+    return `<tr><td><strong>${d[0]}</strong><small>编号 ${d[0].split(" · ")[0]}</small></td><td>${d[1]}</td><td>${d[2]}</td><td><span class="score">${d[3]}</span></td><td>${d[4]}</td><td>${d[5]}</td><td>${d[6]}</td><td><span class="badge ${cls}">${d[7]}</span></td><td>${d[8]}</td></tr>`;
   }).join("");
   $("#kanban").innerHTML = Object.entries(orders).map(([group, cards]) => `<div><h3>${group}<span>${cards.length}</span></h3>${cards.map(c => `<article class="order-card"><em>${c[0]}</em><h4>${c[1]}</h4><p>${c[2]}</p><footer><span>计量运维组</span><span>${c[3]}</span></footer></article>`).join("")}</div>`).join("");
   $("#knowledgeGrid").innerHTML = knowledge.map(k => `<article><i>${k[0]}</i><h3>${k[1]}</h3><p>${k[2]}</p><footer>${k[3]}</footer></article>`).join("");
@@ -101,9 +101,9 @@ async function askAgent(query) {
   }
 }
 function localAgentReply(query) {
-  if (query.includes("城南") || query.includes("计量偏差")) return `已完成关联分析。该电表近 6 小时二次侧电流与主变负荷曲线的偏差由 <strong>0.4% 升至 2.8%</strong>，超过预警阈值。<div class="steps"><p>① 核对 CT 变比参数</p><p>② 检查 A 相二次回路</p><p>③ 使用标准表现场校验</p></div>综合判断：CT 变比配置或二次回路异常的可能性为 <strong>98%</strong>。`;
-  if (query.includes("巡检")) return `已生成今日计划：<div class="steps"><p>09:30 城南变电站 — 计量偏差核查</p><p>11:00 高新园区 — 三相不平衡检查</p><p>14:30 滨江商业中心 — 通信恢复</p></div>`;
-  if (query.includes("线损")) return "当前 4 个台区线损率偏离基线，其中城南站 10kV 城商线偏差最大（+2.1%），建议优先排查关口表和 CT 变比。";
+  if (query.includes("城南") || query.includes("计量偏差") || query.includes("比差") || query.includes("角差")) return `已完成关联分析。该电表近 6 小时比差由 <strong>+0.4% 升至 +2.8%</strong>，角差由 <strong>+0.6′ 升至 +2.1′</strong>；比差U95=<strong>0.18%</strong>，角差U95=<strong>0.4′</strong>，超过预警阈值。<div class="steps"><p>① 核对 CT 变比参数</p><p>② 检查 A 相二次回路</p><p>③ 使用标准表现场校验</p></div>综合判断：CT 变比配置或二次回路异常的可能性为 <strong>98%</strong>。`;
+  if (query.includes("巡检")) return `已生成今日计划：<div class="steps"><p>09:30 城南变电站 — 比差/角差异常核查</p><p>11:00 高新园区 — 角差漂移检查</p><p>14:30 滨江商业中心 — 比差U95复核</p></div>`;
+  if (query.includes("线损")) return "当前 4 个台区线损率偏离基线，其中城南站 10kV 城商线比差偏离最大（+2.1%），建议优先排查关口表和 CT 变比，并复核角差U95。";
   if (query.includes("离线")) return "当前未发现完全离线设备。集中器 DC-003 已连续 12 分钟未上送数据，建议先执行远程重启。";
   return "演示数据中暂未发现新的高风险模式。你可以指定站点、设备编号或时间范围继续分析。";
 }
@@ -153,7 +153,7 @@ function initRegionMap() {
       fillOpacity: .95,
       className: `meter-marker ${region.level}`,
     }).addTo(map);
-    marker.bindTooltip(`<strong>${name}</strong><br>健康度 ${region.health}% · 告警 ${region.alerts} 项`, { direction: "top", offset: [0, -8] });
+    marker.bindTooltip(`<strong>${name}</strong><br>计量可信度 ${region.health}% · 比差/角差告警 ${region.alerts} 项`, { direction: "top", offset: [0, -8] });
     marker.on("click", () => selectRegion(name));
   });
   L.control.scale({ imperial: false, position: "bottomleft" }).addTo(map);

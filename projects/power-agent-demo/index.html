@@ -70,17 +70,17 @@
                 <div>
                   <div class="status-line"><span></span> AGENT ONLINE</div>
                   <h2>计量运维智能体</h2>
-                  <p>设备诊断、异常研判、工单生成，我来协助你完成。</p>
+                  <p>比差/角差诊断、异常研判、工单生成，我来协助你完成。</p>
                 </div>
                 <button class="more">•••</button>
               </div>
               <div class="agent-message">
                 <span class="mini-orb">✦</span>
                 <div>
-                  <p>检测到 <strong>3 项待处理异常</strong>，其中城南变电站 #2 主变高压侧电表疑似存在<strong>计量偏差</strong>，建议优先处理。</p>
+                  <p>检测到 <strong>3 项待处理异常</strong>，其中城南变电站 #2 主变高压侧电表疑似存在<strong>比差/角差异常</strong>，建议优先处理。</p>
                   <div class="agent-actions">
-                    <button data-prompt="分析城南变电站 #2 主变高压侧电表异常">立即分析 <span>→</span></button>
-                    <button data-prompt="生成今日设备健康摘要">查看今日摘要</button>
+                    <button data-prompt="分析城南变电站 #2 主变高压侧电表比差/角差异常">立即分析 <span>→</span></button>
+                    <button data-prompt="生成今日比差/角差摘要">查看今日摘要</button>
                   </div>
                 </div>
               </div>
@@ -99,13 +99,13 @@
             </article>
 
             <article class="health-card">
-              <div class="card-title"><div><span>实时状态</span><h3>设备健康度</h3></div><button>今日⌄</button></div>
+              <div class="card-title"><div><span>实时状态</span><h3>计量可信度</h3></div><button>今日⌄</button></div>
               <div class="gauge">
-                <svg viewBox="0 0 220 125" aria-label="设备健康度 92.6%">
+                <svg viewBox="0 0 220 125" aria-label="计量可信度 92.6%">
                   <path class="gauge-bg" d="M25 105 A85 85 0 0 1 195 105" />
                   <path class="gauge-value" d="M25 105 A85 85 0 0 1 195 105" />
                 </svg>
-                <div><strong>92.6</strong><span>%</span><small>健康</small></div>
+                <div><strong>92.6</strong><span>%</span><small>可信</small></div>
               </div>
               <div class="health-stats">
                 <div><i class="green"></i><span>正常</span><strong>1,246</strong></div>
@@ -140,7 +140,7 @@
                   <div><dt>计量设备</dt><dd id="regionDevices">286</dd></div><div><dt>在线率</dt><dd id="regionOnline">99.6%</dd></div>
                   <div><dt>待处理告警</dt><dd id="regionAlerts">0</dd></div><div><dt>今日工单</dt><dd id="regionOrders">2</dd></div>
                 </dl>
-                <div class="region-ranking"><span>区域健康度排名</span><strong id="regionRank">1 / 8</strong></div>
+                <div class="region-ranking"><span>区域计量可信度排名</span><strong id="regionRank">1 / 8</strong></div>
                 <button id="viewRegion">查看区域设备 <span>→</span></button>
               </div>
             </div>
@@ -156,7 +156,7 @@
             </article>
             <article class="panel trend-panel">
               <div class="panel-head">
-                <div><p>近 7 天</p><h3>计量异常趋势</h3></div>
+                <div><p>近 7 天</p><h3>比差/角差异常趋势</h3></div>
                 <div class="legend"><span><i class="dot teal-dot"></i>异常数</span><span><i class="dot gray-dot"></i>已解决</span></div>
               </div>
               <div class="chart">
@@ -178,8 +178,8 @@
         </section>
 
         <section class="page simple-page" id="devices">
-          <div class="section-head"><div><p>ASSET MANAGEMENT</p><h2>计量设备</h2><span>统一查看设备运行状态与健康评分</span></div><button class="primary-btn">＋ 新增设备</button></div>
-          <div class="table-panel"><div class="table-tools"><input placeholder="搜索设备名称、编号或站点" /><button>全部状态⌄</button></div><table><thead><tr><th>设备</th><th>站点</th><th>类型</th><th>健康度</th><th>状态</th><th>最后通信</th></tr></thead><tbody id="deviceTable"></tbody></table></div>
+          <div class="section-head"><div><p>ASSET MANAGEMENT</p><h2>计量设备</h2><span>统一查看设备比差、角差与对应不确定度</span></div><button class="primary-btn">＋ 新增设备</button></div>
+          <div class="table-panel"><div class="table-tools"><input placeholder="搜索设备名称、编号或站点" /><button>全部状态⌄</button></div><table><thead><tr><th>设备</th><th>站点</th><th>类型</th><th>比差</th><th>角差</th><th>比差U95</th><th>角差U95</th><th>状态</th><th>最后通信</th></tr></thead><tbody id="deviceTable"></tbody></table></div>
         </section>
 
         <section class="page simple-page" id="alerts">
