@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081313" />
+    <title>MeterMind · 电力计量智能运维</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="MeterMind 首页">
+          <span class="brand-mark"><i></i><i></i><i></i></span>
+          <span>Meter<span>Mind</span></span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-item active" data-section="cockpit">
+            <span class="nav-icon">⌁</span><span>运维驾驶舱</span>
+          </button>
+          <button class="nav-item" data-section="devices">
+            <span class="nav-icon">▧</span><span>计量设备</span><b>2</b>
+          </button>
+          <button class="nav-item" data-section="alerts">
+            <span class="nav-icon">△</span><span>异常告警</span><b>5</b>
+          </button>
+          <button class="nav-item" data-section="orders">
+            <span class="nav-icon">▣</span><span>运维工单</span>
+          </button>
+          <button class="nav-item" data-section="knowledge">
+            <span class="nav-icon">◇</span><span>知识库</span>
+          </button>
+        </nav>
+        <div class="side-bottom">
+          <div class="system-status">
+            <span class="pulse"></span>
+            <div><strong>系统运行正常</strong><small>最后同步 10 秒前</small></div>
+          </div>
+          <button class="profile">
+            <span>王</span>
+            <div><strong>王工</strong><small>计量中心 · 管理员</small></div>
+            <em>•••</em>
+          </button>
+        </div>
+      </aside>
+
+      <main>
+        <header>
+          <div>
+            <p class="eyebrow">METERING OPERATIONS</p>
+            <h1>早上好，王工</h1>
+            <p>华东计量中心 · <span id="today"></span></p>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" id="searchButton" aria-label="搜索">⌕</button>
+            <button class="icon-btn notification" aria-label="通知">♢<i></i></button>
+            <button class="primary-btn" id="newTask"><span>＋</span> 发起巡检</button>
+          </div>
+        </header>
+
+        <section class="page active" id="cockpit">
+          <div class="hero-grid">
+            <article class="agent-card">
+              <div class="agent-head">
+                <div class="agent-orb"><span>✦</span></div>
+                <div>
+                  <div class="status-line"><span></span> AGENT ONLINE</div>
+                  <h2>计量运维智能体</h2>
+                  <p>设备诊断、异常研判、工单生成，我来协助你完成。</p>
+                </div>
+                <button class="more">•••</button>
+              </div>
+              <div class="agent-message">
+                <span class="mini-orb">✦</span>
+                <div>
+                  <p>检测到 <strong>3 项待处理异常</strong>，其中城南变电站 #2 主变高压侧电表疑似存在<strong>计量偏差</strong>，建议优先处理。</p>
+                  <div class="agent-actions">
+                    <button data-prompt="分析城南变电站 #2 主变高压侧电表异常">立即分析 <span>→</span></button>
+                    <button data-prompt="生成今日设备健康摘要">查看今日摘要</button>
+                  </div>
+                </div>
+              </div>
+              <div class="quick-prompts">
+                <span>快捷指令</span>
+                <button data-prompt="帮我分析当前线损异常">分析线损异常</button>
+                <button data-prompt="生成今日巡检计划">生成巡检计划</button>
+                <button data-prompt="查找最近离线的计量设备">查找离线设备</button>
+              </div>
+              <form class="agent-input" id="agentForm">
+                <span>✦</span>
+                <input id="agentQuery" placeholder="向智能体提问，例如：分析城南站线损异常…" autocomplete="off" />
+                <kbd>⌘ K</kbd>
+                <button type="submit" aria-label="发送">↑</button>
+              </form>
+            </article>
+
+            <article class="health-card">
+              <div class="card-title"><div><span>实时状态</span><h3>设备健康度</h3></div><button>今日⌄</button></div>
+              <div class="gauge">
+                <svg viewBox="0 0 220 125" aria-label="设备健康度 92.6%">
+                  <path class="gauge-bg" d="M25 105 A85 85 0 0 1 195 105" />
+                  <path class="gauge-value" d="M25 105 A85 85 0 0 1 195 105" />
+                </svg>
+                <div><strong>92.6</strong><span>%</span><small>健康</small></div>
+              </div>
+              <div class="health-stats">
+                <div><i class="green"></i><span>正常</span><strong>1,246</strong></div>
+                <div><i class="amber"></i><span>关注</span><strong>18</strong></div>
+                <div><i class="red"></i><span>异常</span><strong>5</strong></div>
+              </div>
+              <div class="health-foot"><span>较昨日</span><strong>↑ 1.2%</strong><small>持续改善</small></div>
+            </article>
+          </div>
+
+          <div class="metrics">
+            <article><div class="metric-icon teal">⌁</div><div><span>在线率</span><strong>99.2<small>%</small></strong><em class="up">↑ 0.3%</em></div><svg class="spark teal-line" viewBox="0 0 100 38"><polyline points="0,30 12,26 24,29 37,20 50,23 62,13 75,17 88,8 100,10"/></svg></article>
+            <article><div class="metric-icon blue">ϟ</div><div><span>今日采集成功率</span><strong>98.7<small>%</small></strong><em class="up">↑ 0.8%</em></div><svg class="spark blue-line" viewBox="0 0 100 38"><polyline points="0,28 12,29 24,23 37,27 50,19 62,21 75,12 88,14 100,7"/></svg></article>
+            <article><div class="metric-icon amber">△</div><div><span>待处理告警</span><strong>5<small>项</small></strong><em class="down">↓ 2 项</em></div><div class="metric-note"><b>2</b> 项高优先级</div></article>
+            <article><div class="metric-icon violet">▣</div><div><span>进行中工单</span><strong>8<small>单</small></strong><em>今日新增 3</em></div><div class="metric-note">完成率 <b class="violet-text">76%</b></div></article>
+          </div>
+
+          <article class="region-panel">
+            <div class="panel-head">
+              <div><p>REGIONAL SITUATION</p><h3>区域计量运行态势</h3></div>
+              <div class="map-filter"><span><i class="dot teal-dot"></i>正常</span><span><i class="dot amber-dot"></i>关注</span><span><i class="dot red-dot"></i>异常</span><button>华东区域⌄</button></div>
+            </div>
+            <div class="region-layout">
+              <div class="map-wrap" aria-label="华东计量设备区域分布图">
+                <div id="regionMap"></div>
+                <div class="map-loading" id="mapLoading">正在加载真实地图…</div>
+              </div>
+              <div class="region-detail">
+                <div class="region-title"><div><span>当前区域</span><h4 id="regionName">上海</h4></div><strong id="regionHealth">96.8<small>%</small></strong></div>
+                <div class="region-status"><span class="pulse"></span><p id="regionStatus">整体运行稳定</p></div>
+                <dl>
+                  <div><dt>计量设备</dt><dd id="regionDevices">286</dd></div><div><dt>在线率</dt><dd id="regionOnline">99.6%</dd></div>
+                  <div><dt>待处理告警</dt><dd id="regionAlerts">0</dd></div><div><dt>今日工单</dt><dd id="regionOrders">2</dd></div>
+                </dl>
+                <div class="region-ranking"><span>区域健康度排名</span><strong id="regionRank">1 / 8</strong></div>
+                <button id="viewRegion">查看区域设备 <span>→</span></button>
+              </div>
+            </div>
+          </article>
+
+          <div class="content-grid">
+            <article class="panel alert-panel">
+              <div class="panel-head">
+                <div><p>需要关注</p><h3>智能告警研判</h3></div>
+                <button data-section-link="alerts">查看全部 <span>→</span></button>
+              </div>
+              <div class="alert-list" id="alertList"></div>
+            </article>
+            <article class="panel trend-panel">
+              <div class="panel-head">
+                <div><p>近 7 天</p><h3>计量异常趋势</h3></div>
+                <div class="legend"><span><i class="dot teal-dot"></i>异常数</span><span><i class="dot gray-dot"></i>已解决</span></div>
+              </div>
+              <div class="chart">
+                <div class="y-axis"><span>12</span><span>8</span><span>4</span><span>0</span></div>
+                <svg viewBox="0 0 600 210" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#46d7bd" stop-opacity=".25"/><stop offset="1" stop-color="#46d7bd" stop-opacity="0"/></linearGradient>
+                  </defs>
+                  <g class="grid-lines"><line x1="0" y1="10" x2="600" y2="10"/><line x1="0" y1="70" x2="600" y2="70"/><line x1="0" y1="130" x2="600" y2="130"/><line x1="0" y1="190" x2="600" y2="190"/></g>
+                  <path class="area-path" d="M0 147 C50 142,70 98,100 108 S170 131,200 104 S265 63,300 82 S370 151,400 125 S470 93,500 107 S565 57,600 65 L600 190 L0 190Z"/>
+                  <path class="main-line" d="M0 147 C50 142,70 98,100 108 S170 131,200 104 S265 63,300 82 S370 151,400 125 S470 93,500 107 S565 57,600 65"/>
+                  <path class="second-line" d="M0 165 C45 162,65 144,100 151 S165 162,200 145 S260 121,300 133 S365 169,400 155 S465 131,500 141 S560 116,600 121"/>
+                </svg>
+                <div class="x-axis"><span>6/27</span><span>6/28</span><span>6/29</span><span>6/30</span><span>7/01</span><span>7/02</span><span>今日</span></div>
+              </div>
+              <div class="trend-summary"><div><span>本周累计异常</span><strong>42</strong><small>项</small></div><div><span>智能识别准确率</span><strong>96.8</strong><small>%</small></div><em>较上周下降 12%</em></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page simple-page" id="devices">
+          <div class="section-head"><div><p>ASSET MANAGEMENT</p><h2>计量设备</h2><span>统一查看设备运行状态与健康评分</span></div><button class="primary-btn">＋ 新增设备</button></div>
+          <div class="table-panel"><div class="table-tools"><input placeholder="搜索设备名称、编号或站点" /><button>全部状态⌄</button></div><table><thead><tr><th>设备</th><th>站点</th><th>类型</th><th>健康度</th><th>状态</th><th>最后通信</th></tr></thead><tbody id="deviceTable"></tbody></table></div>
+        </section>
+
+        <section class="page simple-page" id="alerts">
+          <div class="section-head"><div><p>ANOMALY CENTER</p><h2>异常告警</h2><span>由智能体持续研判并给出处置建议</span></div></div>
+          <div class="alert-board" id="alertBoard"></div>
+        </section>
+
+        <section class="page simple-page" id="orders">
+          <div class="section-head"><div><p>WORK ORDER</p><h2>运维工单</h2><span>从异常发现到现场消缺的闭环跟踪</span></div><button class="primary-btn">＋ 新建工单</button></div>
+          <div class="kanban" id="kanban"></div>
+        </section>
+
+        <section class="page simple-page" id="knowledge">
+          <div class="section-head"><div><p>KNOWLEDGE BASE</p><h2>计量知识库</h2><span>规程、案例与专家经验，为 Agent 提供可靠依据</span></div></div>
+          <div class="knowledge-grid" id="knowledgeGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="agent-drawer" id="agentDrawer">
+      <div class="drawer-head"><div><span class="mini-orb">✦</span><div><strong>MeterMind Agent</strong><small><i></i> 正在运行</small></div></div><button id="closeDrawer">×</button></div>
+      <div class="conversation" id="conversation">
+        <div class="message assistant"><span>✦</span><div>你好，我可以结合设备遥测、历史工单和计量规程，协助你定位异常并生成处置方案。</div></div>
+      </div>
+      <div class="reasoning hidden" id="reasoning"><div><span></span><span></span><span></span></div><p>正在检索设备数据与历史案例…</p></div>
+      <form class="drawer-form" id="drawerForm"><input id="drawerInput" placeholder="继续追问…" /><button>↑</button></form>
+    </aside>
+
+    <div class="toast" id="toast"><span>✓</span><p></p></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
