@@ -1057,14 +1057,14 @@ main {
   border-radius: 6px;
 }
 
-.vitae-profile h1 {
+.vitae-profile h2 {
   margin: 0 0 6px;
   color: var(--navy) !important;
   font-size: 1.8rem;
   font-weight: 800 !important;
 }
 
-.vitae-profile h1 span {
+.vitae-profile h2 span {
   color: var(--teal);
   font-weight: 800;
 }
@@ -1510,6 +1510,15 @@ span.highlight {
     justify-self: start;
     width: 72px;
     max-width: 72px;
+  }
+
+  .vitae-timeline-description a,
+  .vitae-support-list a {
+    display: inline-block;
+    min-height: 40px;
+    padding: 8px 0;
+    line-height: 24px;
+    vertical-align: middle;
   }
 
   .content-section,
