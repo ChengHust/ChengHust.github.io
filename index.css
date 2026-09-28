@@ -5,7 +5,9 @@
   --muted: #52616b;
   --teal: #007f86;
   --blue: #007f86;
-  --gold: #a86f18;
+  --gold: #7a4f00;
+  --gold-accent: #a86f18;
+  --gold-accent-rgb: 168, 111, 24;
   --red: #b42318;
   --bg: #f7f8f6;
   --surface: #ffffff;
@@ -674,7 +676,7 @@ main {
 }
 
 .pub-list li::marker {
-  color: var(--gold);
+  color: var(--gold-accent);
   font-size: 0.95rem;
   font-weight: 900;
 }
@@ -808,10 +810,10 @@ main {
 .esi-badge {
   display: inline-block;
   padding: 3px 10px;
-  border: 1px solid rgba(168, 111, 24, 0.35);
+  border: 1px solid rgba(var(--gold-accent-rgb), 0.35);
   border-radius: 999px !important;
   color: var(--gold) !important;
-  background: rgba(168, 111, 24, 0.1) !important;
+  background: rgba(var(--gold-accent-rgb), 0.1) !important;
   font-size: 0.82rem;
   font-weight: 800 !important;
   line-height: 1.3;
