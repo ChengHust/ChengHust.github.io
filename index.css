@@ -1252,91 +1252,227 @@ main {
 }
 
 /* Smart Grid Task Force */
-.tf-hero {
+.tf-page {
+  padding-top: var(--space-6);
+  border-top: 0;
+}
+
+.tf-page .tf-hero {
   display: grid;
-  grid-template-columns: 80px minmax(0, 1fr);
+  grid-template-columns: 96px minmax(0, 1fr);
   gap: var(--space-5);
   align-items: center;
   margin-top: var(--space-4);
-  padding: var(--space-4) !important;
-  border: 1px solid var(--line);
+  padding: var(--space-5) !important;
+  border: 1px solid var(--navy);
   border-radius: var(--radius);
   background: var(--navy) !important;
+  color: #ffffff;
+  box-shadow: var(--shadow);
 }
 
-.tf-hero img {
+.tf-page .tf-mark-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: var(--space-1);
+  border: 1px solid rgba(185, 225, 223, 0.35);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tf-page .tf-hero img {
+  display: block;
   width: 100%;
-  max-width: 80px;
+  max-width: 96px;
 }
 
-.tf-hero h1 {
-  margin: 0 0 6px;
+.tf-page .tf-hero .eyebrow {
+  margin-bottom: var(--space-2);
+  color: #b9e1df;
+}
+
+.tf-page .tf-hero h1 {
+  margin: 0 0 var(--space-2);
   color: #ffffff !important;
-  font-size: 1.8rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  overflow-wrap: anywhere;
 }
 
-.tf-hero .tf-sub {
+.tf-page .tf-hero .tf-sub {
+  margin: 0 0 var(--space-3);
   color: #b9e1df !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
-.tf-link-grid {
+.tf-page .tf-mission {
+  max-width: 780px;
+  margin: 0;
+  color: #eef8f7;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.tf-page .tf-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.tf-page .tf-website {
+  border-color: #b9e1df;
+}
+
+.tf-page .tf-mark-link:hover,
+.tf-page .tf-mark-link:focus-visible {
+  border-color: var(--teal);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tf-page .tf-section-heading {
+  margin-top: var(--space-6);
+}
+
+.tf-page .tf-link-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: var(--space-4);
   margin: var(--space-4) 0 var(--space-1);
 }
 
-.tf-card {
+.tf-page .tf-card {
+  display: flex;
+  min-width: 0;
+  min-height: 100%;
+  flex-direction: column;
   padding: var(--space-4) !important;
 }
 
-.tf-card h3 {
-  margin-top: 0;
+.tf-page .tf-card h3 {
+  margin: 0 0 var(--space-2);
+  color: var(--navy);
+  font-size: 1.15rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
-.tf-card h3 a {
-  color: inherit;
-}
-
-.tf-card p {
+.tf-page .tf-card p {
+  flex: 1;
   margin-bottom: 0;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
-.tf-card .tf-tag {
+.tf-page .tf-card .tf-tag {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  min-height: 28px;
   margin-bottom: var(--space-2);
+  padding: 3px 10px;
+  border: 1px solid rgba(0, 127, 134, 0.28);
+  border-radius: 999px;
+  color: var(--teal);
+  background: rgba(0, 127, 134, 0.08);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.25;
 }
 
-.tf-about {
-  margin-top: var(--space-4);
-  padding: var(--space-5) 0 var(--space-1);
+.tf-page .tf-card.tf-prototype {
+  border-color: var(--teal) !important;
+  background: #f0f8f7 !important;
+}
+
+.tf-page .tf-card.tf-prototype .tf-tag {
+  border-color: rgba(168, 111, 24, 0.35);
+  color: var(--gold);
+  background: rgba(168, 111, 24, 0.1);
+}
+
+.tf-page .tf-open {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  margin-top: var(--space-3);
+  padding: 9px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--navy);
+  background: var(--surface);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.tf-page .tf-open:hover,
+.tf-page .tf-open:focus-visible {
+  border-color: var(--teal);
+  color: var(--navy);
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.tf-page .tf-activity-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.tf-page .tf-activity-group {
+  min-width: 0;
   border-top: 1px solid var(--line);
 }
 
-.tf-about p {
-  max-width: 720px;
-  line-height: 1.7;
+.tf-page .tf-activity-group h3 {
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--navy);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
-.tf-events {
-  margin-top: var(--space-2);
+.tf-page .tf-activity-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.tf-events li {
+.tf-page .tf-activity-list li {
   padding: var(--space-3) 0;
   border-top: 1px solid var(--line);
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
-.tf-events li:first-child {
+.tf-page .tf-activity-list li:first-child {
   border-top: 0;
 }
 
-.tf-events .ev-date {
+.tf-page .tf-activity-list a {
+  display: inline-block;
+  min-height: 40px;
+  padding: 8px 0;
+  color: var(--teal);
+  vertical-align: middle;
+}
+
+.tf-page .tf-activity-list a:hover,
+.tf-page .tf-activity-list a:focus-visible {
+  color: var(--navy);
+}
+
+.tf-page .tf-activity-list .ev-date {
   color: var(--gold) !important;
+  font-weight: 800;
 }
 
 /* Poster and diagram pages that reuse this stylesheet */
@@ -1495,6 +1631,21 @@ span.highlight {
   .vitae-profile,
   .tf-hero {
     gap: var(--space-4);
+  }
+
+  /* Smart Grid TF: keep the scoped desktop grids from overriding the mobile shell. */
+  .tf-page .tf-hero {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4);
+  }
+
+  .tf-page .tf-link-grid,
+  .tf-page .tf-activity-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-page .tf-hero-actions {
+    align-items: flex-start;
   }
 
   .vitae-profile img {
