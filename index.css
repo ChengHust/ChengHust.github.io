@@ -310,8 +310,8 @@ main {
 .resource-grid a,
 .pub-list .pub-links a,
 .v-links a {
-  min-height: 36px;
-  padding: 7px 11px;
+  min-height: 44px;
+  padding: 9px 11px;
   font-size: 0.88rem;
 }
 
@@ -689,9 +689,9 @@ main {
 
 .pub-list .pub-links a {
   display: inline-flex;
-  min-height: 30px;
+  min-height: 40px;
   margin: 3px 6px 0 0;
-  padding: 3px 8px;
+  padding: 7px 8px;
   border-color: var(--line);
   color: var(--muted);
   background: var(--surface-soft);
@@ -1067,7 +1067,8 @@ span.highlight {
   }
 
   .theme-grid,
-  .impact-grid {
+  .impact-grid,
+  .tf-link-grid {
     grid-template-columns: 1fr;
   }
 
