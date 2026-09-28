@@ -127,7 +127,7 @@ button,
 .paper-links a,
 .profile-links a,
 .resource-grid a,
-.pub-list .pub-links a,
+.publications-page .pub-list .pub-links a,
 .v-links a {
   min-height: 44px;
 }
@@ -296,7 +296,7 @@ main {
 .paper-links a,
 .profile-links a,
 .resource-grid a,
-.pub-list .pub-links a,
+.publications-page .pub-list .pub-links a,
 .v-links a {
   display: inline-flex;
   align-items: center;
@@ -320,7 +320,7 @@ main {
 .paper-links a,
 .profile-links a,
 .resource-grid a,
-.pub-list .pub-links a,
+.publications-page .pub-list .pub-links a,
 .v-links a {
   min-height: 44px;
   padding: 9px 11px;
@@ -335,8 +335,8 @@ main {
 .profile-links a:focus-visible,
 .resource-grid a:hover,
 .resource-grid a:focus-visible,
-.pub-list .pub-links a:hover,
-.pub-list .pub-links a:focus-visible,
+.publications-page .pub-list .pub-links a:hover,
+.publications-page .pub-list .pub-links a:focus-visible,
 .v-links a:hover,
 .v-links a:focus-visible {
   border-color: var(--teal);
@@ -517,7 +517,7 @@ main {
 .tf-about p,
 .poster-section p,
 .poster-section li,
-.pub-list .pub-note {
+.publications-page .pub-list .pub-note {
   color: var(--muted);
 }
 
@@ -560,9 +560,10 @@ main {
   margin-bottom: var(--space-4);
 }
 
+.section-heading h1,
 .section-heading h2,
 .collaboration-section h2,
-.pub-section h2,
+.publications-page .pub-section h2,
 .vitae-section h2,
 .poster-hero h1,
 .tf-hero h1 {
@@ -573,6 +574,7 @@ main {
   line-height: 1.1;
 }
 
+.section-heading h1,
 .section-heading h2,
 .collaboration-section h2 {
   margin-bottom: 0;
@@ -603,7 +605,7 @@ main {
 .timeline time,
 .theme-index,
 .venue,
-.pub-list .pub-venue,
+.publications-page .pub-list .pub-venue,
 .tf-events .ev-date,
 .poster-section .kicker {
   color: var(--gold) !important;
@@ -637,16 +639,16 @@ main {
 }
 
 .publication-card h3 a,
-.pub-list .pub-title,
-.pub-list .pub-title a {
+.publications-page .pub-list .pub-title,
+.publications-page .pub-list .pub-title a {
   color: var(--navy);
   font-weight: 800;
 }
 
 .publication-card h3 a:hover,
 .publication-card h3 a:focus-visible,
-.pub-list .pub-title a:hover,
-.pub-list .pub-title a:focus-visible {
+.publications-page .pub-list .pub-title a:hover,
+.publications-page .pub-list .pub-title a:focus-visible {
   color: var(--teal);
 }
 
@@ -691,20 +693,20 @@ main {
   border-top: 0;
 }
 
-.publication-intro {
+.publications-page .publication-intro {
   max-width: 760px;
   margin-bottom: var(--space-4);
   color: var(--muted);
 }
 
-.pub-summary {
+.publications-page .pub-summary {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-2);
   margin: var(--space-4) 0;
 }
 
-.pub-summary > div {
+.publications-page .pub-summary > div {
   display: grid;
   gap: 2px;
   min-width: 0;
@@ -714,21 +716,21 @@ main {
   background: var(--surface);
 }
 
-.pub-summary strong {
+.publications-page .pub-summary strong {
   color: var(--navy);
   font-size: 1.45rem;
   font-weight: 900;
   line-height: 1;
 }
 
-.pub-summary span {
+.publications-page .pub-summary span {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1.3;
 }
 
-.publication-nav {
+.publications-page .publication-nav {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -737,7 +739,7 @@ main {
   border-bottom: 1px solid var(--line-strong);
 }
 
-.publication-nav a {
+.publications-page .publication-nav a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -750,49 +752,49 @@ main {
   font-weight: 800;
 }
 
-.publication-nav a:hover,
-.publication-nav a:focus-visible {
+.publications-page .publication-nav a:hover,
+.publications-page .publication-nav a:focus-visible {
   border-color: var(--teal);
   color: var(--navy);
   background: var(--surface-soft);
 }
 
-.pub-section {
+.publications-page .pub-section {
   margin-top: var(--space-6);
   scroll-margin-top: 84px;
 }
 
-.pub-section-heading {
+.publications-page .pub-section-heading {
   display: flex;
   align-items: baseline;
   gap: var(--space-2);
   margin-bottom: var(--space-2);
 }
 
-.pub-section-heading h2 {
+.publications-page .pub-section-heading h2 {
   margin-bottom: 0;
 }
 
-.pub-section-heading .pub-count {
+.publications-page .pub-section-heading .pub-count {
   margin-left: 0;
 }
 
-.pub-section h2 {
+.publications-page .pub-section h2 {
   margin: 0 0 4px;
   font-size: clamp(1.6rem, 3vw, 2.1rem);
 }
 
-.pub-section > p {
+.publications-page .pub-section > p {
   color: var(--muted);
 }
 
-.pub-count {
+.publications-page .pub-count {
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 700;
 }
 
-.pub-list {
+.publications-page .pub-list {
   margin: 0;
   padding-left: 0;
   list-style: none;
@@ -800,31 +802,31 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
-.pub-list li {
+.publications-page .pub-list li {
   padding: var(--space-4) 0 var(--space-4) var(--space-1);
   border-top: 1px solid var(--line);
   font-size: 1rem;
   line-height: 1.6;
 }
 
-.pub-list li:first-child {
+.publications-page .pub-list li:first-child {
   border-top: 0;
 }
 
-.pub-list li::marker {
+.publications-page .pub-list li::marker {
   color: var(--gold);
   font-size: 0.95rem;
   font-weight: 900;
 }
 
-.pub-list .pub-entry {
+.publications-page .pub-list .pub-entry {
   position: relative;
   display: block;
   padding-left: 2.35rem;
   counter-increment: publication-entry;
 }
 
-.pub-list .pub-entry::before {
+.publications-page .pub-list .pub-entry::before {
   position: absolute;
   top: var(--space-4);
   left: 0;
@@ -834,11 +836,11 @@ main {
   font-weight: 900;
 }
 
-.pub-list .pub-entry + .pub-entry {
+.publications-page .pub-list .pub-entry + .pub-entry {
   border-top: 1px solid var(--line);
 }
 
-.pub-list .pub-year-marker {
+.publications-page .pub-list .pub-year-marker {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -849,24 +851,24 @@ main {
   list-style: none;
 }
 
-.pub-list .pub-year-marker:first-child {
+.publications-page .pub-list .pub-year-marker:first-child {
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
 }
 
-.pub-list .pub-year-marker + .pub-entry {
+.publications-page .pub-list .pub-year-marker + .pub-entry {
   border-top: 0;
 }
 
-.pub-list .pub-year-marker::before {
+.publications-page .pub-list .pub-year-marker::before {
   width: 28px;
   height: 2px;
   background: var(--gold-accent);
   content: "";
 }
 
-.pub-year-label {
+.publications-page .pub-year-label {
   color: var(--gold);
   font-size: 0.86rem;
   font-weight: 900;
@@ -874,47 +876,47 @@ main {
   line-height: 1.2;
 }
 
-.pub-list .pub-title,
-.pub-list .pub-authors,
-.pub-list .pub-meta {
+.publications-page .pub-list .pub-title,
+.publications-page .pub-list .pub-authors,
+.publications-page .pub-list .pub-meta {
   display: block;
 }
 
-.pub-list .pub-title {
+.publications-page .pub-list .pub-title {
   color: var(--navy);
   font-weight: 850;
   line-height: 1.45;
-  overflow: visible;
+  overflow-wrap: anywhere;
 }
 
-.pub-list .pub-authors {
+.publications-page .pub-list .pub-authors {
   margin-top: 4px;
 }
 
-.pub-list .pub-author-self {
+.publications-page .pub-list .pub-author-self {
   color: var(--navy);
   font-weight: 900;
 }
 
-.pub-list .pub-meta {
+.publications-page .pub-list .pub-meta {
   margin-top: 4px;
   color: var(--muted);
 }
 
-.pub-list .pub-venue {
+.publications-page .pub-list .pub-venue {
   color: var(--gold);
   font-weight: 800;
 }
 
-.pub-list .pub-note {
+.publications-page .pub-list .pub-note {
   font-size: 0.9rem;
 }
 
-.pub-list .pub-links {
+.publications-page .pub-list .pub-links {
   margin-top: var(--space-1);
 }
 
-.pub-list .pub-links a {
+.publications-page .pub-list .pub-links a {
   display: inline-flex;
   min-height: 44px;
   margin: 3px 6px 0 0;
@@ -925,8 +927,8 @@ main {
   font-size: 0.82rem;
 }
 
-.pub-list .pub-links a:hover,
-.pub-list .pub-links a:focus-visible {
+.publications-page .pub-list .pub-links a:hover,
+.publications-page .pub-list .pub-links a:focus-visible {
   border-color: var(--teal);
   color: var(--navy);
   background: var(--surface);
@@ -948,6 +950,7 @@ main {
 }
 
 .more-research .more-research-list {
+  margin: 0;
   padding-left: 0;
   list-style: none;
 }
@@ -964,32 +967,70 @@ main {
   border-top: 0;
 }
 
-.more-research .more-research-list .pub-title {
+.more-research .more-research-list .pub-title,
+.more-research .more-research-list .pub-title a {
   margin: 0 0 var(--space-1);
+  color: var(--navy);
   font-size: 1rem;
+  font-weight: 800;
   line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.more-research .more-research-list .pub-title a:hover,
+.more-research .more-research-list .pub-title a:focus-visible {
+  color: var(--teal);
 }
 
 .more-research .more-research-list .pub-venue {
   margin-bottom: var(--space-1);
+  color: var(--gold);
   font-size: 0.8rem;
+  font-weight: 800;
 }
 
 .more-research .more-research-list .pub-note {
   margin-bottom: 0;
+  color: var(--muted);
 }
 
 .more-research .more-research-list .pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
   margin-top: var(--space-2);
 }
 
-.pub-highlight {
+.more-research .more-research-list .pub-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 9px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--navy);
+  background: var(--surface);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.more-research .more-research-list .pub-links a:hover,
+.more-research .more-research-list .pub-links a:focus-visible {
+  border-color: var(--teal);
+  color: var(--navy);
+  background: var(--surface-soft);
+}
+
+.publications-page .pub-highlight {
   color: var(--red) !important;
   font-size: 0.85rem;
   font-weight: 800;
 }
 
-.bib-link {
+.publications-page .bib-link {
   margin-top: var(--space-5);
   padding: var(--space-4) 0;
   border-top: 1px solid var(--line);
@@ -1391,7 +1432,7 @@ span.highlight {
   }
 
   .vitae-section,
-  .pub-section {
+  .publications-page .pub-section {
     margin-top: var(--space-5);
     padding-block: var(--space-5);
   }
@@ -1437,7 +1478,7 @@ span.highlight {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .pub-summary {
+  .publications-page .pub-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1450,11 +1491,11 @@ span.highlight {
     gap: var(--space-1);
   }
 
-  .pub-list .pub-entry {
+  .publications-page .pub-list .pub-entry {
     padding-left: 1.8rem;
   }
 
-  .pub-list li {
+  .publications-page .pub-list li {
     padding-left: 0;
   }
 
