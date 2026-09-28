@@ -676,7 +676,7 @@ main {
 }
 
 .pub-list li::marker {
-  color: var(--gold-accent);
+  color: var(--gold);
   font-size: 0.95rem;
   font-weight: 900;
 }
