@@ -1037,13 +1037,18 @@ main {
 }
 
 /* Vitae */
+.vitae-page {
+  padding-top: var(--space-6);
+  border-top: 0;
+}
+
 .vitae-profile {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   gap: var(--space-5);
   align-items: start;
   margin-top: var(--space-4);
-  padding: var(--space-4) !important;
+  padding: var(--space-4) 0 !important;
 }
 
 .vitae-profile img {
@@ -1059,6 +1064,11 @@ main {
   font-weight: 800 !important;
 }
 
+.vitae-profile h1 span {
+  color: var(--teal);
+  font-weight: 800;
+}
+
 .vitae-profile .role {
   margin: 0 0 4px;
   color: var(--navy) !important;
@@ -1067,13 +1077,40 @@ main {
 
 .vitae-profile .affiliation,
 .vitae-profile .email,
-.exp-meta,
-.exp-desc {
+.vitae-timeline-description {
   color: var(--muted) !important;
 }
 
 .vitae-profile .affiliation {
   margin: 0 0 var(--space-3);
+}
+
+.vitae-summary {
+  max-width: 720px;
+  margin: 0 0 var(--space-3);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.vitae-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.vitae-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid rgba(0, 127, 134, 0.3);
+  border-radius: 999px;
+  color: var(--teal);
+  background: rgba(0, 127, 134, 0.08);
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1.25;
 }
 
 .vitae-profile .email {
@@ -1087,8 +1124,21 @@ main {
   gap: var(--space-2);
 }
 
+.vitae-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: var(--space-6);
+  align-items: start;
+  margin-top: var(--space-4);
+}
+
+.vitae-main,
+.vitae-support {
+  min-width: 0;
+}
+
 .vitae-section {
-  padding: var(--space-6) 0;
+  padding: var(--space-5) 0;
   border-top: 1px solid var(--line);
 }
 
@@ -1100,71 +1150,105 @@ main {
   margin: 0 0 var(--space-4);
 }
 
-.vitae-list {
+.vitae-timeline {
+  display: grid;
+}
+
+.vitae-timeline-item {
+  display: grid;
+  grid-template-columns: 126px minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line);
+}
+
+.vitae-timeline-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.vitae-timeline-date {
+  color: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.vitae-timeline-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 80px;
+  gap: var(--space-4);
+  min-width: 0;
+  align-items: start;
+}
+
+.vitae-timeline-content > div {
+  min-width: 0;
+}
+
+.vitae-timeline-institution {
+  margin: 0 0 4px;
+  color: var(--navy);
+  font-size: 1.1rem;
+  font-weight: 850;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.vitae-timeline-role {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.vitae-timeline-description {
+  margin: var(--space-2) 0 0;
+  line-height: 1.6;
+}
+
+.vitae-timeline-logo {
+  justify-self: end;
+  width: 80px;
+  max-height: 72px;
+  object-fit: contain;
+}
+
+.vitae-support-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.vitae-list li {
+.vitae-support-list li {
   padding: var(--space-3) 0;
   border-top: 1px solid var(--line);
-  font-size: 1rem;
-  line-height: 1.6;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
 }
 
-.vitae-list li:first-child {
+.vitae-support-list li:first-child {
+  padding-top: 0;
   border-top: 0;
 }
 
-.vitae-list strong {
+.vitae-support-list strong {
   color: var(--navy);
 }
 
-.role-tag,
-.tf-card .tf-tag,
-.poster-hero .venue-badge,
-.esi-badge {
+.vitae-support-list .role-tag {
   display: inline-block;
-  padding: 3px 10px;
-  border: 1px solid rgba(var(--gold-accent-rgb), 0.35);
-  border-radius: 999px !important;
-  color: var(--gold) !important;
-  background: rgba(var(--gold-accent-rgb), 0.1) !important;
-  font-size: 0.82rem;
-  font-weight: 800 !important;
-  line-height: 1.3;
-}
-
-.exp-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 100px;
-  gap: var(--space-4);
-  align-items: center;
-  padding: var(--space-4) 0 !important;
-  border-width: 1px 0 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none;
-}
-
-.exp-card:first-of-type {
-  border-top: 0 !important;
-}
-
-.exp-card h3 {
-  margin-bottom: var(--space-2);
-  font-size: 1.15rem;
-}
-
-.exp-card p {
-  margin-bottom: 0;
-}
-
-.exp-card img {
-  justify-self: end;
-  max-height: 72px;
-  object-fit: contain;
+  min-height: 24px;
+  margin-inline: 2px;
+  padding: 2px 8px;
+  border: 1px solid rgba(0, 127, 134, 0.3);
+  border-radius: 999px;
+  color: var(--teal);
+  background: rgba(0, 127, 134, 0.08);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.25;
+  white-space: nowrap;
 }
 
 /* Smart Grid Task Force */
@@ -1369,7 +1453,8 @@ span.highlight {
   .section-heading,
   .collaboration-section,
   .vitae-profile,
-  .exp-card,
+  .vitae-shell,
+  .vitae-timeline-item,
   .tf-hero {
     grid-template-columns: 1fr !important;
   }
@@ -1416,13 +1501,15 @@ span.highlight {
     width: min(180px, 100%);
   }
 
-  .exp-card {
-    align-items: start;
+  .vitae-timeline-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
   }
 
-  .exp-card img {
+  .vitae-timeline-logo {
     justify-self: start;
-    order: -1;
+    width: 72px;
+    max-width: 72px;
   }
 
   .content-section,

@@ -56,112 +56,7 @@
   }
   </script>
 
-  <style>
-    .vitae-profile {
-      display: grid;
-      grid-template-columns: 180px minmax(0, 1fr);
-      gap: 32px;
-      align-items: start;
-      padding: 24px 0 32px;
-    }
-    .vitae-profile img {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-    }
-    .vitae-profile h1 {
-      margin: 0 0 6px;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--ink);
-    }
-    .vitae-profile .role {
-      margin: 0 0 4px;
-      color: var(--navy);
-      font-weight: 800;
-    }
-    .vitae-profile .affiliation {
-      margin: 0 0 12px;
-      color: var(--muted);
-    }
-    .vitae-profile .email {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    .vitae-profile .v-links { display: flex; flex-wrap: wrap; gap: 8px; }
-    .vitae-profile .v-links a {
-      padding: 6px 12px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      color: var(--navy);
-      background: var(--surface-soft);
-      font-weight: 800;
-      font-size: 0.88rem;
-    }
-    .vitae-profile .v-links a:hover {
-      border-color: var(--teal);
-      color: var(--teal);
-      background: #ffffff;
-    }
-    .vitae-section { padding: 36px 0; border-top: 1px solid var(--line); }
-    .vitae-section:first-of-type { border-top: none; }
-    .vitae-section h2 {
-      margin: 0 0 20px;
-      color: var(--navy);
-      font-weight: 900;
-      font-size: 1.5rem;
-    }
-    .vitae-list { margin: 0; padding: 0; list-style: none; }
-    .vitae-list li {
-      padding: 16px 0;
-      border-top: 1px solid var(--line);
-      line-height: 1.6;
-      font-size: 1rem;
-    }
-    .vitae-list li:first-child { border-top: 0; }
-    .vitae-list strong { color: var(--navy); }
-    .vitae-list .role-tag {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 4px;
-      background: var(--surface-soft);
-      color: var(--teal);
-      font-weight: 800;
-      font-size: 0.82rem;
-    }
-    .exp-card {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 100px;
-      gap: 20px;
-      align-items: center;
-      padding: 20px 0;
-      border-top: 1px solid var(--line);
-    }
-    .exp-card:first-of-type { border-top: 0; }
-    .exp-card img {
-      width: 100%;
-      max-width: 100px;
-      max-height: 80px;
-      object-fit: contain;
-      margin: 0 auto;
-      display: block;
-    }
-    .exp-card h3 {
-      margin: 0 0 4px;
-      color: var(--navy);
-      font-size: 1.1rem;
-      font-weight: 900;
-    }
-    .exp-card .exp-meta { color: var(--muted); font-size: 0.92rem; margin: 2px 0; }
-    .exp-card .exp-desc { color: var(--muted); font-size: 0.95rem; margin: 6px 0 0; }
-    @media (max-width: 700px) {
-      .vitae-profile { grid-template-columns: 1fr; }
-      .vitae-profile img { max-width: 160px; }
-      .exp-card { grid-template-columns: 1fr; }
-      .exp-card img { max-width: 80px; }
-    }
-  </style>
+
 </head>
 
 <body>
@@ -184,23 +79,28 @@
   </header>
 
   <main>
-    <section class="content-section" style="border-top:0; padding-top:40px;">
-      <div class="section-heading" style="margin-bottom: 4px;">
+    <section class="content-section vitae-page" aria-label="Academic vitae">
+      <div class="section-heading compact">
         <p class="eyebrow">Curriculum vitae</p>
-        <h2>Academic profile</h2>
       </div>
 
-      <div class="vitae-profile">
+      <div class="vitae-profile vitae-profile-overview">
         <a href="images/Cheng_He_Origin.jpg">
           <img src="images/Cheng_He_Origin.jpg" alt="Profile photo of Cheng He">
         </a>
         <div>
-          <h1>Cheng He <span style="color: var(--teal); font-weight: 800;">何成</span></h1>
+          <h1>Cheng He <span>何成</span></h1>
           <p class="role">Associate Professor, Associate Head of Department</p>
           <p class="affiliation">School of Electrical and Electronic Engineering, Huazhong University of Science and Technology</p>
+          <p class="vitae-summary">Artificial/Computational Intelligence for Electrical and Electronic Engineering.</p>
+          <div class="vitae-tags" aria-label="Research directions">
+            <span>Artificial/Computational Intelligence</span>
+            <span>Large-scale optimization</span>
+            <span>Electrical and Electronic Engineering</span>
+          </div>
           <p class="email">chenghehust [at] gmail.com</p>
           <div class="v-links">
-            <a href="https://scholar.google.com/citations?user=I28xMFQAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://scholar.google.com/citations?user=I28xMFQAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar</a>
             <a href="https://github.com/ChengHust" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://orcid.org/0000-0003-4218-8454" target="_blank" rel="me noopener noreferrer">ORCID</a>
             <a href="https://www.linkedin.com/in/%E6%88%90-%E4%BD%95-74703b86/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -208,113 +108,135 @@
         </div>
       </div>
 
-      <!-- Research Grants -->
-      <div class="vitae-section">
-        <h2>Research Grants</h2>
-        <ul class="vitae-list">
-          <li><strong>2022–2026:</strong> Error Mechanism, Mathematical Model, and Ratio Error Prediction of Measurement Devices based on Mass Data, <span class="role-tag">Co-PI</span>, National Key Research and Development Program of China.</li>
-          <li><strong>2020–2022:</strong> Computationally Expensive Large-Scale Multi-Objective Optimization Driven by Generative Learning, <span class="role-tag">PI</span>, National Science Foundation of China.</li>
-          <li><strong>2020–2024:</strong> Deep Learning Applied to Aerofoil Design, <span class="role-tag">Co-PI</span>, China.</li>
-          <li><strong>2020–2022:</strong> Evolutionary Computation Based Deep Neural Architecture Search for Microchips, <span class="role-tag">Co-PI</span>, China.</li>
-          <li><strong>2020–2022:</strong> Computational Intelligence based Error State Evaluating for Grouped Instrument Transformers: Key Technologies and Applications, <span class="role-tag">PI</span>, National Science Foundation of China.</li>
-          <li><strong>2021–2022:</strong> Voltage Transformer Ratio Error Estimation Driven by Computational Intelligence, <span class="role-tag">PI</span>, Shenzhen.</li>
-        </ul>
+      <div class="section-heading compact">
+        <p class="eyebrow">Curriculum vitae</p>
+        <h2 id="vitae-title">Academic profile</h2>
       </div>
 
-      <!-- Honors and Awards -->
-      <div class="vitae-section">
-        <h2>Honors and Awards</h2>
-        <ul class="vitae-list">
-          <li><strong>2022:</strong> <a href="https://www.cgcc.org.cn/tzgg/2/52194.html" target="_blank" rel="noopener noreferrer">2022中国商业联合会科学技术奖特等奖</a></li>
-          <li><strong>2021:</strong> <a href="https://china.acm.org/awards-2021-SIGBIO.html" target="_blank" rel="noopener noreferrer">2021 ACM SIGBio Rising Star Award</a></li>
-          <li><strong>2020:</strong> SUSTech the 6th Presidential Outstanding Postdoctoral Award</li>
-          <li><strong>2019:</strong> <a href="https://www.springer.com/gp/book/9789811534249" target="_blank" rel="noopener noreferrer">The 14th International Conference on Bio-inspired Computing: Theories and Applications (BIC-TA 2019) Best Paper Award</a></li>
-        </ul>
-      </div>
+      <div class="vitae-shell">
+        <div class="vitae-main">
+          <section class="vitae-section vitae-timeline-section" aria-labelledby="experience-title">
+            <div class="section-heading compact">
+              <h2 id="experience-title">Professional Experience</h2>
+            </div>
+            <div class="vitae-timeline">
+              <article class="vitae-timeline-item">
+                <time class="vitae-timeline-date">03/2022 &ndash; present</time>
+                <div class="vitae-timeline-content">
+                  <div>
+                    <h3 class="vitae-timeline-institution">Huazhong University of Science and Technology</h3>
+                    <p class="vitae-timeline-role"><strong>Associate Professor</strong></p>
+                    <p class="vitae-timeline-description">Artificial/Computational Intelligence for Electrical and Electronic Engineering.</p>
+                  </div>
+                  <img class="vitae-timeline-logo" src="images/hust.png" alt="HUST logo">
+                </div>
+              </article>
+              <article class="vitae-timeline-item">
+                <time class="vitae-timeline-date">08/2018 &ndash; 07/2020</time>
+                <div class="vitae-timeline-content">
+                  <div>
+                    <h3 class="vitae-timeline-institution">University of Science and Technology of China / Southern University of Science and Technology</h3>
+                    <p class="vitae-timeline-role"><strong>Post-doc Research Fellow</strong></p>
+                    <p class="vitae-timeline-description">Large-scale optimization, neural architecture search, airfoil design.</p>
+                  </div>
+                  <img class="vitae-timeline-logo" src="images/USTC.jfif" alt="USTC logo">
+                </div>
+              </article>
+              <article class="vitae-timeline-item">
+                <time class="vitae-timeline-date">03/2018 &ndash; 07/2018</time>
+                <div class="vitae-timeline-content">
+                  <div>
+                    <h3 class="vitae-timeline-institution">Southern University of Science and Technology</h3>
+                    <p class="vitae-timeline-role"><strong>Visiting Scholar</strong></p>
+                    <p class="vitae-timeline-description">Visiting scholar engaged in large-scale multiobjective optimization supervised by <a href="https://www.cs.bham.ac.uk/~xin/" target="_blank" rel="noopener noreferrer">Professor Xin Yao</a>.</p>
+                  </div>
+                  <img class="vitae-timeline-logo" src="images/sustech.jpg" alt="SUSTech logo">
+                </div>
+              </article>
+              <article class="vitae-timeline-item">
+                <time class="vitae-timeline-date">2016 &ndash; 2017</time>
+                <div class="vitae-timeline-content">
+                  <div>
+                    <h3 class="vitae-timeline-institution">University of Surrey</h3>
+                    <p class="vitae-timeline-role"><strong>Visiting PhD Student</strong></p>
+                    <p class="vitae-timeline-description">Visiting student engaged in surrogate-assisted many-objective optimization supervised by <a href="https://www.surrey.ac.uk/people/yaochu-jin" target="_blank" rel="noopener noreferrer">Professor Yaochu Jin</a>.</p>
+                  </div>
+                  <img class="vitae-timeline-logo" src="images/surrey.jpg" alt="University of Surrey logo">
+                </div>
+              </article>
+            </div>
+          </section>
 
-      <!-- Professional Experience -->
-      <div class="vitae-section">
-        <h2>Professional Experience</h2>
-        <div class="exp-card">
-          <div>
-            <h3>Huazhong University of Science and Technology</h3>
-            <p class="exp-meta"><strong>Associate Professor</strong> &mdash; 03/2022 &ndash; present</p>
-            <p class="exp-desc">Artificial/Computational Intelligence for Electrical and Electronic Engineering.</p>
-          </div>
-          <img src="images/hust.png" alt="HUST logo">
+          <section class="vitae-section vitae-timeline-section" aria-labelledby="education-title">
+            <div class="section-heading compact">
+              <h2 id="education-title">Education</h2>
+            </div>
+            <div class="vitae-timeline">
+              <article class="vitae-timeline-item">
+                <time class="vitae-timeline-date">09/2012 &ndash; 03/2018</time>
+                <div class="vitae-timeline-content">
+                  <div>
+                    <h3 class="vitae-timeline-institution">Huazhong University of Science and Technology</h3>
+                    <p class="vitae-timeline-role"><strong>Doctor of Philosophy</strong></p>
+                    <p class="vitae-timeline-description">Control Science and Engineering. Focus on many-objective optimization and its applications supervised by <a href="http://aia.hust.edu.cn/info/1126/5958.htm" target="_blank" rel="noopener noreferrer">Professor Linqiang Pan</a>.</p>
+                  </div>
+                  <img class="vitae-timeline-logo" src="images/hust.png" alt="HUST logo">
+                </div>
+              </article>
+              <article class="vitae-timeline-item">
+                <time class="vitae-timeline-date">09/2008 &ndash; 06/2012</time>
+                <div class="vitae-timeline-content">
+                  <div>
+                    <h3 class="vitae-timeline-institution">Wuhan University of Science and Technology</h3>
+                    <p class="vitae-timeline-role"><strong>Bachelor of Science</strong></p>
+                    <p class="vitae-timeline-description">Automation.</p>
+                  </div>
+                  <img class="vitae-timeline-logo" src="images/wust.png" alt="WUST logo">
+                </div>
+              </article>
+            </div>
+          </section>
         </div>
-        <div class="exp-card">
-          <div>
-            <h3>University of Science and Technology of China / Southern University of Science and Technology</h3>
-            <p class="exp-meta"><strong>Post-doc Research Fellow</strong> &mdash; 08/2018 &ndash; 07/2020</p>
-            <p class="exp-desc">Large-scale optimization, neural architecture search, airfoil design.</p>
-          </div>
-          <img src="images/USTC.jfif" alt="USTC logo">
-        </div>
-        <div class="exp-card">
-          <div>
-            <h3>Southern University of Science and Technology</h3>
-            <p class="exp-meta"><strong>Visiting Scholar</strong> &mdash; 03/2018 &ndash; 07/2018</p>
-            <p class="exp-desc">Visiting scholar engaged in large-scale multiobjective optimization supervised by <a href="https://www.cs.bham.ac.uk/~xin/" target="_blank" rel="noopener noreferrer">Professor Xin Yao</a>.</p>
-          </div>
-          <img src="images/sustech.jpg" alt="SUSTech logo">
-        </div>
-        <div class="exp-card">
-          <div>
-            <h3>University of Surrey</h3>
-            <p class="exp-meta"><strong>Visiting PhD Student</strong> &mdash; 2016 &ndash; 2017</p>
-            <p class="exp-desc">Visiting student engaged in surrogate-assisted many-objective optimization supervised by <a href="https://www.surrey.ac.uk/people/yaochu-jin" target="_blank" rel="noopener noreferrer">Professor Yaochu Jin</a>.</p>
-          </div>
-          <img src="images/surrey.jpg" alt="University of Surrey logo">
-        </div>
-      </div>
 
-      <!-- Editorial Service -->
-      <div class="vitae-section">
-        <h2>Editorial Service</h2>
-        <ul class="vitae-list">
-          <li>
-            <strong>Associate Editor</strong> &mdash;
-            <a href="https://link.springer.com/journal/40747/editorial-board" target="_blank" rel="noopener noreferrer">Complex &amp; Intelligent Systems</a>,
-            Springer. IF 5.3, JCR Q1.
-          </li>
-          <li>
-            <strong>Associate Editor</strong> &mdash;
-            <a href="https://cis.ieee.org/publications/ieee-computational-intelligence-letters/ci-l-editor-and-associate-editors" target="_blank" rel="noopener noreferrer">IEEE Computational Intelligence Letters</a>,
-            IEEE Computational Intelligence Society.
-          </li>
-          <li>
-            <strong>Editorial Board Member</strong> &mdash;
-            <a href="https://www.mdpi.com/journal/electronics/editors" target="_blank" rel="noopener noreferrer">Electronics</a>,
-            MDPI. IF 2.6, JCR Q1.
-          </li>
-          <li>
-            <strong>Editorial Board Member</strong> &mdash;
-            <a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener noreferrer">PloS One</a>,
-            Public Library of Science.
-          </li>
-        </ul>
-      </div>
+        <aside class="vitae-support" aria-label="Supporting academic information">
+          <section class="vitae-section" aria-labelledby="grants-title">
+            <div class="section-heading compact">
+              <h2 id="grants-title">Research Grants</h2>
+            </div>
+            <ul class="vitae-support-list">
+              <li><strong>2022–2026:</strong> Error Mechanism, Mathematical Model, and Ratio Error Prediction of Measurement Devices based on Mass Data, <span class="role-tag">Co-PI</span>, National Key Research and Development Program of China.</li>
+              <li><strong>2020–2022:</strong> Computationally Expensive Large-Scale Multi-Objective Optimization Driven by Generative Learning, <span class="role-tag">PI</span>, National Science Foundation of China.</li>
+              <li><strong>2020–2024:</strong> Deep Learning Applied to Aerofoil Design, <span class="role-tag">Co-PI</span>, China.</li>
+              <li><strong>2020–2022:</strong> Evolutionary Computation Based Deep Neural Architecture Search for Microchips, <span class="role-tag">Co-PI</span>, China.</li>
+              <li><strong>2020–2022:</strong> Computational Intelligence based Error State Evaluating for Grouped Instrument Transformers: Key Technologies and Applications, <span class="role-tag">PI</span>, National Science Foundation of China.</li>
+              <li><strong>2021–2022:</strong> Voltage Transformer Ratio Error Estimation Driven by Computational Intelligence, <span class="role-tag">PI</span>, Shenzhen.</li>
+            </ul>
+          </section>
 
-      <!-- Education -->
-      <div class="vitae-section">
-        <h2>Education</h2>
-        <div class="exp-card">
-          <div>
-            <h3>Doctor of Philosophy</h3>
-            <p class="exp-meta"><em>Huazhong University of Science and Technology</em> &mdash; 09/2012 &ndash; 03/2018</p>
-            <p class="exp-desc">Control Science and Engineering. Focus on many-objective optimization and its applications supervised by <a href="http://aia.hust.edu.cn/info/1126/5958.htm" target="_blank" rel="noopener noreferrer">Professor Linqiang Pan</a>.</p>
-          </div>
-          <img src="images/hust.png" alt="HUST logo">
-        </div>
-        <div class="exp-card">
-          <div>
-            <h3>Bachelor of Science</h3>
-            <p class="exp-meta"><em>Wuhan University of Science and Technology</em> &mdash; 09/2008 &ndash; 06/2012</p>
-            <p class="exp-desc">Automation.</p>
-          </div>
-          <img src="images/wust.png" alt="WUST logo">
-        </div>
+          <section class="vitae-section" aria-labelledby="awards-title">
+            <div class="section-heading compact">
+              <h2 id="awards-title">Honors and Awards</h2>
+            </div>
+            <ul class="vitae-support-list">
+              <li><strong>2022:</strong> <a href="https://www.cgcc.org.cn/tzgg/2/52194.html" target="_blank" rel="noopener noreferrer">2022中国商业联合会科学技术奖特等奖</a></li>
+              <li><strong>2021:</strong> <a href="https://china.acm.org/awards-2021-SIGBIO.html" target="_blank" rel="noopener noreferrer">2021 ACM SIGBio Rising Star Award</a></li>
+              <li><strong>2020:</strong> SUSTech the 6th Presidential Outstanding Postdoctoral Award</li>
+              <li><strong>2019:</strong> <a href="https://www.springer.com/gp/book/9789811534249" target="_blank" rel="noopener noreferrer">The 14th International Conference on Bio-inspired Computing: Theories and Applications (BIC-TA 2019) Best Paper Award</a></li>
+            </ul>
+          </section>
+
+          <section class="vitae-section" aria-labelledby="editorial-title">
+            <div class="section-heading compact">
+              <h2 id="editorial-title">Editorial Service</h2>
+            </div>
+            <ul class="vitae-support-list">
+              <li><strong>Associate Editor</strong> &mdash; <a href="https://link.springer.com/journal/40747/editorial-board" target="_blank" rel="noopener noreferrer">Complex &amp; Intelligent Systems</a>, Springer. IF 5.3, JCR Q1.</li>
+              <li><strong>Associate Editor</strong> &mdash; <a href="https://cis.ieee.org/publications/ieee-computational-intelligence-letters/ci-l-editor-and-associate-editors" target="_blank" rel="noopener noreferrer">IEEE Computational Intelligence Letters</a>, IEEE Computational Intelligence Society.</li>
+              <li><strong>Editorial Board Member</strong> &mdash; <a href="https://www.mdpi.com/journal/electronics/editors" target="_blank" rel="noopener noreferrer">Electronics</a>, MDPI. IF 2.6, JCR Q1.</li>
+              <li><strong>Editorial Board Member</strong> &mdash; <a href="https://journals.plos.org/plosone/" target="_blank" rel="noopener noreferrer">PloS One</a>, Public Library of Science.</li>
+            </ul>
+          </section>
+        </aside>
       </div>
     </section>
   </main>
