@@ -1031,9 +1031,7 @@ main {
 }
 
 .publications-page .bib-link {
-  margin-top: var(--space-5);
-  padding: var(--space-4) 0;
-  border-top: 1px solid var(--line);
+  margin: 0 0 var(--space-4);
 }
 
 /* Vitae */
