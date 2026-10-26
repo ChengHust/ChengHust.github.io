@@ -430,9 +430,6 @@ main {
   text-transform: uppercase;
 }
 
-.prototype-card {
-  grid-template-columns: 1fr;
-}
 .profile-facts {
   margin: var(--space-4) 0 0;
 }
@@ -634,6 +631,30 @@ main {
   background: var(--surface-soft);
 }
 
+.publication-card.website-preview-card {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  align-items: center;
+}
+
+.website-preview-card > div {
+  min-width: 0;
+}
+
+.research-preview {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  line-height: 0;
+}
+
+.website-preview-card .research-preview img {
+  display: block;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 8 / 5;
+}
+
 .publication-card h3 {
   margin-top: 0;
 }
@@ -824,6 +845,10 @@ main {
   display: block;
   padding-left: 2.35rem;
   counter-increment: publication-entry;
+}
+
+.publications-page .pub-entry[id] {
+  scroll-margin-top: 84px;
 }
 
 .publications-page .pub-list .pub-entry::before {
@@ -1612,6 +1637,10 @@ span.highlight {
 
   .publication-card {
     grid-template-columns: 1fr;
+  }
+
+  .publication-card.website-preview-card {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .publication-card img {
