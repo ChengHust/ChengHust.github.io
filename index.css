@@ -721,6 +721,14 @@ main {
   margin-top: 0;
 }
 
+.publication-card .work-type {
+  margin: 0 0 10px;
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
 .publication-card h3 a,
 .publications-page .pub-list .pub-title,
 .publications-page .pub-list .pub-title a {
@@ -1691,6 +1699,10 @@ span.highlight {
   .hero-copy h1,
   .hero-copy .hero-role {
     padding-right: 112px;
+  }
+
+  .hero-copy .hero-role {
+    min-height: 60px;
   }
 
   .profile-panel > a {
